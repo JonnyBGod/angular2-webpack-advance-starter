@@ -9,6 +9,8 @@
     "source-map": "registry:dt/source-map#0.0.0+20160317120654",
     "uglify-js": "registry:dt/uglify-js#2.6.1+20160316155526",
     "webpack": "registry:dt/webpack#1.12.9+20160321060707",
-    "angular2-beta-to-rc-alias": "file:./node_modules/@angularclass/angular2-beta-to-rc-alias/src/beta-17/typings.d.ts"
-  }
+    "angular2-beta-to-rc-alias": "file:./node_modules/@angularclass/angular2-beta-to-rc-alias/src/beta-17/typings.d.ts",
+    "lodash": "github:DefinitelyTyped/DefinitelyTyped/lodash/lodash.d.ts#7b7aa2027a8fb6219a8bcf1b6bb12bcd0ff9539d"
+  },
+  "dependencies": {}
 }

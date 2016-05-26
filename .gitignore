@@ -59,3 +59,17 @@ npm-debug.log
 # IDE #
 .idea/
 *.swp
+
+# Advance #
+src/**/*.js
+src/**/*.js.map
+!src/sw.js
+nativescript/hooks
+nativescript/node_modules
+nativescript/platforms
+nativescript/**/*.js
+nativescript/**/*.js.map
+nativescript/*.d.ts
+nativescript/app/app
+nativescript/app/assets
+desktop

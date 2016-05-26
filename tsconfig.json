@@ -8,13 +8,14 @@
     "noEmitHelpers": true
   },
   "exclude": [
+    "desktop",
+    "nativescript",
     "./node_modules",
     "./typings/main.d.ts",
     "./typings/main"
   ],
   "filesGlob": [
     "./src/app/**/*.ts",
-    "./src/platform/**/*.ts",
     "!./node_modules/**",
     "./src/custom-typings.d.ts",
     "./typings/index.d.ts"

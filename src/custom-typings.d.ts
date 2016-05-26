@@ -33,9 +33,17 @@ import * as _ from 'lodash'
 // Extra variables that live on Global that will be replaced by webpack DefinePlugin
 declare var ENV: string;
 declare var HMR: boolean;
+declare var BASE_URL: string;
+declare var RUN_DEMO: boolean;
+declare var TARGET_DESKTOP_BUILD: boolean;
+declare var TARGET_DESKTOP: boolean;
 interface GlobalEnvironment {
   ENV;
   HMR;
+  BASE_URL;
+  RUN_DEMO;
+  TARGET_DESKTOP_BUILD;
+  TARGET_DESKTOP;
 }
 
 interface WebpackModule {
