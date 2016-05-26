@@ -51,6 +51,7 @@ npm-debug.log
 /public/dist/
 /src/*/dist/
 /dist/**
+/dist_desktop/**
 .webpack.json
 
 # Doc #

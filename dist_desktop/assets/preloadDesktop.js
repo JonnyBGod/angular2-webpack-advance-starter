@@ -1,1 +1,0 @@
-TARGET_DESKTOP = true;
