@@ -3,22 +3,27 @@ import {ControlGroup, Control} from '@angular/common';
 
 // libs
 import {Store} from '@ngrx/store';
+import 'rxjs/add/operator/take';
+
 // app
-import {FormComponent, CoreConfigService, LogService, ILang} from 'frameworks/core.framework';
-import {ElectronEventService} from 'frameworks/electron.framework';
+import {FormComponent, CoreConfigService, LogService, ILang} from 'frameworks/core.framework/index';
+import {ElectronEventService} from 'frameworks/electron.framework/index';
 import {MultilingualService} from '../index';
 
 @FormComponent({
   selector: 'lang-switcher',
-  template: require('frameworks/i18n.framework/components/lang-switcher.component.html')
+  template: require('./lang-switcher.component.html')
 })
 export class LangSwitcherComponent {
   public langForm: ControlGroup;
   public supportedLanguages: Array<ILang> = MultilingualService.SUPPORTED_LANGUAGES;
-  
+
   constructor(private log: LogService, private store: Store<any>, private multilang: MultilingualService) {
-    this.langForm = new ControlGroup({
-      lang: new Control(store.getState().i18n.lang)
+    store.take(1).subscribe((s: any) => {
+      // s && s.18n - ensures testing works in all cases (since some tests dont use i18n state)
+      this.langForm = new ControlGroup({
+        lang: new Control(s && s.i18n ? s.i18n.lang : '')
+      });
     });
 
     if (CoreConfigService.IS_DESKTOP()) {
@@ -26,8 +31,7 @@ export class LangSwitcherComponent {
       ElectronEventService.on('changeLang').subscribe((e: any) => {
         this.changeLang({ target: { value: e.detail.value } });
       });
-    }
-    console.log(CoreConfigService.IS_DESKTOP());
+    }    
   }
   changeLang(e: any) {
     let lang = this.supportedLanguages[0].code; // fallback to default 'en'

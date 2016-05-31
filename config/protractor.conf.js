@@ -36,6 +36,12 @@ exports.config = {
   },
 
   onPrepare: function() {
+    require("reflect-metadata");
+    require("zone.js/dist/zone-node");
+
+    const SpecReporter = require('jasmine-spec-reporter');
+    // add jasmine spec reporter
+    jasmine.getEnv().addReporter(new SpecReporter({ displayStacktrace: true }));
     browser.ignoreSynchronization = true;
   },
 

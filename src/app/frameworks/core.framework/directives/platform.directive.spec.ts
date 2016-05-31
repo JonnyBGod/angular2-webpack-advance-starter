@@ -17,21 +17,19 @@ import {WindowMock} from 'frameworks/core.framework/testing';
 })
 class TestComponent {}
 
-export function main() {
-  t.describe('core.framework: PlatformDirective', () => {
-    let rootTC: any;
+t.describe('core.framework: PlatformDirective', () => {
+  let rootTC: any;
 
-    t.be(t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-      return tcb
-        .createAsync(TestComponent)
-        .then(f => rootTC = f);
-    }));
+  t.be(t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+    return tcb
+      .createAsync(TestComponent)
+      .then(f => rootTC = f);
+  }));
 
-    //specs
-    t.it('should add platform class', () => {
-      rootTC.detectChanges();
-      let compDOMEl = rootTC.debugElement.children[0].nativeElement;
-      expect(getDOM().classList(compDOMEl)).toEqual(['web']); 
-    });
+  //specs
+  t.it('should add platform class', () => {
+    rootTC.detectChanges();
+    let compDOMEl = rootTC.debugElement.children[0].nativeElement;
+    expect(getDOM().classList(compDOMEl)).toEqual(['web']); 
+  });
 });
-}

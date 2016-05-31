@@ -14,5 +14,5 @@ const simpleWebTestConfig = require('../webpack.test.js');
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = webpackMerge.smart(simpleWebTestConfig, commonAdvanceConfig, {
-	
+
 });

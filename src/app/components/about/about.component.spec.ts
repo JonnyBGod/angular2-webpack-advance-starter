@@ -6,20 +6,18 @@ import {t} from 'frameworks/test.framework';
 import {TEST_CORE_PROVIDERS} from 'frameworks/core.framework/testing';
 import {AboutComponent} from './about.component';
 
-export function main() {
-  t.describe('@Component: AboutComponent', () => {
-    
-    t.it('should work',
-      t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-        tcb.createAsync(TestComponent)
-          .then((rootTC:any) => {
-            let aboutDOMEl = rootTC.debugElement.children[0].nativeElement;
+t.describe('@Component: AboutComponent', () => {
+  
+  t.it('should work',
+    t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+      tcb.createAsync(TestComponent)
+        .then((rootTC:any) => {
+          let aboutDOMEl = rootTC.debugElement.children[0].nativeElement;
 
-            t.e(getDOM().querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
-          });
-      }));
-  });
-}
+          t.e(getDOM().querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
+        });
+    }));
+});
 
 @Component({
   viewProviders: [

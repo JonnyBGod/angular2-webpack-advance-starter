@@ -2,8 +2,8 @@
   "name": "angular2-webpack-advance-starter",
   "version": "5.0.5",
   "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
-  "author": "Patrick Stapleton <patrick@angularclass.com>",
-  "homepage": "https://github.com/angularclass/angular2-webpack-starter",
+  "author": "João Ribeiro <jonnybgod@gmail.com>",
+  "homepage": "https://github.com/JonnyBGod/angular2-webpack-advance-starter",
   "license": "MIT",
   "scripts": {
     "rimraf": "rimraf",
@@ -16,7 +16,7 @@
     "protractor": "protractor",
     "clean": "npm cache clean && npm run rimraf -- node_modules doc typings coverage dist",
     "clean:dist": "npm run rimraf -- dist",
-    "clean:dist:desktop": "npm run rimraf -- dist_desktop",
+    "clean:dist:desktop": "npm run rimraf -- dist",
     "preclean:install": "npm run clean",
     "clean:install": "npm set progress=false && npm install",
     "preclean:start": "npm run clean",
@@ -31,7 +31,9 @@
     "build:dev": "webpack --config config/advance/webpack.web.dev.js --progress --profile --colors --display-error-details --display-cached",
     "prebuild:prod": "npm run clean:dist",
     "build:prod": "webpack --config config/advance/webpack.web.prod.js  --progress --profile --colors --display-error-details --display-cached --bail",
-    "build:prod:desktop": "webpack --config config/advance/webpack.desktop.build.js  --progress --profile --colors --display-error-details --display-cached --bail",
+    "build:prod:desktop:renderer": "webpack --config config/advance/webpack.desktop.build.renderer.js  --progress --profile --colors --display-error-details --display-cached --bail",   
+    "build:prod:desktop:main": "webpack --config config/advance/webpack.desktop.build.main.js  --progress --profile --colors --display-error-details --display-cached --bail",
+    "build:prod:desktop": "npm run build:prod:desktop:renderer && npm run build:prod:desktop:main",
     "build:desktop": "npm run clean:dist:desktop && rimraf desktop/** && npm run build:prod:desktop && node_modules/.bin/build --platform all --arch all",
     "dist:build:desktop": "npm run clean:dist:desktop && rimraf desktop/* && npm run build:prod:desktop && node_modules/.bin/build --platform all --arch all --dist",
     "build:desktop:mac": "npm run clean:dist:desktop && rimraf desktop/mac/* && npm run build:prod:desktop && node_modules/.bin/build --platform darwin --arch all",
@@ -81,12 +83,12 @@
     "@angular/platform-server": "2.0.0-rc.1",
     "@angular/router": "2.0.0-rc.1",
     "@angular/router-deprecated": "2.0.0-rc.1",
-    "@ngrx/store": "^1.5.0",
+    "@ngrx/core": "^1.0.0",
+    "@ngrx/store": "^2.0.0",
     "angulartics2": "^1.0.11",
     "core-js": "^2.4.0",
     "lodash-es": "^4.12.0",
     "ng2-translate": "^2.1.0",
-    "ngrx-store-router": "^0.2.0",
     "normalize.css": "^4.1.1",
     "rxjs": "5.0.0-beta.6",
     "zone.js": "~0.6.12"
@@ -114,6 +116,7 @@
     "http-server": "^0.9.0",
     "imports-loader": "^0.6.5",
     "istanbul-instrumenter-loader": "^0.2.0",
+    "jasmine-spec-reporter": "^2.4.0",
     "json-loader": "^0.5.4",
     "karma": "^0.13.22",
     "karma-chrome-launcher": "^1.0.1",
@@ -151,29 +154,19 @@
   },
   "build": {
     "app-bundle-id": "org.develar.onshape",
-    "app-category-type": "public.app-category.graphics-design",
-    "osx": {
-      "contents": [
-        {
-          "x": 410,
-          "y": 150,
-          "type": "link",
-          "path": "/Applications"
-        },
-        {
-          "x": 130,
-          "y": 150,
-          "type": "file"
-        }
-      ]
-    }
+    "app-category-type": "public.app-category.graphics-design"
+  },
+  "directories": {
+    "buildResources": "dist/assets",
+    "output": "desktop",
+    "app": "dist"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/angularclass/angular2-webpack-starter.git"
+    "url": "https://github.com/angularclass/angular2-webpack-advance-starter.git"
   },
   "bugs": {
-    "url": "https://github.com/angularclass/angular2-webpack-starter/issues"
+    "url": "https://github.com/angularclass/angular2-webpack-advance-starter/issues"
   },
   "engines": {
     "node": ">= 4.2.1",

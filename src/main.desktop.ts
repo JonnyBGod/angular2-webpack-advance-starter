@@ -22,7 +22,7 @@ crashReporter.start({
   autoSubmit: true
 });
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
   require('electron-debug')();
 }
 
@@ -83,12 +83,12 @@ app.on('ready', () => {
     submenu: [{
       label: 'Learn More',
       click:() => {
-        shell.openExternal('https://github.com/NathanWalker/angular2-seed-advanced');
+        shell.openExternal('https://github.com/JonnyBGod/angular2-webpack-advance-starter');
       }
     }, {
         label: 'Issues',
         click:() => {
-          shell.openExternal('https://github.com/NathanWalker/angular2-seed-advanced/issues');
+          shell.openExternal('https://github.com/JonnyBGod/angular2-webpack-advance-starter/issues');
         }
       }, {
         label: `My Amazing Parent: Minko Gechev's Angular 2 Seed`,
@@ -113,7 +113,7 @@ app.on('ready', () => {
       }, {
         label: 'Codeology Visualization',
         click:() => {
-          shell.openExternal('http://codeology.braintreepayments.com/nathanwalker/angular2-seed-advanced');
+          shell.openExternal('http://codeology.braintreepayments.com/JonnyBGod/angular2-webpack-advance-starter');
         }
       }]
   };
@@ -182,7 +182,7 @@ app.on('ready', () => {
           }]
       }, {
         label: 'View',
-        submenu: (process.env.NODE_ENV === 'development') ? [{
+        submenu: (process.env.NODE_ENV === 'production') ? [{
           label: 'Reload',
           accelerator: 'Command+R',
           click:() => {
@@ -244,7 +244,7 @@ app.on('ready', () => {
         }]
     }, {
         label: '&View',
-        submenu: (process.env.NODE_ENV === 'development') ? [{
+        submenu: (process.env.NODE_ENV === 'production') ? [{
           label: '&Reload',
           accelerator: 'Ctrl+R',
           click:() => {

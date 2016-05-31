@@ -1,5 +1,9 @@
 {
-  "name": "angular2-seed-advanced",
+  "name": "angular2-webpack-advance-starter",
   "version": "1.0.0",
-  "main": "main.desktop.js"
+  "description": "An Angular 2 Webpack Advance Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
+  "author": "João Ribeiro <jonnybgod@gmail.com>",
+  "homepage": "https://github.com/JonnyBGod/angular2-webpack-advance-starter",
+  "license": "MIT",
+  "main": "main.desktop.bundle.js"
 }

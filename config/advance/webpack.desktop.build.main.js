@@ -3,7 +3,8 @@
  */
 
 const helpers = require('./helpers');
-const webpackMerge = require('webpack-merge'); // used to merge webpack configs
+
+var CopyWebpackPlugin = (CopyWebpackPlugin = require('copy-webpack-plugin'), CopyWebpackPlugin.default || CopyWebpackPlugin);
 
 /**
  * Webpack Plugins
@@ -13,7 +14,7 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
 /**
  * Webpack Constants
  */
-const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+const ENV = process.env.ENV = process.env.NODE_ENV = 'production';
 
 /**
  * Webpack configuration
@@ -59,8 +60,12 @@ module.exports = {
       }
     ]
   },
-
-  debug: true,
+/**
+   * Switch loaders to debug mode.
+   *
+   * See: http://webpack.github.io/docs/configuration.html#debug
+   */
+  debug: false,
 
   /**
    * Developer tool to enhance debugging
@@ -68,7 +73,7 @@ module.exports = {
    * See: http://webpack.github.io/docs/configuration.html#devtool
    * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
    */
-  devtool: 'cheap-module-source-map',
+  devtool: 'source-map',
 
   /**
    * Options affecting the output of the compilation.
@@ -90,7 +95,7 @@ module.exports = {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-filename
      */
-    filename: '[name].js',
+    filename: '[name].bundle.js',
 
     /**
      * The filename of the SourceMaps for the JavaScript files.
@@ -98,9 +103,10 @@ module.exports = {
      *
      * See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
      */
-    sourceMapFilename: '[name].map',
+    sourceMapFilename: '[name].bundle.map',
 
-    /** The filename of non-entry chunks as relative path
+    /**
+     * The filename of non-entry chunks as relative path
      * inside the output.path directory.
      *
      * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
@@ -108,6 +114,14 @@ module.exports = {
     chunkFilename: '[id].chunk.js'
 
   },
+
+  plugins: [
+
+    new CopyWebpackPlugin([{
+      from: 'src/package.json',
+      to: 'package.json'
+    }])
+  ],
 
   externals: [
     (function () {

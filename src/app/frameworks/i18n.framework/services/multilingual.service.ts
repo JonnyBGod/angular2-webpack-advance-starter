@@ -3,12 +3,12 @@ import {Injectable} from '@angular/core';
 
 // libs
 import * as _ from 'lodash';
-import {Store, Reducer, Action} from '@ngrx/store';
+import {Store, ActionReducer, Action} from '@ngrx/store';
 import {TranslateService} from 'ng2-translate/ng2-translate';
 
 // app
-import {Analytics, AnalyticsService} from 'frameworks/analytics.framework';
-import {WindowService, ILang} from 'frameworks/core.framework';
+import {Analytics, AnalyticsService} from '../../analytics.framework/index';
+import {WindowService, ILang} from '../../core.framework/index';
 
 // analytics
 const CATEGORY: string = 'Multilingual';
@@ -28,7 +28,7 @@ export const MULTILINGUAL_ACTIONS: any = {
   LANG_CHANGE: `[${CATEGORY}] LANG_CHANGE`
 };
 
-export const multilingualReducer: Reducer<MultilingualStateI> = (state: MultilingualStateI = initialState, action: Action) => {
+export const multilingualReducer: ActionReducer<MultilingualStateI> = (state: MultilingualStateI = initialState, action: Action) => {
   switch (action.type) {
     case MULTILINGUAL_ACTIONS.LANG_CHANGE:
       return Object.assign({}, state, action.payload);
@@ -77,5 +77,5 @@ export class MultilingualService extends Analytics {
       this.track(MULTILINGUAL_ACTIONS.LANG_CHANGE, { label: lang });
       this.store.dispatch({ type: MULTILINGUAL_ACTIONS.LANG_CHANGE, payload: { lang } });
     }
-  } 
+  }
 }

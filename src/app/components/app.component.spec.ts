@@ -8,20 +8,18 @@ import {NameListService} from 'frameworks/app.framework';
 import {TEST_MULTILINGUAL_PROVIDERS} from 'frameworks/i18n.framework/testing';
 import {AppComponent} from './app.component';
 
-export function main() {
-  t.describe('@Component: AppComponent', () => {
-    
-    t.it('should work',
-      t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-        tcb.createAsync(TestComponent)
-          .then((rootTC:any) => {
-            rootTC.detectChanges();
-            let appDOMEl = rootTC.debugElement.children[0].nativeElement;
-            t.e(getDOM().querySelectorAll(appDOMEl, 'sd-app sd-navbar > nav > a')[1].href).toMatch(/\/about/);
-          });
-      }));
-  });
-}
+t.describe('@Component: AppComponent', () => {
+  
+  t.it('should work',
+    t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
+      tcb.createAsync(TestComponent)
+        .then((rootTC:any) => {
+          rootTC.detectChanges();
+          let appDOMEl = rootTC.debugElement.children[0].nativeElement;
+          t.e(getDOM().querySelectorAll(appDOMEl, 'sd-app sd-navbar > nav > a')[1].href).toMatch(/\/about/);
+        });
+    }));
+});
 
 @Component({
   viewProviders: [
