@@ -5,18 +5,27 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
-    "noEmitHelpers": true
+    "noEmitHelpers": true,
+    "baseUrl": "./src",
+    "paths": {
+      "frameworks/*": [
+        "app/frameworks/*"
+      ],
+      "components/*": [
+        "app/components/*"
+      ],
+      "assets/*": [
+        "app/assets/*"
+      ]
+    }
   },
   "exclude": [
     "desktop",
     "nativescript",
-    "./node_modules",
-    "./typings/main.d.ts",
-    "./typings/main"
+    "node_modules"
   ],
   "filesGlob": [
     "./src/app/**/*.ts",
-    "!./node_modules/**",
     "./src/custom-typings.d.ts",
     "./typings/index.d.ts"
   ],
