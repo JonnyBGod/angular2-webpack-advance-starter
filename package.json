@@ -13,7 +13,7 @@
     "webpack": "webpack",
     "webpack-dev-server": "webpack-dev-server",
     "webdriver-manager": "webdriver-manager",
-    "protractor": "protractor",
+    "protractor": "protractor ./config/advance/protractor.conf.js",
     "clean": "npm cache clean && npm run rimraf -- node_modules doc typings coverage dist",
     "clean:dist": "npm run rimraf -- dist",
     "clean:dist:desktop": "npm run rimraf -- dist",
