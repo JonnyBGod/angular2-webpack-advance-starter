@@ -74,3 +74,4 @@ nativescript/*.d.ts
 nativescript/app/app
 nativescript/app/assets
 desktop
+_temp

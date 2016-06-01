@@ -11,16 +11,19 @@ TODO
 ## Before Open Sourcing
 
 - [x] Change references to @JonnyBGod
+- [ ] Generate all icons and fix references in index.html
 - [ ] Redo readme.md
 	- [ ] Mention need for typescript@next
 - [ ] CI release all platforms for demo app
+
+
+## Improvements
+
+- [ ] Docs (typedoc)
+
 
 ## Extras (branches?)
 
 - [ ] Windows Universal App
 - [ ] Ionic
 - [ ] React Native
-
-## Improvements
-
-- [ ] E2E tests (fix relative path to alias on e2e.ts files)
