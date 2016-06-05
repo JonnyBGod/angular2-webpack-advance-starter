@@ -1,10 +1,10 @@
 declare var browser: any, element: any, by: any;
 
 /**
-* Usage: selectDropdownByNumber ( selector, index)
-* selector : select element
-* index : index in the dropdown, 1 base.
-*/
+ * Usage: selectDropdownByNumber ( selector, index)
+ * selector : select element
+ * index : index in the dropdown, 1 base.
+ */
 export function selectDropdownByNumber(selector: string, index: number, milliseconds: number) {
   element(by.css(selector)).all(by.tagName('option'))
     .then(function(options: any) {
@@ -17,10 +17,10 @@ export function selectDropdownByNumber(selector: string, index: number, millisec
 
 
 /**
-* Usage: selectDropdownByValue (selector, item)
-* selector : select element
-* item : option(s) in the dropdown.
-*/
+ * Usage: selectDropdownByValue (selector, item)
+ * selector : select element
+ * item : option(s) in the dropdown.
+ */
 export function selectDropdownByValue(selector: string, item: string, milliseconds: number) {
   // var desiredOption: any;
   element(by.css(selector)).sendKeys(item);
@@ -30,13 +30,13 @@ export function selectDropdownByValue(selector: string, item: string, millisecon
 }
 
 /**
-* Usage: selectRandomDropdownReturnText ( selector, milliseconds)
-* selector : select random element
-* index : wait time to select value for drop down.
-*/
+ * Usage: selectRandomDropdownReturnText ( selector, milliseconds)
+ * selector : select random element
+ * index : wait time to select value for drop down.
+ */
 export function selectRandomDropdownReturnText(selector: string, milliseconds: number) {
   element(by.css(selector)).all(by.tagName('option')).then(function(options: any) {
-    var randomNumber = Math.floor((Math.random() * options.length
+    let randomNumber = Math.floor((Math.random() * options.length
     ));
     options[randomNumber].click();
     return options[randomNumber].getText().then(function(text: string) {

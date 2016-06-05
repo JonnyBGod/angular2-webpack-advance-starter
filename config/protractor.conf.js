@@ -2,7 +2,7 @@
  * @author: @AngularClass
  */
 
-//require('ts-node/register');
+require('ts-node/register');
 var helpers = require('./helpers');
 
 exports.config = {
@@ -10,8 +10,8 @@ exports.config = {
 
   // use `npm run e2e`
   specs: [
-    helpers.root('_temp/tests/**/**.e2e.js'),
-    helpers.root('_temp/tests/**/*.e2e.js')
+    helpers.root('src/**/**.e2e.ts'),
+    helpers.root('src/**/*.e2e.ts')
   ],
   exclude: [],
 

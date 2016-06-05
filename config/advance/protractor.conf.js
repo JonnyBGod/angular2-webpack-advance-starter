@@ -36,12 +36,12 @@ exports.config = {
   },
 
   onPrepare: function() {
-    require("reflect-metadata");
-    require("zone.js/dist/zone-node");
+    require('reflect-metadata');
+    require('zone.js/dist/zone-node');
 
     const SpecReporter = require('jasmine-spec-reporter');
     // add jasmine spec reporter
-    jasmine.getEnv().addReporter(new SpecReporter({ displayStacktrace: true }));
+    jasmine.getEnv().addReporter(new SpecReporter({displayStacktrace: true}));
     browser.ignoreSynchronization = true;
   },
 
@@ -51,5 +51,5 @@ exports.config = {
    * useAllAngular2AppRoots: tells Protractor to wait for any angular2 apps on the page instead of just the one matching
    * `rootEl`
    */
-   useAllAngular2AppRoots: true
+  useAllAngular2AppRoots: true
 };

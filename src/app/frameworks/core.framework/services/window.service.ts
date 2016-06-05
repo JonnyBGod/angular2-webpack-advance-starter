@@ -1,10 +1,10 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
-import {IWindow} from '../interfaces/iwindow';
+import { IWindow } from '../interfaces/iwindow';
 
 @Injectable()
 export class WindowService implements IWindow {
-  
+
   public navigator: any = {};
   public location: any = {};
   public alert(msg: string): void { return; }

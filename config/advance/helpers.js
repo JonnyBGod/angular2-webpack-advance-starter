@@ -18,6 +18,5 @@ function root(args) {
   return path.join.apply(path, [ROOT].concat(args));
 }
 
-
 exports.hasProcessFlag = hasProcessFlag;
 exports.root = root;

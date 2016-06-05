@@ -6,11 +6,7 @@ const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 
 const commonAdvanceConfig = require('./webpack.common.js');
-
-/**
- * Webpack Plugins
- */
-const DefinePlugin = require('webpack/lib/DefinePlugin');
+const customConfig = require('../custom/webpack.common.web.js');
 
 /**
  * Webpack configuration
@@ -19,4 +15,4 @@ const DefinePlugin = require('webpack/lib/DefinePlugin');
  */
 module.exports = webpackMerge.smart(commonAdvanceConfig, {
 
-});
+}, customConfig);

@@ -1,22 +1,26 @@
-import {TestComponentBuilder} from '@angular/compiler/testing';
-import {Component} from '@angular/core';
-import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
+import { TestComponentBuilder } from '@angular/compiler/testing';
+import { Component } from '@angular/core';
+import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
 
 // libs 
-import {provideStore} from '@ngrx/store';
+import { provideStore } from '@ngrx/store';
 
-import {t} from 'frameworks/test.framework';
-import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS} from 'frameworks/core.framework/testing';
-import {NameListService, nameListReducer} from 'frameworks/app.framework';
-import {TEST_MULTILINGUAL_PROVIDERS} from 'frameworks/i18n.framework/testing';
-import {HomeComponent} from './home.component';
+import { t } from 'frameworks/test.framework';
+import {
+  TEST_CORE_PROVIDERS,
+  TEST_HTTP_PROVIDERS,
+  TEST_ROUTER_PROVIDERS
+} from 'frameworks/core.framework/testing';
+import { NameListService, nameListReducer } from 'frameworks/app.framework';
+import { TEST_MULTILINGUAL_PROVIDERS } from 'frameworks/i18n.framework/testing';
+import { HomeComponent } from './home.component';
 
 t.describe('@Component: HomeComponent', () => {
-  
+
   t.it('should work',
     t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
       tcb.createAsync(TestComponent)
-        .then((rootTC:any) => {
+        .then((rootTC: any) => {
           rootTC.detectChanges();
 
           let homeInstance = rootTC.debugElement.children[0].componentInstance;
@@ -49,6 +53,4 @@ t.describe('@Component: HomeComponent', () => {
   directives: [HomeComponent],
   template: '<sd-home></sd-home>'
 })
-class TestComponent {
-  
-}
+class TestComponent {}

@@ -3,13 +3,16 @@
  */
 
 const helpers = require('./helpers');
+const webpackMerge = require('webpack-merge'); // used to merge webpack configs
+
+const customConfig = require('../custom/webpack.web.e2e.js');
 
 /**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = {
+module.exports = webpackMerge.smart({
   entry: helpers.root('config/advance/helper.e2e.js'),
 
   resolve: {
@@ -29,7 +32,7 @@ module.exports = {
 
     alias: {
       // legacy imports pre-rc releases
-      'angular2': helpers.root('node_modules/@angularclass/angular2-beta-to-rc-alias/dist/beta-17'),
+      angular2: helpers.root('node_modules/@angularclass/angular2-beta-to-rc-alias/dist/beta-17'),
       components: 'app/components',
       frameworks: 'app/frameworks',
       assets: 'app/assets'
@@ -45,11 +48,11 @@ module.exports = {
       }
     ]
   },
-/**
-   * Switch loaders to debug mode.
-   *
-   * See: http://webpack.github.io/docs/configuration.html#debug
-   */
+  /**
+     * Switch loaders to debug mode.
+     *
+     * See: http://webpack.github.io/docs/configuration.html#debug
+     */
   debug: false,
 
   /**
@@ -106,4 +109,4 @@ module.exports = {
     __dirname: false,
     __filename: false,
   }
-};
+}, customConfig);

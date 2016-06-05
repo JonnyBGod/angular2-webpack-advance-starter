@@ -3,8 +3,6 @@
  */
 
 const helpers = require('./helpers');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-
 const autoprefixer = require('autoprefixer');
 /**
  * Webpack Plugins
@@ -57,7 +55,7 @@ var webpackConfig = {
         loader: 'to-string!css-loader!postcss-loader'
       },
 
-      { 
+      {
         test: /\.scss$/,
         loader: 'to-string!css-loader!postcss-loader!sass-loader'
       },

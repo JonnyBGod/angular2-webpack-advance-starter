@@ -1,18 +1,18 @@
-import {t} from 'frameworks/test.framework/index';
-import {CoreConfigService} from '../index';
-import * as _ from 'lodash';
+import { t } from 'frameworks/test.framework/index';
+import { CoreConfigService } from '../index';
+import { keys } from 'lodash';
 
 t.describe('core.framework: CoreConfigService', () => {
   t.be(() => CoreConfigService.RESET());
-  
-  t.it('PLATFORMS', () => {   
-    t.e(_.keys(CoreConfigService.PLATFORMS).length).toBe(4);
+
+  t.it('PLATFORMS', () => {
+    t.e(keys(CoreConfigService.PLATFORMS).length).toBe(4);
     t.e(CoreConfigService.PLATFORM_TARGET).toBeDefined();
     t.e(CoreConfigService.PLATFORMS.WEB).toBe('web');
     t.e(CoreConfigService.PLATFORMS.MOBILE_NATIVE).toBe('mobile_native');
     t.e(CoreConfigService.PLATFORMS.MOBILE_HYBRID).toBe('mobile_hybrid');
     t.e(CoreConfigService.PLATFORMS.DESKTOP).toBe('desktop');
-    
+
     t.e(CoreConfigService.IS_WEB).toBeDefined();
     t.e(CoreConfigService.IS_MOBILE_NATIVE).toBeDefined();
     t.e(CoreConfigService.IS_MOBILE_HYBRID).toBeDefined();

@@ -1,10 +1,10 @@
 // angular
-import {Injectable, Inject} from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 
 // libs
-import {extend} from 'lodash';
-import {Angulartics2} from 'angulartics2';
-import {Angulartics2Segment} from 'angulartics2/src/providers/angulartics2-segment';
+import { extend } from 'lodash';
+import { Angulartics2 } from 'angulartics2';
+import { Angulartics2Segment } from 'angulartics2/src/providers/angulartics2-segment';
 
 export interface IAnalyticsProperties {
   category?: string;
@@ -29,23 +29,23 @@ export class AnalyticsService implements IAnalytics {
     // angulartics2.excludeRoutes(routes: Array<string>);
     // angulartics2.firstPageview(value: boolean);
     // angulartics2.withBase(value: string);
- 
+
     this.devMode(false);
   }
 
   /**
    * Track actions, events, etc.
-   **/
+   */
   public track(action: string, properties: IAnalyticsProperties): void {
     if (!this.devMode()) {
       this.segment.eventTrack(action, properties);
-    } 
+    }
   }
 
   /**
    * Called automatically by default with Angular 2 Routing
    * However, that can be turned off and this could be used manually
-   **/
+   */
   public pageTrack(path: string, location: any) {
     if (!this.devMode()) {
       this.segment.pageTrack(path, location);
@@ -54,7 +54,7 @@ export class AnalyticsService implements IAnalytics {
 
   /**
    * Identify authenticated users
-   **/
+   */
   public identify(properties: any) {
     if (!this.devMode()) {
       this.segment.setUserProperties(properties);
@@ -65,13 +65,13 @@ export class AnalyticsService implements IAnalytics {
    * Control whether analytics are tracked
    * true: dev mode on, therefore do not track anything
    * false: dev mode off, track everything
-   **/
+   */
   public devMode(enable?: boolean): boolean {
     if (typeof enable !== 'undefined') {
       this.angulartics2.developerMode(enable);
-    } 
+    }
     return this.angulartics2.settings.developerMode;
-  }   
+  }
 }
 
 /**
@@ -88,8 +88,8 @@ export class Analytics implements IAnalytics {
 
   /**
    * Track actions, events, etc.
-   **/
+   */
   track(action: string, properties: IAnalyticsProperties): void {
     this.analytics.track(action, extend(properties, { category: this.category }));
-  }     
+  }
 }

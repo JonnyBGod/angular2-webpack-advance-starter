@@ -1,16 +1,16 @@
 // angular
-import {ChangeDetectionStrategy} from '@angular/core';
-import {RouteConfig} from '@angular/router-deprecated';
+import { ChangeDetectionStrategy } from '@angular/core';
+import { RouteConfig } from '@angular/router-deprecated';
 
 // app
-import {NameListService} from 'frameworks/app.framework';
-import {AnalyticsService} from 'frameworks/analytics.framework';
-import {RouteComponent, PlatformDirective} from 'frameworks/core.framework';
-import {LangSwitcherComponent} from 'frameworks/i18n.framework';
-import {NavbarComponent} from './navbar.component';
-import {ToolbarComponent} from './toolbar.component';
-import {HomeComponent} from './home';
-import {AboutComponent} from './about';
+import { NameListService } from 'frameworks/app.framework';
+import { AnalyticsService } from 'frameworks/analytics.framework';
+import { RouteComponent, PlatformDirective } from 'frameworks/core.framework';
+import { LangSwitcherComponent } from 'frameworks/i18n.framework';
+import { NavbarComponent } from './navbar.component';
+import { ToolbarComponent } from './toolbar.component';
+import { HomeComponent } from './home';
+import { AboutComponent } from './about';
 
 @RouteComponent({
   selector: 'app',
@@ -30,7 +30,7 @@ import {AboutComponent} from './about';
   {
     path: '/about',
     component: AboutComponent,
-    //loader: () => require('es6-promise!./about')('About'),
+    // loader: () => require('es6-promise!./about')('About'),
     name: 'About'
   }
 ])

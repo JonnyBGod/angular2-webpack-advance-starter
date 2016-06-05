@@ -1,9 +1,13 @@
 // libs
-import {provideStore} from '@ngrx/store';
+import { provideStore } from '@ngrx/store';
 
 // app
-import {nameListReducer} from './services/name-list.service';
-import {MULTILINGUAL_PROVIDERS, MultilingualStateI, multilingualReducer} from '../i18n.framework';
+import { nameListReducer } from './services/name-list.service';
+import {
+  MULTILINGUAL_PROVIDERS,
+  MultilingualStateI,
+  multilingualReducer
+} from '../i18n.framework';
 
 // state definition
 export interface AppStoreI {

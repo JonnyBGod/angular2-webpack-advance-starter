@@ -1,25 +1,26 @@
 // angular
-import {provide, enableProdMode} from '@angular/core';
-import {bootstrap} from '@angular/platform-browser-dynamic';
-import {APP_BASE_HREF, LocationStrategy, HashLocationStrategy} from '@angular/common';
-import {ELEMENT_PROBE_PROVIDERS} from '@angular/platform-browser';
+import { provide, enableProdMode } from '@angular/core';
+import { bootstrap } from '@angular/platform-browser-dynamic';
+import { APP_BASE_HREF, LocationStrategy, HashLocationStrategy } from '@angular/common';
+import { ELEMENT_PROBE_PROVIDERS } from '@angular/platform-browser';
 
 // config
-import {CoreConfigService} from 'frameworks/core.framework';
+import { CoreConfigService } from 'frameworks/core.framework';
 CoreConfigService.PLATFORM_TARGET = CoreConfigService.PLATFORMS.WEB;
 CoreConfigService.DEBUG.LEVEL_4 = true;
 
 // app
-import {WindowService, ConsoleService, CORE_PROVIDERS} from 'frameworks/core.framework';
-import {ANALYTICS_PROVIDERS} from 'frameworks/analytics.framework';
-import {MultilingualService} from 'frameworks/i18n.framework';
-import {APP_PROVIDERS, AppConfigService} from 'frameworks/app.framework';
-import {AppComponent} from 'components/app.component';
+import { WindowService, ConsoleService, CORE_PROVIDERS } from 'frameworks/core.framework';
+import { ANALYTICS_PROVIDERS } from 'frameworks/analytics.framework';
+import { MultilingualService } from 'frameworks/i18n.framework';
+import { APP_PROVIDERS, AppConfigService } from 'frameworks/app.framework';
+import { AppComponent } from 'components/app.component';
 // custom i18n language support
 MultilingualService.SUPPORTED_LANGUAGES = AppConfigService.SUPPORTED_LANGUAGES;
 
 const ENV_PROVIDERS: Array<any> = [];
-if (ENV === 'production' || (typeof TARGET_DESKTOP_BUILD !== 'undefined' && TARGET_DESKTOP_BUILD === true)) {
+if (ENV === 'production'
+  || (typeof TARGET_DESKTOP_BUILD !== 'undefined' && TARGET_DESKTOP_BUILD === true)) {
   enableProdMode();
 } else {
   ENV_PROVIDERS.push(ELEMENT_PROBE_PROVIDERS);

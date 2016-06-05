@@ -1,11 +1,11 @@
-import {TestComponentBuilder} from '@angular/compiler/testing';
-import {Component, provide} from '@angular/core';
-import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
+import { TestComponentBuilder } from '@angular/compiler/testing';
+import { Component, provide } from '@angular/core';
+import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
 
-import {PlatformDirective} from './platform.directive';
-import {t} from 'frameworks/test.framework';
-import {WindowService} from 'frameworks/core.framework';
-import {WindowMock} from 'frameworks/core.framework/testing';
+import { PlatformDirective } from './platform.directive';
+import { t } from 'frameworks/test.framework';
+import { WindowService } from 'frameworks/core.framework';
+import { WindowMock } from 'frameworks/core.framework/testing';
 
 @Component({
   viewProviders: [
@@ -26,10 +26,10 @@ t.describe('core.framework: PlatformDirective', () => {
       .then(f => rootTC = f);
   }));
 
-  //specs
+  // specs
   t.it('should add platform class', () => {
     rootTC.detectChanges();
     let compDOMEl = rootTC.debugElement.children[0].nativeElement;
-    expect(getDOM().classList(compDOMEl)).toEqual(['web']); 
+    expect(getDOM().classList(compDOMEl)).toEqual(['web']);
   });
 });

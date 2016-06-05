@@ -1,12 +1,16 @@
-import {TestComponentBuilder} from '@angular/compiler/testing';
-import {Component} from '@angular/core';
-import {getDOM} from '@angular/platform-browser/src/dom/dom_adapter';
+import { TestComponentBuilder } from '@angular/compiler/testing';
+import { Component } from '@angular/core';
+import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
 
-import {t} from 'frameworks/test.framework';
-import {ILang} from 'frameworks/core.framework';
-import {TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS, TEST_ROUTER_PROVIDERS} from 'frameworks/core.framework/testing';
-import {LangSwitcherComponent, MultilingualService} from '../index';
-import {TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET} from '../testing';
+import { t } from 'frameworks/test.framework';
+import { ILang } from 'frameworks/core.framework';
+import {
+  TEST_CORE_PROVIDERS,
+  TEST_HTTP_PROVIDERS,
+  TEST_ROUTER_PROVIDERS
+} from 'frameworks/core.framework/testing';
+import { LangSwitcherComponent, MultilingualService } from '../index';
+import { TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET } from '../testing';
 
 const SUPPORTED_LANGUAGES: Array<ILang> = [
   { code: 'en', title: 'English' },
@@ -18,7 +22,7 @@ const SUPPORTED_LANGUAGES: Array<ILang> = [
 
 t.describe('i18n.framework:', () => {
   t.describe('@Component: LangSwitcherComponent', () => {
-    
+
     t.it('should work',
       t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         return tcb.createAsync(TestComponent)
@@ -30,13 +34,14 @@ t.describe('i18n.framework:', () => {
           });
       }));
   });
-  
+
   t.describe('@Component: LangSwitcherComponent with multiple languages', () => {
     t.be(() => MultilingualService.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES);
 
-    // ensure statics are reset when the test had modified statics in a beforeEach (be) or beforeEachProvider (bep)
-    t.ae(() => TEST_MULTILINGUAL_RESET());   
-    
+    // ensure statics are reset when the test had modified statics
+    // in a beforeEach (be) or beforeEachProvider (bep)
+    t.ae(() => TEST_MULTILINGUAL_RESET());
+
     t.it('should work',
       t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
         return tcb.createAsync(TestComponent)
@@ -50,7 +55,7 @@ t.describe('i18n.framework:', () => {
             t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[3].value).toBe('ru');
             t.e(getDOM().querySelectorAll(appDOMEl, 'form > select option')[4].value).toBe('bg');
           });
-      })); 
+      }));
   });
 });
 

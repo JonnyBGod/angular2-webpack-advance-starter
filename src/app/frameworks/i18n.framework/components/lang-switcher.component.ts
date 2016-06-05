@@ -1,14 +1,19 @@
 // angular
-import {ControlGroup, Control} from '@angular/common';
+import { ControlGroup, Control } from '@angular/common';
 
 // libs
-import {Store} from '@ngrx/store';
+import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/take';
 
 // app
-import {FormComponent, CoreConfigService, LogService, ILang} from 'frameworks/core.framework/index';
-import {ElectronEventService} from 'frameworks/electron.framework/index';
-import {MultilingualService} from '../index';
+import {
+  FormComponent,
+  CoreConfigService,
+  LogService,
+  ILang
+} from 'frameworks/core.framework/index';
+import { ElectronEventService } from 'frameworks/electron.framework/index';
+import { MultilingualService } from '../index';
 
 @FormComponent({
   selector: 'lang-switcher',
@@ -18,7 +23,11 @@ export class LangSwitcherComponent {
   public langForm: ControlGroup;
   public supportedLanguages: Array<ILang> = MultilingualService.SUPPORTED_LANGUAGES;
 
-  constructor(private log: LogService, private store: Store<any>, private multilang: MultilingualService) {
+  constructor(
+    private log: LogService,
+    private store: Store<any>,
+    private multilang: MultilingualService
+  ) {
     store.take(1).subscribe((s: any) => {
       // s && s.18n - ensures testing works in all cases (since some tests dont use i18n state)
       this.langForm = new ControlGroup({
@@ -31,11 +40,11 @@ export class LangSwitcherComponent {
       ElectronEventService.on('changeLang').subscribe((e: any) => {
         this.changeLang({ target: { value: e.detail.value } });
       });
-    }    
+    }
   }
   changeLang(e: any) {
     let lang = this.supportedLanguages[0].code; // fallback to default 'en'
-    
+
     if (CoreConfigService.IS_MOBILE_NATIVE()) {
       if (e) {
         lang = this.supportedLanguages[e.newIndex].code;

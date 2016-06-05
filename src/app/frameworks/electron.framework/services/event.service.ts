@@ -1,4 +1,4 @@
-import {Observable} from 'rxjs/Observable';
+import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/fromEvent';
 
 declare var window: any;
@@ -9,5 +9,5 @@ export class ElectronEventService {
     return Observable.fromEvent(window, name);
   }
 
-  // TODO: add more helpers for menu setup and more...  
+  // TODO: add more helpers for menu setup and more...
 }

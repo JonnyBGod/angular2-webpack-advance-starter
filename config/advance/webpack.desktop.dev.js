@@ -5,6 +5,8 @@
 const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 
+const customConfig = require('../custom/webpack.desktop.dev.js');
+
 /**
  * Webpack Plugins
  */
@@ -20,7 +22,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = {
+module.exports = webpackMerge.smart({
   entry: {
     'main.desktop': './src/main.desktop.ts'
   },
@@ -42,7 +44,7 @@ module.exports = {
 
     alias: {
       // legacy imports pre-rc releases
-      'angular2': helpers.root('node_modules/@angularclass/angular2-beta-to-rc-alias/dist/beta-17'),
+      angular2: helpers.root('node_modules/@angularclass/angular2-beta-to-rc-alias/dist/beta-17'),
       components: 'app/components',
       frameworks: 'app/frameworks',
       assets: 'app/assets'
@@ -110,13 +112,13 @@ module.exports = {
   },
 
   externals: [
-    (function () {
+    (function() {
       var IGNORES = [
         'electron'
       ];
-      return function (context, request, callback) {
+      return function(context, request, callback) {
         if (IGNORES.indexOf(request) >= 0) {
-          return callback(null, "require('" + request + "')");
+          return callback(null, 'require(\'' + request + '\')');
         }
         return callback();
       };
@@ -129,4 +131,4 @@ module.exports = {
     __dirname: false,
     __filename: false,
   }
-};
+}, customConfig);

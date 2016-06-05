@@ -1,11 +1,11 @@
 // angular
-import {Component, ChangeDetectionStrategy} from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
 // libs
-import {TranslatePipe} from 'ng2-translate/ng2-translate';
+import { TranslatePipe } from 'ng2-translate/ng2-translate';
 
 // app
-import {CoreConfigService, ViewBrokerService} from '../index';
+import { CoreConfigService, ViewBrokerService } from '../index';
 
 declare var Reflect: any;
 const _reflect: any = Reflect;
@@ -28,7 +28,7 @@ export class DecoratorUtils {
         DIRECTIVES.push(...customDecoratorMetadata.directives);
       }
       if (customDecoratorMetadata.pipes) {
-        PIPES.push(...customDecoratorMetadata.pipes); 
+        PIPES.push(...customDecoratorMetadata.pipes);
       }
     }
 
@@ -61,14 +61,14 @@ export class DecoratorUtils {
       metadata.encapsulation = metadata.encapsulation;
     }
 
-    // initialize anything 
+    // initialize anything
     if (metadata.init) {
       metadata.init();
-    }   
-    
+    }
+
     return metadata;
   }
-  
+
   public static annotateComponent(cls: any, metadata: any = {}, customDecoratorMetadata?: any) {
     let annotations = _reflect.getMetadata('annotations', cls) || [];
     annotations.push(new Component(DecoratorUtils.getMetadata(metadata, customDecoratorMetadata)));

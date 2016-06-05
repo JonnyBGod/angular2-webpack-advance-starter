@@ -1,8 +1,8 @@
-import {t} from 'frameworks/test.framework';
-import {AppConfigService} from './app-config.service';
+import { t } from 'frameworks/test.framework';
+import { AppConfigService } from './app-config.service';
 
 t.describe('app.framework: AppConfigService', () => {
-  
+
   t.it('SUPPORTED_LANGUAGES', () => {
     t.e(AppConfigService.SUPPORTED_LANGUAGES.length).toBe(5);
     t.e(AppConfigService.SUPPORTED_LANGUAGES[0].code).toBe('en');

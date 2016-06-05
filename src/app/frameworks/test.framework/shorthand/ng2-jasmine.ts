@@ -42,7 +42,7 @@ export interface TestApi {
 };
 
 // shorthand - reduces boilerplate in every test
-export const Ng2Jasmine: TestApi = {
+export const ng2Jasmine: TestApi = {
   ae: afterEach, // shorthand
   afterEach: afterEach,
   ddescribe: ddescribe,

@@ -1,12 +1,12 @@
-import {Injectable} from '@angular/core';
-import {Observable} from 'rxjs/Observable';
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
 
 // libs
-import {Store, ActionReducer, Action} from '@ngrx/store';
+import { Store, ActionReducer, Action } from '@ngrx/store';
 
 // app
-import {Analytics, AnalyticsService} from 'frameworks/analytics.framework/index';
-import {HttpService} from 'frameworks/core.framework/index';
+import { Analytics, AnalyticsService } from 'frameworks/analytics.framework/index';
+import { HttpService } from 'frameworks/core.framework/index';
 
 // analytics
 const CATEGORY: string = 'NameList';
@@ -37,14 +37,18 @@ export const nameListReducer: ActionReducer<any> = (state: any = [], action: Act
 export class NameListService extends Analytics {
   public names: Observable<any>;
 
-  constructor(public analytics: AnalyticsService, private store: Store<any>, private http: HttpService) {
+  constructor(
+    public analytics: AnalyticsService,
+    private store: Store<any>,
+    private http: HttpService
+  ) {
     super(analytics);
     this.category = CATEGORY;
 
     this.names = store.select('names');
 
     this.init();
-  }  
+  }
 
   init() {
     this.http.get(`assets/data.json`)

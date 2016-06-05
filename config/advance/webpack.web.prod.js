@@ -7,6 +7,7 @@ const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 
 const commonAdvanceConfig = require('./webpack.common.web.js');
 const simpleWebProdConfig = require('../webpack.prod.js');
+const customConfig = require('../custom/webpack.web.prod.js');
 
 /**
  * Webpack configuration
@@ -14,5 +15,5 @@ const simpleWebProdConfig = require('../webpack.prod.js');
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = webpackMerge.smart(simpleWebProdConfig, commonAdvanceConfig, {
-	
-});
+
+}, customConfig);

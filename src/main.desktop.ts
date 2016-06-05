@@ -4,16 +4,16 @@ console.log(`Electron launching with NODE_ENV: ${process.env.NODE_ENV}`);
 // electron
 const electron: any = require('electron');
 const app: any = electron.app;
-const Menu: any = electron.Menu;
+const eMenu: any = electron.Menu;
 const shell: any = electron.shell;
 const crashReporter: any = electron.crashReporter;
-const BrowserWindow: any = electron.BrowserWindow;
+const browserWindow: any = electron.BrowserWindow;
 let mainWindow: any = undefined;
 let template: any;
 let menu: any;
 
 // app
-import {AppConfigService} from 'frameworks/app.framework/services/app-config.service';
+import { AppConfigService } from 'frameworks/app.framework/services/app-config.service';
 
 crashReporter.start({
   productName: 'Angular2WebpackAdvanceStarter',
@@ -37,7 +37,9 @@ app.on('ready', () => {
   // Tell Electron where to load the entry point from
   if (process.env.NODE_ENV === 'development') {
     // Initialize the window to our specified dimensions
-    mainWindow = new BrowserWindow({ width: 900, height: 620,
+    mainWindow = new browserWindow({
+      width: 900,
+      height: 620,
       webPreferences: {
         preload: __dirname + '/assets/preloadDesktop.js'
       }
@@ -46,7 +48,7 @@ app.on('ready', () => {
     mainWindow.loadURL('http://localhost:3000/');
   } else {
     // Initialize the window to our specified dimensions
-    mainWindow = new BrowserWindow({ width: 900, height: 620 });
+    mainWindow = new browserWindow({ width: 900, height: 620 });
 
     mainWindow.loadURL('file://' + __dirname + '/index.html');
   }
@@ -66,13 +68,16 @@ app.on('ready', () => {
     label: 'Language',
     submenu: []
   };
-  for (var lang of AppConfigService.SUPPORTED_LANGUAGES) {
+  for (let lang of AppConfigService.SUPPORTED_LANGUAGES) {
     let code = lang.code;
     let langOption = {
       label: lang.title,
-      click:() => {
+      click: () => {
         console.log(`Change lang: ${code}`);
-        mainWindow.webContents.executeJavaScript(`window.dispatchEvent(new CustomEvent('changeLang', {detail: { value: '${code}'} }));`);
+        mainWindow.webContents
+          .executeJavaScript(
+            `window.dispatchEvent(new CustomEvent('changeLang', {detail: { value: '${code}'} }));`
+          );
       }
     };
     langMenu.submenu.push(langOption);
@@ -82,27 +87,29 @@ app.on('ready', () => {
     label: 'Help',
     submenu: [{
       label: 'Learn More',
-      click:() => {
+      click: () => {
         shell.openExternal('https://github.com/JonnyBGod/angular2-webpack-advance-starter');
       }
     }, {
         label: 'Issues',
-        click:() => {
-          shell.openExternal('https://github.com/JonnyBGod/angular2-webpack-advance-starter/issues');
+        click: () => {
+          shell.openExternal(
+            'https://github.com/JonnyBGod/angular2-webpack-advance-starter/issues'
+          );
         }
       }, {
         label: `My Amazing Parent: Minko Gechev's Angular 2 Seed`,
-        click:() => {
+        click: () => {
           shell.openExternal('https://github.com/mgechev/angular2-seed');
         }
       }, {
         label: 'Angular 2',
-        click:() => {
+        click: () => {
           shell.openExternal('https://angular.io/');
         }
       }, {
         label: 'Electron',
-        click:() => {
+        click: () => {
           shell.openExternal('http://electron.atom.io/');
         }
       }, {
@@ -112,8 +119,10 @@ app.on('ready', () => {
         }
       }, {
         label: 'Codeology Visualization',
-        click:() => {
-          shell.openExternal('http://codeology.braintreepayments.com/JonnyBGod/angular2-webpack-advance-starter');
+        click: () => {
+          shell.openExternal(
+            'http://codeology.braintreepayments.com/JonnyBGod/angular2-webpack-advance-starter'
+          );
         }
       }]
   };
@@ -147,7 +156,7 @@ app.on('ready', () => {
         }, {
           label: 'Quit',
           accelerator: 'Command+Q',
-          click:() => {
+          click: () => {
             app.quit();
           }
         }]
@@ -185,25 +194,25 @@ app.on('ready', () => {
         submenu: (process.env.NODE_ENV === 'development') ? [{
           label: 'Reload',
           accelerator: 'Command+R',
-          click:() => {
+          click: () => {
             mainWindow.restart();
           }
         }, {
             label: 'Toggle Full Screen',
             accelerator: 'Ctrl+Command+F',
-            click:() => {
+            click: () => {
               mainWindow.setFullScreen(!mainWindow.isFullScreen());
             }
           }, {
             label: 'Toggle Developer Tools',
             accelerator: 'Alt+Command+I',
-            click:() => {
+            click: () => {
               mainWindow.toggleDevTools();
             }
           }] : [{
             label: 'Toggle Full Screen',
             accelerator: 'Ctrl+Command+F',
-            click:() => {
+            click: () => {
               mainWindow.setFullScreen(!mainWindow.isFullScreen());
             }
           }]
@@ -227,8 +236,8 @@ app.on('ready', () => {
       langMenu,
       helpMenu];
 
-    menu = Menu.buildFromTemplate(template);
-    Menu.setApplicationMenu(menu);
+    menu = eMenu.buildFromTemplate(template);
+    eMenu.setApplicationMenu(menu);
   } else {
     template = [{
       label: '&File',
@@ -238,7 +247,7 @@ app.on('ready', () => {
       }, {
           label: '&Close',
           accelerator: 'Ctrl+W',
-          click:() => {
+          click: () => {
             mainWindow.close();
           }
         }]
@@ -247,32 +256,32 @@ app.on('ready', () => {
         submenu: (process.env.NODE_ENV === 'development') ? [{
           label: '&Reload',
           accelerator: 'Ctrl+R',
-          click:() => {
+          click: () => {
             mainWindow.restart();
           }
         }, {
             label: 'Toggle &Full Screen',
             accelerator: 'F11',
-            click:() => {
+            click: () => {
               mainWindow.setFullScreen(!mainWindow.isFullScreen());
             }
           }, {
             label: 'Toggle &Developer Tools',
             accelerator: 'Alt+Ctrl+I',
-            click:() => {
+            click: () => {
               mainWindow.toggleDevTools();
             }
           }] : [{
             label: 'Toggle &Full Screen',
             accelerator: 'F11',
-            click:() => {
+            click: () => {
               mainWindow.setFullScreen(!mainWindow.isFullScreen());
             }
           }]
       },
       langMenu,
       helpMenu];
-    menu = Menu.buildFromTemplate(template);
+    menu = eMenu.buildFromTemplate(template);
     mainWindow.setMenu(menu);
   }
 

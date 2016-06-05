@@ -1,5 +1,5 @@
-import {t} from 'frameworks/test.framework';
-import {ElectronEventService} from './event.service';
+import { t } from 'frameworks/test.framework';
+import { ElectronEventService } from './event.service';
 declare var window: any;
 
 t.describe('electron.framework: ElectronEventService', () => {
@@ -8,7 +8,7 @@ t.describe('electron.framework: ElectronEventService', () => {
   let otherEvent: any = new CustomEvent('otherEvent', { detail: { value: 'test2' } });
 
   t.be(() => spyWindowRemoveEvent = t.spyOn(window, 'removeEventListener'));
-  
+
   t.it('should register events and respond to multiple triggers', (done: any) => {
     let cnt = 0;
     let electronEvent = ElectronEventService.on('customEvent').subscribe((e: any) => {
@@ -30,12 +30,12 @@ t.describe('electron.framework: ElectronEventService', () => {
     ElectronEventService.on('otherEvent').subscribe((e: any) => {
       t.e(e.detail).toEqual({ value: 'test2' });
 
-      ElectronEventService.on('customEvent').subscribe((e: any) => {
-        t.e(e.detail).toEqual({ value: 'test' });
+      ElectronEventService.on('customEvent').subscribe((ev: any) => {
+        t.e(ev.detail).toEqual({ value: 'test' });
         done();
       });
       window.dispatchEvent(customEvent);
     });
     window.dispatchEvent(otherEvent);
-  });    
+  });
 });

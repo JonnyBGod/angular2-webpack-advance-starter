@@ -1,12 +1,16 @@
 // angular
-import {provide} from '@angular/core';
-import {Http} from '@angular/http';
+import { provide } from '@angular/core';
+import { Http } from '@angular/http';
 
 // libs
-import {TranslateLoader, TranslateStaticLoader, TranslateService} from 'ng2-translate/ng2-translate';
+import {
+  TranslateLoader,
+  TranslateStaticLoader,
+  TranslateService
+} from 'ng2-translate/ng2-translate';
 
 // app
-import {MultilingualService} from './services/multilingual.service';
+import { MultilingualService } from './services/multilingual.service';
 
 export const MULTILINGUAL_PROVIDERS: any[] = [
   provide(TranslateLoader, {

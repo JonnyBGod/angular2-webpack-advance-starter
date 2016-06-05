@@ -1,4 +1,4 @@
-import {t} from '../app/frameworks/test.framework/index';
+import {t} from 'frameworks/test.framework/index';
 import {NativeScriptConfig} from './nativescript-config';
 
 t.describe('nativescript.framework: NativeScriptConfig', () => {

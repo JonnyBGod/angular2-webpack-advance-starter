@@ -1,4 +1,4 @@
-import {RouteComponent} from 'frameworks/core.framework';
+import { RouteComponent } from 'frameworks/core.framework';
 
 @RouteComponent({
   selector: 'sd-navbar',

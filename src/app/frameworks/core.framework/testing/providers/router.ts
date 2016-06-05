@@ -1,10 +1,10 @@
 // angular
-import {provide, Component} from '@angular/core';
-import {Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT} from '@angular/router-deprecated';
-// import {ROUTER_FAKE_PROVIDERS} from '@angular/router/testing';
-import {Location} from '@angular/common';
-import {SpyLocation} from '@angular/common/testing';
-import {RootRouter} from '@angular/router-deprecated/src/router';
+import { provide, Component } from '@angular/core';
+import { Router, RouteRegistry, ROUTER_PRIMARY_COMPONENT } from '@angular/router-deprecated';
+// import { ROUTER_FAKE_PROVIDERS } from '@angular/router/testing';
+import { Location } from '@angular/common';
+import { SpyLocation } from '@angular/common/testing';
+import { RootRouter } from '@angular/router-deprecated/src/router';
 
 @Component({
   selector: 'test',

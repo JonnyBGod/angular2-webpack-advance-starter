@@ -1,7 +1,7 @@
-import {provide} from '@angular/core';
+import { provide } from '@angular/core';
 
-import {t} from 'frameworks/test.framework/index';
-import {CoreConfigService, ConsoleService, LogService} from '../index';
+import { t } from 'frameworks/test.framework/index';
+import { CoreConfigService, ConsoleService, LogService } from '../index';
 
 const providers: any[] = [
   provide(ConsoleService, { useValue: console }),
@@ -9,7 +9,7 @@ const providers: any[] = [
 ];
 
 t.describe('core.framework: LogService', () => {
-  
+
   t.be(() => {
     // ensure statics are in default state
     CoreConfigService.RESET();
@@ -19,18 +19,18 @@ t.describe('core.framework: LogService', () => {
     t.spyOn(console, 'warn');
     t.spyOn(console, 'info');
   });
-  
+
   t.describe('api', () => {
-    
+
     t.bep(() => providers);
-    
+
     t.it('sanity', t.inject([LogService], (log: LogService) => {
       t.e(log.debug).toBeDefined();
       t.e(log.error).toBeDefined();
       t.e(log.warn).toBeDefined();
       t.e(log.info).toBeDefined();
     }));
-    
+
     t.it('should not log anything by default', t.inject([LogService], (log: LogService) => {
       log.debug('debug');
       t.e(console.debug).not.toHaveBeenCalledWith('debug');
@@ -44,16 +44,16 @@ t.describe('core.framework: LogService', () => {
   });
 
   t.describe('debug levels', () => {
-    
+
     t.be(() => {
       CoreConfigService.RESET();
     });
-    
+
     t.bep(() => providers);
-    
+
     t.it('LEVEL_4: everything', t.inject([LogService], (log: LogService) => {
       CoreConfigService.DEBUG.LEVEL_4 = true;
-      
+
       log.debug('debug');
       t.e(console.debug).toHaveBeenCalledWith('debug');
       log.error('error');
@@ -63,7 +63,7 @@ t.describe('core.framework: LogService', () => {
       log.info('info');
       t.e(console.info).toHaveBeenCalledWith('info');
     }));
-    
+
     t.it('LEVEL_3: error only', t.inject([LogService], (log: LogService) => {
       CoreConfigService.DEBUG.LEVEL_3 = true;
 
@@ -75,7 +75,7 @@ t.describe('core.framework: LogService', () => {
       t.e(console.warn).not.toHaveBeenCalledWith('warn');
       log.info('info');
       t.e(console.info).not.toHaveBeenCalledWith('info');
-      
+
       // always overrides lower levels and allows them to come through
       CoreConfigService.DEBUG.LEVEL_4 = true;
 
@@ -88,7 +88,7 @@ t.describe('core.framework: LogService', () => {
       log.info('info w/level_4');
       t.e(console.info).toHaveBeenCalledWith('info w/level_4');
     }));
-    
+
     t.it('LEVEL_2: warn only', t.inject([LogService], (log: LogService) => {
       CoreConfigService.DEBUG.LEVEL_2 = true;
 
@@ -101,7 +101,7 @@ t.describe('core.framework: LogService', () => {
       log.info('info');
       t.e(console.info).not.toHaveBeenCalledWith('info');
     }));
-    
+
     t.it('LEVEL_1: info only', t.inject([LogService], (log: LogService) => {
       CoreConfigService.DEBUG.LEVEL_1 = true;
 
