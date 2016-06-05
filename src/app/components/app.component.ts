@@ -10,7 +10,7 @@ import { LangSwitcherComponent } from 'frameworks/i18n.framework';
 import { NavbarComponent } from './navbar.component';
 import { ToolbarComponent } from './toolbar.component';
 import { HomeComponent } from './home';
-import { AboutComponent } from './about';
+//import { AboutComponent } from './about';
 
 @RouteComponent({
   selector: 'app',
@@ -29,8 +29,8 @@ import { AboutComponent } from './about';
   },
   {
     path: '/about',
-    component: AboutComponent,
-    // loader: () => require('es6-promise!./about')('About'),
+    //component: AboutComponent,
+    loader: () => require('es6-promise!./about')('AboutComponent'),
     name: 'About'
   }
 ])

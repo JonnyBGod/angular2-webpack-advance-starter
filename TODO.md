@@ -7,7 +7,7 @@ TODO
 - [x] Fix E2E tests
 - [x] Electron Builder
 - [ ] Nativescript
-- [ ] Fix async load components
+- [x] Fix async load components
 
 
 ## Before Open Sourcing
