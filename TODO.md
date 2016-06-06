@@ -25,7 +25,6 @@ TODO
 
 - [ ] Generate ApiService from swagger endpoint
 - [ ] Generate ngrx/store reducer from swagger endpoint
-
 - [ ] Make new repo for nativescript and npm run setup:nativescript
 - [ ] Make new repo for electron and npm run setup:electron
 - [ ] Make clean extension scripts (npm run clean:nativescript)

@@ -26,7 +26,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'production';
  */
 module.exports = webpackMerge.smart({
   entry: {
-    'main.desktop': './src/main.desktop.ts'
+    'main.desktop': './electron/main.desktop.ts'
   },
 
   resolve: {
@@ -121,7 +121,7 @@ module.exports = webpackMerge.smart({
   plugins: [
 
     new CopyWebpackPlugin([{
-      from: 'src/package.json',
+      from: 'electron/package.json',
       to: 'package.json'
     }])
   ],

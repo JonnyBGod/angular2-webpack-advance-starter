@@ -24,7 +24,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
  */
 module.exports = webpackMerge.smart({
   entry: {
-    'main.desktop': './src/main.desktop.ts'
+    'main.desktop': './electron/main.desktop.ts'
   },
 
   resolve: {
