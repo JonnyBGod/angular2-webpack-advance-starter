@@ -3,7 +3,7 @@ TODO
 
 ## Before internal use
 
-- [ ] Fix unit tests
+- [x] Fix unit tests ? (furder investigation)
 - [x] Fix E2E tests
 - [x] Electron Builder
 - [ ] Nativescript
@@ -18,7 +18,7 @@ TODO
 - [ ] Redo readme.md
 	- [ ] Mention need for typescript@next
 - [ ] CI release all platforms for demo app
-- [ ] Review project folder structure
+- [ ] Make sure all commands work on windows
 
 
 ## Improvements

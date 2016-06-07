@@ -9,7 +9,6 @@ import { RouteComponent, PlatformDirective } from 'frameworks/core.framework';
 import { LangSwitcherComponent } from 'frameworks/i18n.framework';
 import { NavbarComponent } from './navbar.component';
 import { ToolbarComponent } from './toolbar.component';
-import { HomeComponent } from './home';
 
 @RouteComponent({
   selector: 'app',
@@ -22,14 +21,15 @@ import { HomeComponent } from './home';
 @RouteConfig([
   {
     path: '/',
-    component: HomeComponent,
+    loader: () => require('es6-promise!./home')('HomeComponent'),
     name: 'Home',
     useAsDefault: true
   },
   {
     path: '/about',
     loader: () => require('es6-promise!./about')('AboutComponent'),
-    name: 'About'
+    name: 'About',
+    useAsDefault: true
   }
 ])
 export class AppComponent {
