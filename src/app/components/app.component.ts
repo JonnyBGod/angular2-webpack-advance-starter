@@ -28,8 +28,7 @@ import { ToolbarComponent } from './toolbar.component';
   {
     path: '/about',
     loader: () => require('es6-promise!./about')('AboutComponent'),
-    name: 'About',
-    useAsDefault: true
+    name: 'About'
   }
 ])
 export class AppComponent {
