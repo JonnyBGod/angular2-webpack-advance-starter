@@ -163,8 +163,7 @@
   },
   "build": {
     "app-bundle-id": "org.develar.onshape",
-    "app-category-type": "public.app-category.graphics-design",
-    "asar": false
+    "app-category-type": "public.app-category.graphics-design"
   },
   "directories": {
     "buildResources": "dist/assets",
