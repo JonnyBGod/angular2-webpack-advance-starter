@@ -22,7 +22,7 @@ crashReporter.start({
   autoSubmit: true
 });
 
-if (process.env.NODE_ENV === 'production') {
+if (process.env.NODE_ENV === 'development') {
   require('electron-debug')();
 }
 
@@ -191,7 +191,7 @@ app.on('ready', () => {
           }]
       }, {
         label: 'View',
-        submenu: (process.env.NODE_ENV === 'production') ? [{
+        submenu: (process.env.NODE_ENV === 'development') ? [{
           label: 'Reload',
           accelerator: 'Command+R',
           click: () => {
@@ -253,7 +253,7 @@ app.on('ready', () => {
         }]
     }, {
         label: '&View',
-        submenu: (process.env.NODE_ENV === 'production') ? [{
+        submenu: (process.env.NODE_ENV === 'development') ? [{
           label: '&Reload',
           accelerator: 'Ctrl+R',
           click: () => {
