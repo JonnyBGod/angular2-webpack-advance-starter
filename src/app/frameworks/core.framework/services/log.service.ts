@@ -10,7 +10,7 @@ export class LogService {
   // debug (standard output)
   public debug(msg: string) {
     if (CoreConfigService.DEBUG.LEVEL_4) {
-      this.logger.debug(msg);
+      this.logger.log(msg);
     }
   }
 

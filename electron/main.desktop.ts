@@ -22,7 +22,7 @@ crashReporter.start({
   autoSubmit: true
 });
 
-if (process.env.NODE_ENV === 'development') {
+if (process.env.NODE_ENV === 'production') {
   require('electron-debug')();
 }
 
@@ -41,7 +41,7 @@ app.on('ready', () => {
       width: 900,
       height: 620,
       webPreferences: {
-        preload: __dirname + '/assets/preloadDesktop.js'
+        preload: __dirname + '/../src/assets/preloadDesktop.js'
       }
     });
 
@@ -191,7 +191,7 @@ app.on('ready', () => {
           }]
       }, {
         label: 'View',
-        submenu: (process.env.NODE_ENV === 'development') ? [{
+        submenu: (process.env.NODE_ENV === 'production') ? [{
           label: 'Reload',
           accelerator: 'Command+R',
           click: () => {
@@ -253,7 +253,7 @@ app.on('ready', () => {
         }]
     }, {
         label: '&View',
-        submenu: (process.env.NODE_ENV === 'development') ? [{
+        submenu: (process.env.NODE_ENV === 'production') ? [{
           label: '&Reload',
           accelerator: 'Ctrl+R',
           click: () => {

@@ -9,22 +9,21 @@ import { provideStore } from '@ngrx/store';
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
 // app
-import { ConsoleService, LogService } from '../core.framework/index';
-import { AnalyticsService } from '../analytics.framework/index';
-import { AppConfigService, nameListReducer } from '../app.framework/index';
-import { MultilingualService, multilingualReducer } from '../i18n.framework/index';
+import { ConsoleService, LogService } from 'frameworks/core.framework/index';
+import { AnalyticsService } from 'frameworks/analytics.framework/index';
+import { AppConfigService, nameListReducer } from 'frameworks/app.framework/index';
+import { MultilingualService, multilingualReducer } from 'frameworks/i18n.framework/index';
 import { NSAngulartics2Segment } from './services/ns-angulartics2-segment.service';
-import { NSLogService } from './services/ns-log.service';
 // custom i18n language support
 MultilingualService.SUPPORTED_LANGUAGES = AppConfigService.SUPPORTED_LANGUAGES;
 
 export const NS_APP_PROVIDERS: any[] = [
   HTTP_PROVIDERS,
   provide(ConsoleService, { useValue: console }),
-  provide(LogService, { useClass: NSLogService }),
-  provideStore({
-    i18n: multilingualReducer,
-    names: nameListReducer
+  LogService,
+  provideStore({  
+    i18n: multilingualReducer, 
+    names: nameListReducer 
   }),
   Angulartics2,
   provide(Angulartics2Segment, { useClass: NSAngulartics2Segment }),

@@ -24,13 +24,7 @@
     "nativescript",
     "node_modules"
   ],
-  "filesGlob": [
-    "./src/**/*.ts",
-    "./src/custom-typings.d.ts",
-    "./typings/index.d.ts"
-  ],
   "awesomeTypescriptLoaderOptions": {
-    "resolveGlobs": true,
     "forkChecker": true
   },
   "compileOnSave": false,

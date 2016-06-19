@@ -23,8 +23,6 @@ TODO
 
 ## Improvements
 
-- [ ] Generate ApiService from swagger endpoint
-- [ ] Generate ngrx/store reducer from swagger endpoint
 - [ ] Make new repo for nativescript and npm run setup:nativescript
 - [ ] Make new repo for electron and npm run setup:electron
 - [ ] Make clean extension scripts (npm run clean:nativescript)
@@ -41,13 +39,13 @@ TODO
 ```
 npm test
 npm start
-npm run 2e2
+npm run e2e
 npm run docs
 
-npm start:desktop
-npm dist:build:desktop
+npm run start:desktop
+npm run dist:build:desktop
 
-npm start:ios
-npm start:android
+npm run start:ios
+npm run start:android
 ... more nativescript related
 ```

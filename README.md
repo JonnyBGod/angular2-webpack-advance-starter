@@ -123,7 +123,9 @@ angular2-webpack-starter/
  ├──typedoc.json               * typescript documentation generator
  ├──tsconfig.json              * config that webpack uses for typescript
  ├──typings.json               * our typings manager
- └──package.json               * what npm uses to manage it's dependencies
+ ├──package.json               * what npm uses to manage it's dependencies
+ └──webpack.config.js          * webpack main configuration file
+
 ```
 
 # Getting Started
@@ -246,7 +248,7 @@ When including 3rd party modules you also need to include the type definition fo
 if they don't provide one within the module. You can try to install it with typings
 
 ```
-typings install node --save
+typings install dt~node --save --global
 ```
 
 If you can't find the type definition in the registry we can make an ambient definition in
@@ -263,6 +265,8 @@ If you're prototyping and you will fix the types later you can also declare it a
 
 ```typescript
 declare var assert: any;
+declare var _: any;
+declare var $: any;
 ```
 
 If you're importing a module that uses Node.js modules which are CommonJS you need to import as
@@ -315,6 +319,8 @@ see [typings/registry](https://github.com/typings/registry)
  * check out https://github.com/cnpm/cnpm
 * If you're looking to add Angular 2 Material Design
  * check out the [material2](https://github.com/AngularClass/angular2-webpack-starter/tree/material2) branch
+* node-pre-gyp ERR in npm install (Windows)
+ * install Python x86 version between 2.5 and 3.0 on windows see issue [#626](https://github.com/AngularClass/angular2-webpack-starter/issues/626)
 
 # Support, Questions, or Feedback
 > Contact us anytime for anything about this repo or Angular 2
