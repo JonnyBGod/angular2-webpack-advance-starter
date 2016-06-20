@@ -39,6 +39,7 @@ declare var BASE_URL: string;
 declare var RUN_DEMO: boolean;
 declare var TARGET_DESKTOP_BUILD: boolean;
 declare var TARGET_DESKTOP: boolean;
+
 interface GlobalEnvironment {
   ENV;
   HMR;

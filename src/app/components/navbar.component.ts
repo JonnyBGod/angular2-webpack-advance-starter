@@ -1,9 +1,9 @@
-import { RouteComponent } from 'frameworks/core.framework';
+import { BaseComponent } from 'frameworks/core.framework';
 
-@RouteComponent({
+@BaseComponent({
   selector: 'sd-navbar',
-  template: require('./navbar.component.html'),
-  styles: [require('./navbar.component.scss')]
+  templateUrl: './navbar.template.html',
+  styleUrls: ['./navbar.style.scss']
 })
 export class NavbarComponent {
 }

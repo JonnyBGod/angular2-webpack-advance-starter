@@ -5,8 +5,8 @@ import { NavbarComponent } from './navbar.component';
 
 @BaseComponent({
   selector: 'sd-toolbar',
-  template: require('./toolbar.component.html'),
-  styles: [require('./toolbar.component.scss')],
+  templateUrl: './toolbar.template.html',
+  styleUrls: ['./toolbar.style.scss'],
   directives: [LangSwitcherComponent, NavbarComponent]
 })
 export class ToolbarComponent {

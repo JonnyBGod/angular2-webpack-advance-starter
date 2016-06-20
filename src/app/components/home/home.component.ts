@@ -7,8 +7,8 @@ import { NameListService } from 'frameworks/app.framework';
 
 @FormComponent({
   selector: 'sd-home',
-  template: require('./home.component.html'),
-  styles: [require('./home.component.scss')]
+  templateUrl: './home.template.html',
+  styleUrls: ['./home.style.scss']
 })
 export class HomeComponent {
   public newName: string = '';

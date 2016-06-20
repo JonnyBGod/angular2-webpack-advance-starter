@@ -2,8 +2,8 @@ import { BaseComponent } from 'frameworks/core.framework';
 
 @BaseComponent({
   selector: 'sd-about',
-  template: require('./about.component.html'),
-  styles: [require('./about.component.scss')]
+  templateUrl: './about.template.html',
+  styleUrls: ['./about.style.scss']
 })
 export class AboutComponent {
 

@@ -2,12 +2,19 @@
  * These are globally available services in any component or any other service
  */
 
+// Angular 2
 // Angular 2 Http
 import { HTTP_PROVIDERS } from '@angular/http';
 // Angular 2 Router
-import { ROUTER_PROVIDERS } from '@angular/router-deprecated';
+import { provideRouter } from '@angular/router';
 // Angular 2 forms
 import { disableDeprecatedForms, provideForms } from '@angular/forms';
+
+// AngularClass
+import { provideWebpack } from '@angularclass/webpack-toolkit';
+
+
+import { routes, asyncRoutes } from '../app/app.routes';
 /*
 * Application Providers/Directives/Pipes
 * providers/directives/pipes that only live in our browser environment
@@ -17,8 +24,10 @@ export const APPLICATION_PROVIDERS = [
   disableDeprecatedForms(),
   provideForms(),
 
-  ...HTTP_PROVIDERS,
-  ...ROUTER_PROVIDERS
+  provideRouter(routes),
+  provideWebpack(asyncRoutes),
+
+  ...HTTP_PROVIDERS
 ];
 
 export const PROVIDERS = [

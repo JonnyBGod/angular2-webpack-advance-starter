@@ -37,15 +37,15 @@ TODO
 ### Before commit manual checks
 
 ```
-npm test
-npm start
-npm run e2e
-npm run docs
+- [ ] npm test
+- [x] npm start
+- [ ] npm run e2e
+- [ ] npm run docs
 
-npm run start:desktop
-npm run dist:build:desktop
+- [x] npm run start:desktop
+- [ ] npm run dist:build:desktop
 
-npm run start:ios
-npm run start:android
+- [ ] npm run start:ios
+- [ ] npm run start:android
 ... more nativescript related
 ```
