@@ -3,11 +3,10 @@ TODO
 
 ## Before internal use
 
-- [x] Fix unit tests ? (furder investigation)
-- [x] Fix E2E tests
+- [ ] Fix unit tests ? (furder investigation)
+- [ ] Fix E2E tests
 - [x] Electron Builder
 - [ ] Nativescript
-- [x] Fix async load components
 
 
 ## Before Open Sourcing
