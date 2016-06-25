@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 
 // libs
-import { includes, map } from 'lodash';
+import * as _ from 'lodash';
 import { Store, ActionReducer, Action } from '@ngrx/store';
 import { TranslateService } from 'ng2-translate/ng2-translate';
 
@@ -61,8 +61,8 @@ export class MultilingualService extends Analytics {
     super(analytics);
     this.category = CATEGORY;
 
-    // this language will be used as a fallback
-    // when a translation isn't found in the current language
+    // this language will be used as a fallback when a
+    // translation isn't found in the current language
     translate.setDefaultLang('en');
 
     // use browser/platform lang if available
@@ -71,8 +71,9 @@ export class MultilingualService extends Analytics {
 
     // subscribe to changes
     store.select('i18n').subscribe((state: MultilingualStateI) => {
-      // update ng2-translate which will cause translations
-      // to occur wherever the TranslatePipe is used in the view
+      // update ng2-translate which will cause translations to occur
+      // wherever the TranslatePipe is used in the view
+
       this.translate.use(state.lang);
     });
 
@@ -81,7 +82,7 @@ export class MultilingualService extends Analytics {
   }
 
   public changeLang(lang: string) {
-    if (includes(map(MultilingualService.SUPPORTED_LANGUAGES, 'code'), lang)) {
+    if (_.includes(_.map(MultilingualService.SUPPORTED_LANGUAGES, 'code'), lang)) {
       // only if lang supported
       this.track(MULTILINGUAL_ACTIONS.LANG_CHANGE, { label: lang });
       this.store.dispatch({ type: MULTILINGUAL_ACTIONS.LANG_CHANGE, payload: { lang } });

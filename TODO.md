@@ -5,7 +5,7 @@ TODO
 
 - [ ] Fix unit tests ? (furder investigation)
 - [ ] Fix E2E tests
-- [x] Electron Builder
+- [ ] Electron Builder
 - [ ] Nativescript
 
 
@@ -36,12 +36,14 @@ TODO
 ### Before commit manual checks
 
 ```
+- [x] npm run lint
 - [ ] npm test
 - [x] npm start
 - [ ] npm run e2e
 - [ ] npm run docs
 
 - [x] npm run start:desktop
+- [ ] npm run build:desktop:mac
 - [ ] npm run dist:build:desktop
 
 - [ ] npm run start:ios

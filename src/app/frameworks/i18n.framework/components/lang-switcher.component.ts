@@ -1,6 +1,3 @@
-// angular
-import { FormGroup, FormControl } from '@angular/forms';
-
 // libs
 import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/take';
@@ -16,11 +13,12 @@ import { ElectronEventService } from 'frameworks/electron.framework/index';
 import { MultilingualService } from '../index';
 
 @FormComponent({
+  moduleId: module.id,
   selector: 'lang-switcher',
-  template: require('./lang-switcher.component.html')
+  templateUrl: 'lang-switcher.component.html'
 })
 export class LangSwitcherComponent {
-  public langForm: FormGroup;
+  public lang: string;
   public supportedLanguages: Array<ILang> = MultilingualService.SUPPORTED_LANGUAGES;
 
   constructor(
@@ -30,9 +28,7 @@ export class LangSwitcherComponent {
   ) {
     store.take(1).subscribe((s: any) => {
       // s && s.18n - ensures testing works in all cases (since some tests dont use i18n state)
-      this.langForm = new FormGroup({
-        lang: new FormControl(s && s.i18n ? s.i18n.lang : '')
-      });
+      this.lang = s && s.i18n ? s.i18n.lang : '';
     });
 
     if (CoreConfigService.IS_DESKTOP()) {

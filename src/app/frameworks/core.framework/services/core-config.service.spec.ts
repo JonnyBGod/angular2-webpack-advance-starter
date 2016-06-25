@@ -18,9 +18,6 @@ t.describe('core.framework: CoreConfigService', () => {
     t.e(CoreConfigService.IS_MOBILE_HYBRID).toBeDefined();
     t.e(CoreConfigService.IS_DESKTOP).toBeDefined();
   });
-  t.it('ROUTER_DIRECTIVES', () => {
-    t.e(CoreConfigService.ROUTER_DIRECTIVES).toBeDefined();
-  });
   t.it('DEBUG', () => {
     t.e(CoreConfigService.DEBUG.LEVEL_1).toBe(false);
     t.e(CoreConfigService.DEBUG.LEVEL_2).toBe(false);

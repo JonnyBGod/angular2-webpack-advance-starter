@@ -5,7 +5,7 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { TranslatePipe } from 'ng2-translate/ng2-translate';
 
 // app
-import { CoreConfigService, ViewBrokerService } from '../index';
+import { ViewBrokerService } from '../index';
 
 declare var Reflect: any;
 const _reflect: any = Reflect;
@@ -37,16 +37,6 @@ export class DecoratorUtils {
       metadata.templateUrl = ViewBrokerService.TEMPLATE_URL(metadata.templateUrl);
     }
 
-    if (metadata.styleUrls && CoreConfigService.IS_MOBILE_NATIVE()) {
-      // {N} doesn't support all css properties, therefore remove styleUrls to be safe
-      delete metadata.styleUrls;
-    }
-
-    if (metadata.styles && CoreConfigService.IS_MOBILE_NATIVE()) {
-      // {N} doesn't support all css properties, therefore remove style to be safe
-      delete metadata.styles;
-    }
-
     metadata.directives = metadata.directives ? metadata.directives.concat(DIRECTIVES) : DIRECTIVES;
     metadata.pipes = metadata.pipes ? metadata.pipes.concat(PIPES) : PIPES;
 
@@ -61,7 +51,7 @@ export class DecoratorUtils {
       metadata.encapsulation = metadata.encapsulation;
     }
 
-    // initialize anything
+    // initialize anything 
     if (metadata.init) {
       metadata.init();
     }

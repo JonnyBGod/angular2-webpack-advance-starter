@@ -6,7 +6,7 @@ const electron: any = require('electron');
 const app: any = electron.app;
 const eMenu: any = electron.Menu;
 const shell: any = electron.shell;
-const crashReporter: any = electron.crashReporter;
+// const crashReporter: any = electron.crashReporter;
 const browserWindow: any = electron.BrowserWindow;
 let mainWindow: any = undefined;
 let template: any;
@@ -15,12 +15,12 @@ let menu: any;
 // app
 import { AppConfigService } from 'frameworks/app.framework/services/app-config.service';
 
-crashReporter.start({
+/*crashReporter.start({
   productName: 'Angular2WebpackAdvanceStarter',
   companyName: 'JonnyBGod',
   submitURL: 'https://github.com/JonnyBGod/angular2-webpack-advance-starter',
   autoSubmit: true
-});
+});*/
 
 if (process.env.NODE_ENV === 'development') {
   require('electron-debug')();

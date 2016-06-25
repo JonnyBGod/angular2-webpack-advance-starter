@@ -14,7 +14,12 @@ import { ToolbarComponent } from './toolbar.component';
   viewProviders: [NameListService],
   templateUrl: './app.template.html',
   styleUrls: ['./app.style.scss'],
-  directives: [LangSwitcherComponent, NavbarComponent, ToolbarComponent, PlatformDirective],
+  directives: [
+  	LangSwitcherComponent,
+  	NavbarComponent,
+  	ToolbarComponent,
+  	PlatformDirective
+  ],
   changeDetection: ChangeDetectionStrategy.Default // Everything else uses OnPush
 })
 export class AppComponent {

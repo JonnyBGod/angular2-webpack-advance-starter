@@ -1,6 +1,3 @@
-// angular
-import { ROUTER_DIRECTIVES } from '@angular/router-deprecated';
-
 interface IPlatforms {
   WEB: string;
   MOBILE_NATIVE: string;
@@ -16,9 +13,6 @@ export class CoreConfigService {
     LEVEL_3: false, // .error only
     LEVEL_4: false  // .log + all the above
   };
-
-  // allows runtime config of platform specific router directives
-  public static ROUTER_DIRECTIVES: Array<any> = ROUTER_DIRECTIVES;
 
   // supported platforms
   public static PLATFORMS: IPlatforms = {
