@@ -7,7 +7,7 @@ import {
   MULTILINGUAL_PROVIDERS,
   MultilingualStateI,
   multilingualReducer
-} from '../i18n.framework';
+} from 'frameworks/i18n.framework';
 
 // state definition
 export interface AppStoreI {

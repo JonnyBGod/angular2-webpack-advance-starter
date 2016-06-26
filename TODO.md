@@ -22,6 +22,7 @@ TODO
 
 ## Improvements
 
+- [ ] Angular2 Universal (upstream?)
 - [ ] Make new repo for nativescript and npm run setup:nativescript
 - [ ] Make new repo for electron and npm run setup:electron
 - [ ] Make clean extension scripts (npm run clean:nativescript)
@@ -35,7 +36,6 @@ TODO
 
 ### Before commit manual checks
 
-```
 - [x] npm run lint
 - [ ] npm test
 - [x] npm start
@@ -49,4 +49,3 @@ TODO
 - [ ] npm run start:ios
 - [ ] npm run start:android
 ... more nativescript related
-```
