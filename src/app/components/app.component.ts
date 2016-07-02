@@ -12,13 +12,13 @@ import { ToolbarComponent } from './toolbar.component';
 @BaseComponent({
   selector: 'app',
   viewProviders: [NameListService],
-  templateUrl: './app.template.html',
-  styleUrls: ['./app.style.scss'],
+  templateUrl: 'app.template.html',
+  styleUrls: ['app.style.scss'],
   directives: [
-  	LangSwitcherComponent,
-  	NavbarComponent,
-  	ToolbarComponent,
-  	PlatformDirective
+    LangSwitcherComponent,
+    NavbarComponent,
+    ToolbarComponent,
+    PlatformDirective
   ],
   changeDetection: ChangeDetectionStrategy.Default // Everything else uses OnPush
 })

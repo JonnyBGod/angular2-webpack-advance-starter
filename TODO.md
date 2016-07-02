@@ -4,7 +4,7 @@ TODO
 ## Before internal use
 
 - [ ] Fix unit tests ? (furder investigation)
-- [ ] Fix E2E tests
+- [ ] Fix E2E tests (https://github.com/TypeStrong/ts-node/issues/138)
 - [ ] Electron Builder
 - [ ] Nativescript
 

@@ -27,12 +27,8 @@ import { AppComponent } from 'components';
  */
 export function main(initialHmrState?: any): Promise<any> {
 
-<<<<<<< HEAD
   return bootstrap(AppComponent, [
-=======
-  return bootstrap(App, [
     // To add more vendor providers please look in the platform/ folder
->>>>>>> upstream/master
     ...PLATFORM_PROVIDERS,
     ...ENV_PROVIDERS,
     ...ADVANCE_PROVIDERS

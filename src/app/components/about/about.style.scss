@@ -1,6 +1,10 @@
 :host {
   display: block;
   padding: 0 16px;
+
+  p {
+		white-space: pre-wrap;
+  }
 }
 
 h2 {
