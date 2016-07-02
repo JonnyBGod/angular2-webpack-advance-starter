@@ -48,4 +48,5 @@ TODO
 
 - [ ] npm run start:ios
 - [ ] npm run start:android
+
 ... more nativescript related

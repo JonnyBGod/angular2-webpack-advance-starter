@@ -87,7 +87,13 @@
     "@angular/platform-browser": "2.0.0-rc.3",
     "@angular/platform-browser-dynamic": "2.0.0-rc.3",
     "@angular/platform-server": "2.0.0-rc.3",
+<<<<<<< HEAD
     "@angular/router": "3.0.0-alpha.7",
+=======
+    "@angular/router": "3.0.0-alpha.8",
+
+    "@angularclass/webpack-toolkit": "^1.3.3",
+>>>>>>> upstream/master
     "@angularclass/request-idle-callback": "^1.0.7",
     "@angularclass/webpack-toolkit": "^1.0.1",
     "@ngrx/core": "^1.0.1",
@@ -125,14 +131,19 @@
     "karma-coverage": "^1.0.0",
     "karma-jasmine": "^1.0.2",
     "karma-mocha-reporter": "^2.0.0",
-    "karma-phantomjs-launcher": "^1.0.0",
     "karma-sourcemap-loader": "^0.3.7",
     "karma-webpack": "1.7.0",
+<<<<<<< HEAD
     "node-sass": "^3.8.0",
     "parse5": "^1.5.1",
     "phantomjs-polyfill": "0.0.2",
     "phantomjs-prebuilt": "^2.1.7",
     "postcss-loader": "^0.9.1",
+=======
+
+    "remap-istanbul": "^0.6.3",
+
+>>>>>>> upstream/master
     "protractor": "^3.2.2",
     "raw-loader": "0.5.1",
     "remap-istanbul": "^0.6.3",
@@ -143,11 +154,21 @@
     "to-string-loader": "^1.1.4",
     "ts-helpers": "1.1.1",
     "ts-node": "^0.9.1",
+<<<<<<< HEAD
     "tslint": "^3.7.1",
     "tslint-loader": "^2.1.3",
     "typedoc": "^0.4.3",
     "typescript": "^1.9.0-dev.20160531-1.0",
     "typings": "~1.3.0",
+=======
+    "typedoc": "^0.4.4",
+    "typescript": "~1.8.10",
+    "typings": "~1.3.0",
+
+    "awesome-typescript-loader": "1.1.1",
+    "angular2-template-loader": "^0.4.0",
+    "tslint-loader": "^2.1.3",
+>>>>>>> upstream/master
     "url-loader": "^0.5.7",
     "webpack": "^1.13.1",
     "webpack-dev-server": "^1.14.1",
