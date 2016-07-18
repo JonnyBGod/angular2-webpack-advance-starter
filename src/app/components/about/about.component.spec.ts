@@ -2,8 +2,8 @@ import { TestComponentBuilder } from '@angular/compiler/testing';
 import { Component } from '@angular/core';
 import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
 
-import { t } from 'frameworks/test.framework';
-import { TEST_CORE_PROVIDERS } from 'frameworks/core.framework/testing';
+import { t } from 'frameworks/test';
+import { TEST_CORE_PROVIDERS } from 'frameworks/core/testing';
 import { AboutComponent } from './about.component';
 
 t.describe('@Component: AboutComponent', () => {

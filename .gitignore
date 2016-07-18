@@ -62,6 +62,7 @@ npm-debug.log
 *.swp
 
 # Advance #
+!src/client/app/frameworks/test
 nativescript/hooks
 nativescript/node_modules
 nativescript/platforms

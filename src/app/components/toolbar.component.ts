@@ -1,6 +1,6 @@
 // app
-import { BaseComponent, LogService } from 'frameworks/core.framework';
-import { LangSwitcherComponent } from 'frameworks/i18n.framework';
+import { BaseComponent, LogService } from 'frameworks/core';
+import { LangSwitcherComponent } from 'frameworks/i18n';
 import { NavbarComponent } from './navbar.component';
 
 @BaseComponent({

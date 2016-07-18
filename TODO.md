@@ -37,7 +37,7 @@ TODO
 ### Before commit manual checks
 
 - [x] npm run lint
-- [ ] npm test
+- [x] npm test
 - [x] npm start
 - [ ] npm run e2e
 - [ ] npm run docs

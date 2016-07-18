@@ -1,4 +1,4 @@
-import { BaseComponent } from 'frameworks/core.framework';
+import { BaseComponent } from 'frameworks/core';
 import { ActivatedRoute } from '@angular/router';
 
 @BaseComponent({

@@ -1,15 +1,15 @@
 // Angular 2
 import { APP_BASE_HREF, HashLocationStrategy, LocationStrategy } from '@angular/common';
 // config
-import { CoreConfigService } from 'frameworks/core.framework';
+import { CoreConfigService } from 'frameworks/core';
 CoreConfigService.PLATFORM_TARGET = CoreConfigService.PLATFORMS.WEB;
 CoreConfigService.DEBUG.LEVEL_4 = true;
 
 // app
-import { WindowService, ConsoleService, CORE_PROVIDERS } from 'frameworks/core.framework';
-import { ANALYTICS_PROVIDERS } from 'frameworks/analytics.framework';
-import { MultilingualService } from 'frameworks/i18n.framework';
-import { APP_PROVIDERS, AppConfigService } from 'frameworks/app.framework';
+import { WindowService, ConsoleService, CORE_PROVIDERS } from 'frameworks/core';
+import { ANALYTICS_PROVIDERS } from 'frameworks/analytics';
+import { MultilingualService } from 'frameworks/i18n';
+import { APP_PROVIDERS, AppConfigService } from 'frameworks/app';
 
 // custom i18n language support
 MultilingualService.SUPPORTED_LANGUAGES = AppConfigService.SUPPORTED_LANGUAGES;

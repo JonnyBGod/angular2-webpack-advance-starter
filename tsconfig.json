@@ -2,10 +2,13 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
+    "moduleResolution": "node",
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "sourceMap": true,
     "noEmitHelpers": true,
+    "lib": ["es6", "dom"],
+    "strictNullChecks": false,
     "baseUrl": "./src",
     "paths": {
       "frameworks/*": [
@@ -17,7 +20,19 @@
       "assets/*": [
         "app/assets/*"
       ]
-    }
+    },
+    "types": [
+      "core-js",
+      "hammerjs",
+      "jasmine",
+      "lodash",
+      "node",
+      "protractor",
+      "selenium-webdriver",
+      "source-map",
+      "uglify-js",
+      "webpack"
+    ]
   },
   "exclude": [
     "desktop",

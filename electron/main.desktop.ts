@@ -13,7 +13,7 @@ let template: any;
 let menu: any;
 
 // app
-import { AppConfigService } from 'frameworks/app.framework/services/app-config.service';
+import { AppConfigService } from 'frameworks/app/services/app-config.service';
 
 /*crashReporter.start({
   productName: 'Angular2WebpackAdvanceStarter',

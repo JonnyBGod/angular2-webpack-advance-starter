@@ -5,14 +5,14 @@ import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
 // libs 
 import { provideStore } from '@ngrx/store';
 
-import { t } from 'frameworks/test.framework';
+import { t } from 'frameworks/test';
 import {
   TEST_CORE_PROVIDERS,
   TEST_HTTP_PROVIDERS,
   TEST_ROUTER_PROVIDERS
-} from 'frameworks/core.framework/testing';
-import { NameListService, nameListReducer } from 'frameworks/app.framework';
-import { TEST_MULTILINGUAL_PROVIDERS } from 'frameworks/i18n.framework/testing';
+} from 'frameworks/core/testing';
+import { NameListService, nameListReducer } from 'frameworks/app';
+import { TEST_MULTILINGUAL_PROVIDERS } from 'frameworks/i18n/testing';
 import { HomeComponent } from './home.component';
 
 t.describe('@Component: HomeComponent', () => {

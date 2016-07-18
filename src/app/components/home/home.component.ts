@@ -2,8 +2,8 @@
 import { Store } from '@ngrx/store';
 
 // app
-import { FormComponent } from 'frameworks/core.framework';
-import { NameListService } from 'frameworks/app.framework';
+import { FormComponent } from 'frameworks/core';
+import { NameListService } from 'frameworks/app';
 
 @FormComponent({
   selector: 'sd-home',
