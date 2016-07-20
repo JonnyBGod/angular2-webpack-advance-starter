@@ -14,14 +14,21 @@ const customConfig = require('../custom/webpack.web.prod.js');
  */
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 
+const METADATA = {
+  baseUrl: ''
+};
+
 /**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = webpackMerge.smart(simpleWebProdConfig, commonAdvanceConfig, {
+	metadata: METADATA,
+
   plugins: [
    new DefinePlugin({
+   	'BASE_URL': JSON.stringify(METADATA.baseUrl),
     'TARGET_DESKTOP': true,
     'TARGET_DESKTOP_BUILD': true
   })

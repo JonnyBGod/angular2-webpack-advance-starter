@@ -3,9 +3,9 @@ TODO
 
 ## Before internal use
 
-- [ ] Fix unit tests ? (furder investigation)
+- [x] Fix unit tests
 - [ ] Fix E2E tests (https://github.com/TypeStrong/ts-node/issues/138)
-- [ ] Electron Builder
+- [x] Electron Builder
 - [ ] Nativescript
 
 
@@ -33,6 +33,9 @@ TODO
 - [ ] Ionic
 - [ ] React Native
 
+## Bugs
+
+- [ ] electron css absolute paths
 
 ### Before commit manual checks
 
