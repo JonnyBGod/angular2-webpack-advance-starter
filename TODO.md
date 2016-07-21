@@ -15,8 +15,6 @@ TODO
 - [ ] Docs (docType everything)
 - [x] Generate all icons and fix references in index.html
 - [ ] Redo readme.md
-	- [ ] Mention need for typescript@next
-- [ ] CI release all platforms for demo app
 - [ ] Make sure all commands work on windows
 
 
@@ -26,6 +24,7 @@ TODO
 - [ ] Make new repo for nativescript and npm run setup:nativescript
 - [ ] Make new repo for electron and npm run setup:electron
 - [ ] Make clean extension scripts (npm run clean:nativescript)
+- [ ] CI release all platforms for demo app
 
 ## Extras (branches?)
 
@@ -35,7 +34,7 @@ TODO
 
 ## Bugs
 
-- [ ] electron css absolute paths
+- [ ] (electron) css absolute paths
 
 ### Before commit manual checks
 
@@ -46,8 +45,8 @@ TODO
 - [ ] npm run docs
 
 - [x] npm run start:desktop
-- [ ] npm run build:desktop:mac
-- [ ] npm run dist:build:desktop
+- [x] npm run build:desktop:mac
+- [x] npm run dist:build:desktop
 
 - [ ] npm run start:ios
 - [ ] npm run start:android

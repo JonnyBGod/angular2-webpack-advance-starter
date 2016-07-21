@@ -5,6 +5,7 @@
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
+    "noEmitHelpers": true,
     "baseUrl": "./src",
     "paths": {
       "frameworks/*": [

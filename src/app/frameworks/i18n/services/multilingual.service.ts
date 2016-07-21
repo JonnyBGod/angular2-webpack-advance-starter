@@ -2,9 +2,10 @@
 import { Injectable } from '@angular/core';
 
 // libs
-import * as _ from 'lodash';
+import { includes, map } from 'lodash';
 import { Store, ActionReducer, Action } from '@ngrx/store';
 import { TranslateService } from 'ng2-translate/ng2-translate';
+import 'rxjs/add/operator/take';
 
 // app
 import { Analytics, AnalyticsService } from '../../analytics/index';
@@ -30,14 +31,13 @@ export const MULTILINGUAL_ACTIONS: any = {
 
 export const multilingualReducer: ActionReducer<MultilingualStateI> =
   (state: MultilingualStateI = initialState, action: Action) => {
-
-  switch (action.type) {
-    case MULTILINGUAL_ACTIONS.LANG_CHANGE:
-      return Object.assign({}, state, action.payload);
-    default:
-      return state;
-  }
-};
+    switch (action.type) {
+      case MULTILINGUAL_ACTIONS.LANG_CHANGE:
+        return Object.assign({}, state, action.payload);
+      default:
+        return state;
+    }
+  };
 /**
  * ngrx end --
  */
@@ -61,8 +61,7 @@ export class MultilingualService extends Analytics {
     super(analytics);
     this.category = CATEGORY;
 
-    // this language will be used as a fallback when a
-    // translation isn't found in the current language
+    // this language will be used as a fallback when a translation isn't found in the current language
     translate.setDefaultLang('en');
 
     // use browser/platform lang if available
@@ -70,11 +69,22 @@ export class MultilingualService extends Analytics {
 
 
     // subscribe to changes
-    store.select('i18n').subscribe((state: MultilingualStateI) => {
-      // update ng2-translate which will cause translations to occur
-      // wherever the TranslatePipe is used in the view
+    // store.select('i18n').subscribe((state: MultilingualStateI) => {
+    //   // update ng2-translate which will cause translations to occur wherever the TranslatePipe is used in the view
 
-      this.translate.use(state.lang);
+    //   this.translate.use(state.lang);
+    // });
+
+    // This version gets around an issue with ng2-translate right now and OnPush
+    store.select('i18n').subscribe((state: MultilingualStateI) => {
+      // update ng2-translate which will cause translations to occur wherever the TranslatePipe is used in the view
+      if (this.translate.getLangs() && (this.translate.getLangs().indexOf(state.lang) > -1)) {
+        this.translate.use(state.lang);
+      } else {
+        this.translate.reloadLang(state.lang).take(1).subscribe(() => {
+          setTimeout(() => this.translate.use(state.lang), 0);
+        });
+      }
     });
 
     // init the lang
@@ -82,7 +92,7 @@ export class MultilingualService extends Analytics {
   }
 
   public changeLang(lang: string) {
-    if (_.includes(_.map(MultilingualService.SUPPORTED_LANGUAGES, 'code'), lang)) {
+    if (includes(map(MultilingualService.SUPPORTED_LANGUAGES, 'code'), lang)) {
       // only if lang supported
       this.track(MULTILINGUAL_ACTIONS.LANG_CHANGE, { label: lang });
       this.store.dispatch({ type: MULTILINGUAL_ACTIONS.LANG_CHANGE, payload: { lang } });
