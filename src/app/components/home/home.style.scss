@@ -21,4 +21,14 @@
     position: relative;
     top: 16px;
   }
+
+  a.link {
+    color: #00e;
+    cursor: pointer;
+    text-decoration: underline;
+    
+    &:hover {
+      color: #f00;
+    }
+  }
 }

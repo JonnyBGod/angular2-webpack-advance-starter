@@ -9,11 +9,4 @@ export class StoreMock<T> extends SyncSubject<T> {
   public select(key: string): Observable<any> {
     return Observable.of(key);
   }
-  public getState(): any {
-    return {
-      i18n: {
-        lang: 'en'
-      }
-    };
-  }
 }

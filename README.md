@@ -1,159 +1,117 @@
-[![taylor swift](https://img.shields.io/badge/secured%20by-taylor%20swift-brightgreen.svg)](https://twitter.com/SwiftOnSecurity)
-[![volkswagen status](https://auchenberg.github.io/volkswagen/volkswargen_ci.svg?v=1)](https://github.com/auchenberg/volkswagen) [![GitHub version](https://badge.fury.io/gh/angularclass%2Fangular2-webpack-starter.svg)](https://badge.fury.io/gh/angularclass%2Fangular2-webpack-starter) [![Dependency Status](https://david-dm.org/angularclass/angular2-webpack-starter.svg)](https://david-dm.org/angularclass/angular2-webpack-starter)
-[![Issue Stats](http://issuestats.com/github/angularclass/angular2-webpack-starter/badge/pr?style=flat)](http://issuestats.com/github/angularclass/angular2-webpack-starter)
-[![Issue Stats](http://issuestats.com/github/angularclass/angular2-webpack-starter/badge/issue?style=flat)](http://issuestats.com/github/angularclass/angular2-webpack-starter) [![Stack Share](http://img.shields.io/badge/tech-stack-0690fa.svg?style=flat)](http://stackshare.io/angularclass/angular-2-webpack-starter)
+![Angular 2 Webpack Starter](https://cloud.githubusercontent.com/assets/1016365/17200649/085798c6-543c-11e6-8ad0-2484f0641624.png)![Angular 2 Webpack Advance Starter Integrations](https://d2wp4shknjcfjl.cloudfront.net/api/file/SPLl77rSTuGZ7APrXizi)
 
-<p align="center">
-  <a href="https://angularclass.com" target="_blank">
-    <img src="https://cloud.githubusercontent.com/assets/1016365/9863762/a84fed4a-5af7-11e5-9dde-d5da01e797e7.png" alt="Webpack and Angular 2" width="500" height="320"/>
-  </a>
-</p>
+[![devDependency Status](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter/dev-status.svg)](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter#info=devDependencies)
+[![Build Status](https://img.shields.io/travis/JonnyBGod/angular2-webpack-advance-starter/master.svg?style=flat)](https://travis-ci.org/JonnyBGod/angular2-webpack-advance-starter)
+[![GitHub version](https://badge.fury.io/gh/JonnyBGod/angular2-webpack-advance-starter.svg)](https://badge.fury.io/gh/JonnyBGod/angular2-webpack-advance-starter)
+[![Dependency Status](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter.svg)](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter)
 
-# Angular2 Webpack Starter [![Join Slack](https://img.shields.io/badge/slack-join-brightgreen.svg)](https://angularclass.com/slack-join) [![Join the chat at https://gitter.im/angularclass/angular2-webpack-starter](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/angularclass/angular2-webpack-starter?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
+[![MIT license][license-image]][/LICENSE]
+[![Gitter Chat](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/JonnyBGod/angular2-webpack-advance-starter)
 
+This is an advance starter project for Angular 2 apps based on [AngularClass's](https://github.com/AngularClass) [angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter) and [Nathan Walker's](https://github.com/NathanWalker) [angular2-seed-advanced](https://github.com/NathanWalker/angular2-seed-advanced).
 
-> An Angular 2 starter kit featuring [Angular 2](https://angular.io) ([Router](https://angular.io/docs/js/latest/api/router/), [Forms](https://angular.io/docs/js/latest/api/forms/),
-[Http](https://angular.io/docs/js/latest/api/http/),
-[Services](https://gist.github.com/gdi2290/634101fec1671ee12b3e#_follow_@AngularClass_on_twitter),
-[Tests](https://angular.io/docs/js/latest/api/test/), [E2E](https://angular.github.io/protractor/#/faq#what-s-the-difference-between-karma-and-protractor-when-do-i-use-which-)), [Material](https://github.com/angular/material2), [Karma](https://karma-runner.github.io/), [Protractor](https://angular.github.io/protractor/), [Jasmine](https://github.com/jasmine/jasmine), [Istanbul](https://github.com/gotwarlost/istanbul), [TypeScript](http://www.typescriptlang.org/), [@types](https://www.google.com/url?sa=t&rct=j&q=&esrc=s&source=web&cd=3&cad=rja&uact=8&ved=0ahUKEwjgjdrR7u_NAhUQ7GMKHXgpC4EQFggnMAI&url=https%3A%2F%2Fwww.npmjs.com%2F~types&usg=AFQjCNG2PFhwEo88JKo12mrw_4d0w1oNiA&sig2=N69zbO0yN8ET7v4KVCUOKA), [TsLint](http://palantir.github.io/tslint/), [Codelyzer](https://github.com/mgechev/codelyzer), [Hot Module Replacement](https://webpack.github.io/docs/hot-module-replacement-with-webpack.html), and [Webpack](http://webpack.github.io/) by [AngularClass](https://angularclass.com).
+I would like to thank both for their great work and collaboration. Please refer to both projects' pages for extra documentation.
 
-> If you're looking for Angular 1.x please use [NG6-starter](https://github.com/angularclass/NG6-starter)
-> If you're looking to learn about Webpack and ES6 Build Tools check out [ES6-build-tools](https://github.com/AngularClass/ES6-build-tools)
-> If you're looking to learn TypeScript see [TypeStrong/learn-typescript](https://github.com/TypeStrong/learn-typescript)
-> If you're looking for Webpack 2 version then see the experimental version [angular2-webpack2-starter](https://github.com/gdi2290/angular2-webpack2-starter) that will be merged
-> If you're looking for something easier to get started with then see the offical angular2-seed that I also maintain [angular/angular2-seed](https://github.com/angular/angular2-seed)
-> If you're looking to add Angular 2 Material Design we have a branch [material2](https://github.com/AngularClass/angular2-webpack-starter/tree/material2)
+#### Integration with:
+- [ngrx/store](https://github.com/ngrx/store) RxJS powered state management, inspired by **Redux**
+- [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n 
+  - Usage is optional but on by default
+  - Up to you and your team how you want to utilize it. It can be easily removed if not needed. 
+- [angulartics2](https://github.com/angulartics/angulartics2) Vendor-agnostic analytics for Angular2 applications.
+  - Out of box support for [Segment](https://segment.com/)
+    - When using the seed, be sure to change your `write_key` [here](https://github.com/JonnyBGod/angular2-webpack-advance-starter/blob/master/src/index.html#L24)
+  - Can be changed to any vendor, [learn more here](https://github.com/angulartics/angulartics2#supported-providers)
+- [lodash](https://lodash.com/) Helps reduce blocks of code down to single lines and enhances readability
+- (WIP) [NativeScript](https://www.nativescript.org/) cross platform mobile (w/ native UI) apps. [Setup instructions here](#nativescript-app).
+- [Electron](http://electron.atom.io/) cross platform desktop apps (Mac, Windows and Linux). [Setup instructions here](#electron-app).
 
-This seed repo serves as an Angular 2 starter for anyone looking to get up and running with Angular 2 and TypeScript fast. Using a [Webpack](http://webpack.github.io/) for building our files and assisting with boilerplate. We're also using Protractor for our end-to-end story and Karma for our unit tests.
-* Best practices in file and application organization for Angular 2.
-* Ready to go build system using Webpack for working with TypeScript.
-* Angular 2 examples that are ready to go when experimenting with Angular 2.
-* A great Angular 2 seed repo for anyone who wants to start their project.
-* Testing Angular 2 code with Jasmine and Karma.
-* Coverage with Istanbul and Karma
-* End-to-end Angular 2 code using Protractor.
-* Type manager with @types
-* Hot Module Replacement with Webpack
-* Material Design with [angular/material2](https://github.com/angular/material2)
+| ![Multiple Platforms](https://d2wp4shknjcfjl.cloudfront.net/api/file/ihp3WyiqS1WdRYaBEYKn) |
+| :---: |
+| *The zen of multiple platforms.* Chrome, Android and iPhone all running the same code. |
 
-### Quick start
-**Make sure you have Node version >= 5.0 and NPM >= 3**
-> Clone/Download the repo then edit `app.ts` inside [`/src/app/app.ts`](/src/app/app.ts)
+| ![Desktop](https://d2wp4shknjcfjl.cloudfront.net/api/file/1O4FRGsSHS8g0Lz3EKNy) |
+| :---: |
+| *Programming Nirvana.* Mac and Windows desktop both running the same code. |
+
+# Table of Contents
+
+- [Enhanced development workflow](#enhanced-development-workflow)
+- [Enhanced testing support options](#enhanced-testing-support-options)
+- [Getting Started](#getting-started)
+  - [Dependencies](#dependencies)
+  - [Installing](#installing)
+  - [Usage](#usage)
+- [Electron App](#electron-app)
+- [Framework How-Tos](#framework-how-tos)
+- [Web Configuration Options](#web-configuration-options)
+- [Change Detection OnPush Note](#change-detection-onpush-note)
+- [General Best Practice Guide to Sharing Code](#general-best-practice-guide-to-sharing-code)
+- [How best to use for your project](#how-best-to-use-for-your-project)
+- [Configuration](#configuration)
+- [More Documentation](#more-Documentation)
+- [Contributing](#contributing)
+- [License](#license)
+
+### Enhanced development workflow
+- Decorators for components which reduce boilerplate for common component setups
+- Shared code can be found in `frameworks`:
+  - `app`: your shared application architecture code
+  - `core`: foundation layer (decorators and low-level services)
+  - `analytics`: analytics provided by [Segment](https://segment.com/)
+    - Only reports data in **production** build
+  - `i18n`: internationalization features
+  - `electron`: [Electron](http://electron.atom.io/) specific code
+  - `test`: test specific code providing conveniences to make testing your code easier and faster 
+
+### Enhanced testing support options
+- mocks for various services
+- configurable provider blocks for easy test setup of common application providers
+  - tired of setting up similar providers over and over again for different tests?
+  - configure a reusable test provider which can be configured on a case-by-base basis
+  - see [example here](https://github.com/JonnyBGod/angular2-webpack-advance-starter/blob/master/src/app/frameworks/core/testing/providers/core.ts)
+- helpers for end-to-end (e2e, integration) tests
+- convenient shorthand to reduce test setup boilerplate and enhance speed of writing tests
+  - are your test cases buried by multiple import lines requiring you to scroll just to get to the substance of the test?
+  - removes noise allowing you to better focus on the substance of the test
+  - provides full intellisense support
+  - allows your team to add unique shorthands for various testing scenarios specific to your application needs
+  - plays nice with `tslint` options like `"no-unused-variable": true` as the api hangs off a plain `Object` instead of globals 
+    - what's the value of that you ask? have you ever isolated a test with `iit` or `ddescribe` but didn't import those or vice versa, used `iit` leaving an unused `it` now in your tests? yeah, `tslint` will be all over you :/
+    - avoids `unused` variable warnings altogether in tests since you are always using a valid key from the shorthand `Object`
+  - see [example here](https://github.com/JonnyBGod/angular2-webpack-advance-starter/blob/master/src/app/frameworks/test/shorthand/ng2-jasmine.ts)
+  
+**Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-seed](https://github.com/mgechev/angular2-seed) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
+
+# Getting Started
+### Dependencies
+
+* node v5.x.x or higher and npm 3 or higher.
+
+* To run the NativeScript app:
+
+```
+npm install -g nativescript
+```
+
+### Usage
 
 ```bash
-# clone our repo
-# --depth 1 removes all but one .git commit history
-git clone --depth 1 https://github.com/angularclass/angular2-webpack-starter.git
+git clone --depth 1 https://github.com/JonnyBGod/angular2-webpack-advance-starter.git
+cd angular2-seed-advanced
 
-# change directory to our repo
-cd angular2-webpack-starter
-
-# install the repo with npm
+# install the project's dependencies
 npm install
 
 # start the server
 npm start
 
 # use Hot Module Replacement
-npm run server:dev:hmr
-
-# if you're in China use cnpm
-# https://github.com/cnpm/cnpm
-```
-go to [http://0.0.0.0:3000](http://0.0.0.0:3000) or [http://localhost:3000](http://localhost:3000) in your browser
-
-# Table of Contents
-* [File Structure](#file-structure)
-* [Getting Started](#getting-started)
-    * [Dependencies](#dependencies)
-    * [Installing](#installing)
-    * [Running the app](#running-the-app)
-* [Configuration](#configuration)
-* [Contributing](#contributing)
-* [TypeScript](#typescript)
-* [@Types](#types)
-* [Frequently asked questions](#frequently-asked-questions)
-* [Support, Questions, or Feedback](#support-questions-or-feedback)
-* [License](#license)
-
-
-## File Structure
-We use the component approach in our starter. This is the new standard for developing Angular apps and a great way to ensure maintainable code by encapsulation of our behavior logic. A component is basically a self contained app usually in a single file or a folder with each concern as a file: style, template, specs, e2e, and component class. Here's how it looks:
-```
-angular2-webpack-starter/
- ├──config/                    * our configuration
- |   ├──helpers.js             * helper functions for our configuration files
- |   ├──spec-bundle.js         * ignore this magic that sets up our angular 2 testing environment
- |   ├──karma.conf.js          * karma config for our unit tests
- |   ├──protractor.conf.js     * protractor config for our end-to-end tests
- │   ├──webpack.dev.js         * our development webpack config
- │   ├──webpack.prod.js        * our production webpack config
- │   └──webpack.test.js        * our testing webpack config
- │
- ├──src/                       * our source files that will be compiled to javascript
- |   ├──main.browser.ts        * our entry file for our browser environment
- │   │
- |   ├──index.html             * Index.html: where we generate our index page
- │   │
- |   ├──polyfills.ts           * our polyfills file
- │   │
- |   ├──vendor.ts              * our vendor file
- │   │
- │   ├──app/                   * WebApp: folder
- │   │   ├──app.spec.ts        * a simple test of components in app.ts
- │   │   ├──app.e2e.ts         * a simple end-to-end test for /
- │   │   └──app.ts             * App.ts: a simple version of our App component components
- │   │
- │   └──assets/                * static assets are served here
- │       ├──icon/              * our list of icons from www.favicon-generator.org
- │       ├──service-worker.js  * ignore this. Web App service worker that's not complete yet
- │       ├──robots.txt         * for search engines to crawl your website
- │       └──human.txt          * for humans to know who the developers are
- │
- │
- ├──tslint.json                * typescript lint config
- ├──typedoc.json               * typescript documentation generator
- ├──tsconfig.json              * config that webpack uses for typescript
- ├──package.json               * what npm uses to manage it's dependencies
- └──webpack.config.js          * webpack main configuration file
-
+npm run start:hmr
 ```
 
-# Getting Started
-## Dependencies
-What you need to run this app:
-* `node` and `npm` (`brew install node`)
-* Ensure you're running the latest versions Node `v4.x.x`+ (or `v5.x.x`) and NPM `3.x.x`+
+### Other commands
 
-Once you have those, you should install these globals with `npm install --global`:
-* `webpack` (`npm install --global webpack`)
-* `webpack-dev-server` (`npm install --global webpack-dev-server`)
-* `karma` (`npm install --global karma-cli`)
-* `protractor` (`npm install --global protractor`)
-* `typescript` (`npm install --global typescript`)
-
-## Installing
-* `fork` this repo
-* `clone` your fork
-* `npm install webpack-dev-server rimraf webpack -g` to install required global dependencies
-* `npm install` to install all dependencies
-* `npm run server` to start the dev server in another tab
-
-## Running the app
-After you have installed all dependencies you can now run the app. Run `npm run server` to start a local server using `webpack-dev-server` which will watch, build (in-memory), and reload for you. The port will be displayed to you as `http://0.0.0.0:3000` (or if you prefer IPv6, if you're using `express` server, then it's `http://[::1]:3000/`).
-
-### server
-```bash
-# development
-npm run server
-# production
-npm run build:prod
-npm run server:prod
-```
-
-## Other commands
-
-### build files
+#### build files
 ```bash
 # development
 npm run build:dev
@@ -161,179 +119,186 @@ npm run build:dev
 npm run build:prod
 ```
 
-### hot module replacement
+#### hot module replacement
 ```bash
 npm run server:dev:hmr
 ```
 
-### watch and build files
+#### watch and build files
 ```bash
 npm run watch
 ```
 
-### run tests
+#### run tests
 ```bash
 npm run test
 ```
 
-### watch and run our tests
+#### watch and run our tests
 ```bash
 npm run watch:test
 ```
 
-### run end-to-end tests
+#### run end-to-end tests
 ```bash
 # make sure you have your server running in another terminal
 npm run e2e
 ```
 
-### run webdriver (for end-to-end)
+#### run webdriver (for end-to-end)
 ```bash
 npm run webdriver:update
 npm run webdriver:start
 ```
 
-### run Protractor's elementExplorer (for end-to-end)
+#### run Protractor's elementExplorer (for end-to-end)
 ```bash
 npm run webdriver:start
 # in another terminal
 npm run e2e:live
 ```
 
-# Configuration
-Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application
-
-# Contributing
-You can include more examples as components but they must introduce a new concept such as `Home` component (separate folders), and Todo (services). I'll accept pretty much everything so feel free to open a Pull-Request
-
-# TypeScript
-> To take full advantage of TypeScript with autocomplete you would have to install it globally and use an editor with the correct TypeScript plugins.
-
-## Use latest TypeScript compiler
-TypeScript 1.7.x includes everything you need. Make sure to upgrade, even if you installed TypeScript previously.
-
-```
-npm install --global typescript
+#### generate docs
+```bash
+npm run docs
 ```
 
-## Use a TypeScript-aware editor
-We have good experience using these editors:
-
-* [Visual Studio Code](https://code.visualstudio.com/)
-* [Webstorm 10](https://www.jetbrains.com/webstorm/download/)
-* [Atom](https://atom.io/) with [TypeScript plugin](https://atom.io/packages/atom-typescript)
-* [Sublime Text](http://www.sublimetext.com/3) with [Typescript-Sublime-Plugin](https://github.com/Microsoft/Typescript-Sublime-plugin#installation)
-
-# Types
-> When you include a module that doesn't include Type Definitions inside of the module you can include external Type Definitions with @types
-
-## Custom Type Definitions
-When including 3rd party modules you also need to include the type definition for the module
-if they don't provide one within the module. You can try to install it with @types
-
-```
-npm install @types/node
-npm install @types/lodash
+#### build Docker
+```bash
+npm run build:docker
 ```
 
-If you can't find the type definition in the registry we can make an ambient definition in
-this file for now. For example
+### Electron App
 
-```typescript
-declare module "my-module" {
-  export function doesSomething(value: string): string;
+#### Develop
+
+```
+Mac:      npm run start:desktop
+Windows:  npm run start:desktop:windows
+```
+
+#### Build: Electron App for Mac, Windows or Linux
+
+```
+Mac:      npm run build:desktop:mac
+Windows:  npm run build:desktop:windows
+Linux:    npm run build:desktop:linux
+
+All:      npm run build:desktop
+```
+
+#### Release: Package Electron App for Mac, Windows or Linux for distribution
+
+```
+Mac:      npm run dist:build:desktop:mac
+Windows:  npm run dist:build:desktop:windows
+Linux:    npm run dist:build:desktop:linux
+
+All:      npm run dist:build:desktop
+```
+
+## Framework How-Tos
+
+### i18n
+
+* how to add a language?
+  - `src/assets/i18n/`
+    - add `[language code].json` (copy existing one and adapt the translation strings)
+  - `src/app/frameworks/sample/services/app-config.spec.ts`
+    - fix test
+  - `src/app/frameworks/sample/services/app-config.ts`
+    - add language to `SUPPORTED_LANGUAGES`
+  - `src/app/frameworks/i18n/components/lang-switcher.component.spec.ts`
+    - fix test
+
+## Change Detection OnPush Note
+
+*Please Note:* The seed uses Angular's `ChangeDetectionStrategy.OnPush` by default which requires some understanding of immutability and one-way data flows. Please check out the following resources to learn more:
+
+* http://blog.thoughtram.io/angular/2016/02/22/angular-2-change-detection-explained.html
+* http://victorsavkin.com/post/110170125256/change-detection-in-angular-2
+* http://www.syntaxsuccess.com/viewarticle/change-detection-in-angular-2.0
+* http://ngcourse.rangle.io/handout/change-detection/change_detection_strategy_onpush.html
+
+If you experience issues with changes not occuring in your views, you can disable this by commenting out [these lines](https://github.com/JonnyBGod/angular2-webpack-advance-starter/blob/master/src/app/frameworks/core/decorators/utils.ts#L43-L48). The seed uses `OnPush` by default because it  provides optimal performance and if you decide to turn it off while developing your application, you can always turn it back on when you're ready to refactor your data services to utilize `OnPush` properly.
+
+## General Best Practice Guide to Sharing Code 
+
+There’s actually only a few things to keep in mind when sharing code between web/mobile. The seed does take care of quite a few of those things but here’s a brief list:
+
+* Don’t import {N} modules into your components/services. {N} modules can only be used inside the {N} app therefore cannot be shared. To get around this, use `OpaqueTokens` which is a fancy name for something quite simple. [Learn more here](http://blog.thoughtram.io/angular/2016/05/23/opaque-tokens-in-angular-2.html). A great example of how to integrate 2 different plugins (1 for web, 1 for {N}) and share all the code exists in [this wiki article: How to integrate Firebase across all platforms](https://github.com/NathanWalker/angular2-seed-advanced/wiki/How-to-integrate-Firebase-across-all-platforms-(web-nativescript-desktop)) written by the awesome [Scott Lowe](https://twitter.com/scott_d_lowe).
+* Use the conditional hooks provided by the seed in shared methods where you may need to handle something differently in {N} than you do on the web. For example, see [here](https://github.com/JonnyBGod/angular2-webpack-advance-starter/blob/master/src/app/frameworks/i18n/components/lang-switcher.component.ts#L35-L41).
+* Don’t use window global. Inject the `WindowService` provided by the seed instead. This includes usage of `alert`, `confirm`, etc. For example:
+
+If you were thinking about doing: `alert('Something happened!');`, *Don't*.
+Instead inject `WindowService`:
+```
+constructor(private win: WindowService) {}
+
+public userAction() {
+  if (success) {
+    // do stuff
+  } else {
+    this.win.alert('Something happened!');
+  }
 }
 ```
 
+This ensures that when the same code is run in the {N} app, the native `dialogs` module will be used.
 
-If you're prototyping and you will fix the types later you can also declare it as type any
+* Lastly, understand this video: http://www.nativescriptsnacks.com/videos/2016/06/13/zoned-callbacks.html … As far as dealing with {N} and 3rd party plugins, you want to understand that.
 
-```typescript
-declare var assert: any;
-declare var _: any;
-declare var $: any;
-```
+The advice [Nathan Walker's](https://github.com/NathanWalker) likes to give, and I fully support it, is:
 
-If you're importing a module that uses Node.js modules which are CommonJS you need to import as
+> Code with web mentality first. Then provide the native capability using Angular’s `{provide: SomeWebService, useClass: SomeNativeService }` during bootstrap.
 
-```typescript
-import * as _ from 'lodash';
-```
+There are some cases where you may want to use `useValue` vs. `useClass`, and other times may need to use `useFactory`. Read [the Angular docs here to learn more about which you may need for your use case](https://angular.io/docs/ts/latest/cookbook/dependency-injection.html#!#provide).
 
+## How best to use for your project
 
-# Frequently asked questions
-* What's the current browser support for Angular 2 Beta?
-  * Please view the updated list of [browser support for Angular 2](https://github.com/angularclass/awesome-angular2#current-browser-support-for-angular-2)
-* Why is my service, aka provider, is not injecting parameter correctly?
-  * Please use `@Injectable()` for your service for typescript to correctly attach the metadata (this is a TypeScript problem)
-* How do I run protractor with node 0.12.x?
-  * please check out this repo to use the old version of protractor [#146](https://github.com/AngularClass/angular2-webpack-starter/pull/146/files)
-* Where do I write my tests?
-  * You can write your tests next to your component files. See [`/src/app/home/home.spec.ts`](/src/app/home/home.spec.ts)
-* How do I start the app when I get `EACCES` and `EADDRINUSE` errors?
-  * The `EADDRINUSE` error means the port `3000` is currently being used and `EACCES` is lack of permission for webpack to build files to `./dist/`
-* How to use `sass` for css?
- * `loaders: ['raw-loader','sass-loader']` and `@Component({ styles: [ require('./filename.scss') ] })` see issue [#136](https://github.com/AngularClass/angular2-webpack-starter/issues/136)
-* How do I test a Service?
- * See issue [#130](https://github.com/AngularClass/angular2-webpack-starter/issues/130#issuecomment-158872648)
-* How do I add `vscode-chrome-debug` support?
- * The VS Code chrome debug extension support can be done via `launch.json` see issue [#144](https://github.com/AngularClass/angular2-webpack-starter/issues/144#issuecomment-164063790)
-* How do I make the repo work in a virtual machine?
- * You need to use `0.0.0.0` so revert these changes [#205](https://github.com/AngularClass/angular2-webpack-starter/pull/205/files)
-* What are the naming conventions for Angular 2?
- * please see issue [#185](https://github.com/AngularClass/angular2-webpack-starter/issues/185) and PR [196](https://github.com/AngularClass/angular2-webpack-starter/pull/196)
-* How do I include bootstrap or jQuery?
- * please see issue [#215](https://github.com/AngularClass/angular2-webpack-starter/issues/215) and [#214](https://github.com/AngularClass/angular2-webpack-starter/issues/214#event-511768416)
-* How do I async load a component?
- * see wiki [How-do-I-async-load-a-component-with-AsyncRoute](https://github.com/AngularClass/angular2-webpack-starter/wiki/How-do-I-async-load-a-component-with-AsyncRoute)
-* Error: Cannot find module 'tapable'
- * Remove `node_modules/` and run `npm cache clean` then `npm install`
-* What about Webpack 2?
- * If you're looking for Webpack 2 version then see the [experimental version](https://github.com/gdi2290/angular2-webpack2-starter) that will be merged soon.
-* How do I turn on Hot Module Replacement
- * Run `npm run server:dev:hmr`
-* `RangeError: Maximum call stack size exceeded`
- * This is a problem with minifying Angular 2 and it's recent JIT templates. If you set `mangle` to `false` then you should be good.
-* Why is the size of my app larger in development?
- * We are using inline source-maps and hot module replacement which will increase the bundle size.
-* If you're in China
- * check out https://github.com/cnpm/cnpm
-* If you're looking to add Angular 2 Material Design
- * check out the [material2](https://github.com/AngularClass/angular2-webpack-starter/tree/material2) branch
-* node-pre-gyp ERR in npm install (Windows)
- * install Python x86 version between 2.5 and 3.0 on windows see issue [#626](https://github.com/AngularClass/angular2-webpack-starter/issues/626)
+#### Setup
 
-# Support, Questions, or Feedback
-> Contact us anytime for anything about this repo or Angular 2
+*NOTE*: This should be done first before you start making any changes and building out your project. Not doing so will likely result in dificulty when trying to merge in upstream changes later.
 
-* [Chat: AngularClass.slack](http://angularclass.com/member-join/)
-* [Twitter: @AngularClass](https://twitter.com/AngularClass)
-* [Gitter: AngularClass/angular2-webpack-starter](https://gitter.im/angularclass/angular2-webpack-starter)
+1. Download a zip of the seed. (**Do not fork**)
+2. `npm run git.setup` - This will initialize `git` as well as setup `upstream` properly.
+3. `git remote add origin ...your private repo...`
+4. `npm run git.prepare` - This will prepare git to handle the merge
+5. `npm run git.merge` - This will fetch upstream and run the first merge (*Important)
+  * IMPORTANT: You will see a wall of Conflicts after doing above (a Conflict for every single file). This is normal. There actually will not be any problematic conflicts as it's just reporting every single file which both sides (`upstream` and your first commit) added.
+6. `git add .; git commit -m'ready'`. **Yes**, you will be committing all those conflicts, which actually are not a problem in this 1 time case.
+7. Now you have `git` setup and ready to develop your application as well as merge in upstream changes in the future.
+8. `npm install` (and all other usage docs in this `README` apply)
+9. Create a new `framework` for your application in `src/app/frameworks` to build your codebase out. Say your app is called `AwesomeApp`, then create `awesomeapp` and start building out all your components and services in there. Create other frameworks as you see fit to organize.
+10. If you don't want an integration that comes out of box with this seed; for example. let's say you don't want to use i18n. Then just delete the `i18n`, remove `ng2-translate` as dependency root `package.json` and `nativescript/package.json`. Then remove any references to `i18n` throughout.
 
-# Quick Start Guides
+#### Merging latest upstream changes
 
-## Nitrous
+1. `npm run git:merge:preview` - This will fetch `upstream` and show you how the merge would look
+2. `npm run git:merge` - This will actually do the merge
+3. Handle any conflicts to get latest upstream into your application.
+4. Continue building your app.
 
-You can quickly create a free development environment to get started using this
-starter kit in the cloud on [Nitrous](https://www.nitrous.io/):
+You can read more about [syncing a fork here](https://help.github.com/articles/syncing-a-fork/).
 
-<a href="https://www.nitrous.io/quickstart?repo=https://github.com/nitrous-io/angular2-webpack-starter">
-  <img src="https://nitrous-image-icons.s3.amazonaws.com/quickstart.png" alt="Nitrous Quickstart" width=142 height=34>
-</a>
+If you have any suggestions to this workflow, please post [here](https://github.com/JonnyBGod/angular2-webpack-advance-starter/issues).
 
-Simply run `HOST=0.0.0.0 npm start` from the terminal inside of
-`~/code/angular2-webpack-starter` and access your site via the "Preview > 3000"
-link in the IDE.
+## Configuration
+
+Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application.
+
+Use `config/custom/` configuration files when possible to add your custom configurations or override our configurations. This will help you when updating upstream.
+
+## More Documentation
+
+[angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter)
+[angular2-seed-advanced](https://github.com/NathanWalker/angular2-seed-advanced)
+
+## Contributing
+
+Please see the [CONTRIBUTING](https://github.com/JonnyBGod/angular2-webpack-advance-starter/blob/master/.github/CONTRIBUTING.md) file for guidelines.
+
 ___
 
-enjoy — **AngularClass**
-
-<br><br>
-
-[![AngularClass](https://cloud.githubusercontent.com/assets/1016365/9863770/cb0620fc-5af7-11e5-89df-d4b0b2cdfc43.png  "Angular Class")](https://angularclass.com)
-##[AngularClass](https://angularclass.com)
-> Learn AngularJS, Angular 2, and Modern Web Development from the best.
-> Looking for corporate Angular training, want to host us, or Angular consulting? patrick@angularclass.com
-
 # License
- [MIT](/LICENSE)
+ [![MIT license][license-image]][/LICENSE]

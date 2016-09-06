@@ -1,1 +1,3 @@
-export class TranslateLoaderMock {}
+export class TranslateLoaderMock {
+
+}

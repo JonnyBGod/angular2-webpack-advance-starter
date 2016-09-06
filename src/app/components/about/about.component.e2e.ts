@@ -1,4 +1,4 @@
-import { t } from 'frameworks/test';
+import { t } from 'frameworks/test/index';
 
 declare var browser: any, element: any, by: any;
 

@@ -9,5 +9,5 @@ export class ElectronEventService {
     return Observable.fromEvent(window, name);
   }
 
-  // TODO: add more helpers for menu setup and more...
+  // TODO: add more helpers for menu setup and more...  
 }

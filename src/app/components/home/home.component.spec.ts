@@ -1,56 +1,60 @@
-import { TestComponentBuilder } from '@angular/compiler/testing';
+import { TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
+import { RouterTestingModule } from '@angular/router/testing';
 
-// libs 
-import { provideStore } from '@ngrx/store';
+// libs
+import { StoreModule } from '@ngrx/store';
 
 import { t } from 'frameworks/test';
-import {
-  TEST_CORE_PROVIDERS,
-  TEST_HTTP_PROVIDERS,
-  TEST_ROUTER_PROVIDERS
-} from 'frameworks/core/testing';
-import { NameListService, nameListReducer } from 'frameworks/app';
-import { TEST_MULTILINGUAL_PROVIDERS } from 'frameworks/i18n/testing';
+import { NameListService, nameListReducer } from 'frameworks/sample';
+import { CoreModule } from 'frameworks/core/core.module';
+import { AnalyticsModule } from 'frameworks/analytics/analytics.module';
+import { MultilingualModule } from 'frameworks/i18n/multilingual.module';
 import { HomeComponent } from './home.component';
+
+// test module configuration for each test
+const testModuleConfig = () => {
+  TestBed.configureTestingModule({
+    imports: [CoreModule, RouterTestingModule, AnalyticsModule,
+      MultilingualModule, StoreModule.provideStore({ names: nameListReducer })],
+    declarations: [HomeComponent, TestComponent],
+    providers: [NameListService]
+  });
+};
 
 t.describe('@Component: HomeComponent', () => {
 
+  t.be(testModuleConfig);
+
   t.it('should work',
-    t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-      tcb.createAsync(TestComponent)
-        .then((rootTC: any) => {
-          rootTC.detectChanges();
+    t.async(() => {
+      TestBed.compileComponents()
+        .then(() => {
+          let fixture = TestBed.createComponent(TestComponent);
+          fixture.detectChanges();
 
-          let homeInstance = rootTC.debugElement.children[0].componentInstance;
-          let homeDOMEl = rootTC.debugElement.children[0].nativeElement;
+          let homeInstance = fixture.debugElement.children[0].componentInstance;
+          let homeDOMEl = fixture.debugElement.children[0].nativeElement;
 
-          t.e(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
-          t.e(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(0);
+          t.expect(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
+          t.expect(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(0);
 
           homeInstance.newName = 'Minko';
           homeInstance.addName();
-          rootTC.detectChanges();
 
-          t.e(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(1);
+          fixture.detectChanges();
 
-          t.e(getDOM().querySelectorAll(homeDOMEl, 'li')[0].textContent).toEqual('Minko');
+          t.expect(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(1);
+          t.expect(getDOM().querySelectorAll(homeDOMEl, 'li')[0].textContent).toEqual('Minko');
         });
     }));
 });
 
 @Component({
-  viewProviders: [
-    TEST_CORE_PROVIDERS(),
-    TEST_HTTP_PROVIDERS(),
-    TEST_ROUTER_PROVIDERS(),
-    TEST_MULTILINGUAL_PROVIDERS(),
-    provideStore({ names: nameListReducer }),
-    NameListService
-  ],
   selector: 'test-cmp',
-  directives: [HomeComponent],
   template: '<sd-home></sd-home>'
 })
-class TestComponent {}
+class TestComponent {
+
+}

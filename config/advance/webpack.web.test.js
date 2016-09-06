@@ -15,5 +15,13 @@ const customConfig = require('../custom/webpack.web.test.js');
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = webpackMerge.smart(simpleWebTestConfig, commonAdvanceConfig, {
-
+	module: {
+    loaders: [
+      {
+        test: /\.ts$/,
+        loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
+        exclude: [/\.e2e\.ts$/]
+      }
+    ]
+  }
 }, customConfig);

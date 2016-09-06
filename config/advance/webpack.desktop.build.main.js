@@ -36,7 +36,7 @@ module.exports = webpackMerge.smart({
      *
      * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
      */
-    extensions: ['', '.ts', '.js'],
+    extensions: ['', '.ts', '.js', '.json'],
 
     // Make sure root is src
     root: helpers.root('src'),
@@ -45,20 +45,41 @@ module.exports = webpackMerge.smart({
     modulesDirectories: ['node_modules'],
 
     alias: {
-      // legacy imports pre-rc releases
-      angular2: helpers.root('node_modules/@angularclass/angular2-beta-to-rc-alias/dist/beta-17'),
-      components: 'app/components',
-      frameworks: 'app/frameworks',
-      assets: 'app/assets'
+      components: helpers.root('src/app/components'),
+      frameworks: helpers.root('src/app/frameworks'),
+      assets: helpers.root('src/assets')
     },
 
   },
 
   module: {
+    /*
+     * An array of applied pre and post loaders.
+     *
+     * See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
+     */
+    preLoaders: [
+      {
+        test: /\.ts$/,
+        loader: 'string-replace-loader',
+        query: {
+          search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
+          replace: '$1.import($3).then(mod => mod.__esModule ? mod.default : mod)',
+          flags: 'g'
+        },
+        include: [helpers.root('src')]
+      },
+
+    ],
+    
     loaders: [
       {
         test: /\.ts$/,
-        loader: 'awesome-typescript-loader',
+        loaders: [
+          'awesome-typescript-loader',
+          'angular2-template-loader',
+          '@angularclass/hmr-loader'
+        ],
         exclude: [/\.(spec|e2e)\.ts$/]
       }
     ]

@@ -3,19 +3,14 @@ import { Store } from '@ngrx/store';
 import 'rxjs/add/operator/take';
 
 // app
-import {
-  FormComponent,
-  CoreConfigService,
-  LogService,
-  ILang
-} from 'frameworks/core/index';
-import { ElectronEventService } from 'frameworks/electron/index';
+import { BaseComponent, Config, LogService, ILang } from 'frameworks/core';
+import { ElectronEventService } from 'frameworks/electron';
 import { MultilingualService } from '../index';
 
-@FormComponent({
-  moduleId: module.id,
+@BaseComponent({
   selector: 'lang-switcher',
-  templateUrl: 'lang-switcher.component.html'
+  templateUrl: 'lang-switcher.template.html',
+  styleUrls: ['lang-switcher.style.css']
 })
 export class LangSwitcherComponent {
   public lang: string;
@@ -31,7 +26,7 @@ export class LangSwitcherComponent {
       this.lang = s && s.i18n ? s.i18n.lang : '';
     });
 
-    if (CoreConfigService.IS_DESKTOP()) {
+    if (Config.IS_DESKTOP()) {
       // allow electron menu to talk to component
       ElectronEventService.on('changeLang').subscribe((e: any) => {
         this.changeLang({ target: { value: e.detail.value } });
@@ -41,7 +36,7 @@ export class LangSwitcherComponent {
   changeLang(e: any) {
     let lang = this.supportedLanguages[0].code; // fallback to default 'en'
 
-    if (CoreConfigService.IS_MOBILE_NATIVE()) {
+    if (Config.IS_MOBILE_NATIVE()) {
       if (e) {
         lang = this.supportedLanguages[e.newIndex].code;
       }

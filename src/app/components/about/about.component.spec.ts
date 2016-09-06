@@ -1,18 +1,28 @@
-import { TestComponentBuilder } from '@angular/compiler/testing';
+import { TestBed } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
 
 import { t } from 'frameworks/test';
-import { TEST_CORE_PROVIDERS } from 'frameworks/core/testing';
 import { AboutComponent } from './about.component';
+
+// test module configuration for each test
+const testModuleConfig = () => {
+  TestBed.configureTestingModule({
+    declarations: [AboutComponent, TestComponent]
+  });
+};
 
 t.describe('@Component: AboutComponent', () => {
 
+  t.be(testModuleConfig);
+
   t.it('should work',
-    t.inject([TestComponentBuilder], (tcb: TestComponentBuilder) => {
-      tcb.createAsync(TestComponent)
-        .then((rootTC: any) => {
-          let aboutDOMEl = rootTC.debugElement.children[0].nativeElement;
+    t.async(() => {
+      TestBed.compileComponents()
+        .then(() => {
+          let fixture = TestBed.createComponent(TestComponent);
+          fixture.detectChanges();
+          let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
 
           t.e(getDOM().querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
         });
@@ -20,11 +30,7 @@ t.describe('@Component: AboutComponent', () => {
 });
 
 @Component({
-  viewProviders: [
-    TEST_CORE_PROVIDERS()
-  ],
   selector: 'test-cmp',
-  directives: [ AboutComponent ],
   template: '<sd-about></sd-about>'
 })
-class TestComponent {}
+class TestComponent { }

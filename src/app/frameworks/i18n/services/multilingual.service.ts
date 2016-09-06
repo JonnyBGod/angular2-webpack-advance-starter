@@ -8,8 +8,8 @@ import { TranslateService } from 'ng2-translate/ng2-translate';
 import 'rxjs/add/operator/take';
 
 // app
-import { Analytics, AnalyticsService } from '../../analytics/index';
-import { WindowService, ILang } from '../../core/index';
+import { Analytics, AnalyticsService } from 'frameworks/analytics';
+import { WindowService, ILang } from 'frameworks/core';
 
 // analytics
 const CATEGORY: string = 'Multilingual';
@@ -61,23 +61,25 @@ export class MultilingualService extends Analytics {
     super(analytics);
     this.category = CATEGORY;
 
-    // this language will be used as a fallback when a translation isn't found in the current language
+    // this language will be used as a fallback
+    // when a translation isn't found in the current language
     translate.setDefaultLang('en');
 
     // use browser/platform lang if available
     let userLang = win.navigator.language.split('-')[0];
 
-
     // subscribe to changes
     // store.select('i18n').subscribe((state: MultilingualStateI) => {
-    //   // update ng2-translate which will cause translations to occur wherever the TranslatePipe is used in the view
+    //   // update ng2-translate which will cause translations
+    //   // to occur wherever the TranslatePipe is used in the view
 
     //   this.translate.use(state.lang);
     // });
 
     // This version gets around an issue with ng2-translate right now and OnPush
     store.select('i18n').subscribe((state: MultilingualStateI) => {
-      // update ng2-translate which will cause translations to occur wherever the TranslatePipe is used in the view
+      // update ng2-translate which will cause translations
+      // to occur wherever the TranslatePipe is used in the view
       if (this.translate.getLangs() && (this.translate.getLangs().indexOf(state.lang) > -1)) {
         this.translate.use(state.lang);
       } else {

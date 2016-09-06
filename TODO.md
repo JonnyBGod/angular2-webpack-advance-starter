@@ -3,16 +3,16 @@ TODO
 
 ## Before internal use
 
-- [x] Fix unit tests
+- [ ] Fix unit tests
 - [ ] Fix E2E tests (https://github.com/TypeStrong/ts-node/issues/138)
-- [x] Electron Builder
+- [ ] Electron Builder
 - [ ] Nativescript
 
 
 ## Before Open Sourcing
 
 - [x] Change references to @JonnyBGod
-- [ ] Docs (docType everything)
+- [ ] ?Docs (docType everything)
 - [x] Generate all icons and fix references in index.html
 - [ ] Redo readme.md
 - [ ] Make sure all commands work on windows
@@ -39,14 +39,14 @@ TODO
 ### Before commit manual checks
 
 - [x] npm run lint
-- [x] npm test
-- [x] npm start
+- [ ] npm test
+- [ ] npm start
 - [ ] npm run e2e
 - [ ] npm run docs
 
-- [x] npm run start:desktop
-- [x] npm run build:desktop:mac
-- [x] npm run dist:build:desktop
+- [ ] npm run start:desktop
+- [ ] npm run build:desktop:mac
+- [ ] npm run dist:build:desktop
 
 - [ ] npm run start:ios
 - [ ] npm run start:android

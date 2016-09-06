@@ -9,11 +9,7 @@ import { WindowService } from '../services/window.service';
 })
 export class PlatformDirective {
 
-  constructor(
-    private el: ElementRef,
-    private renderer: Renderer,
-    private win: WindowService
-  ) {
+  constructor(private el: ElementRef, private renderer: Renderer, private win: WindowService) {
     let platformClass = 'web';
     let agent = win.navigator.userAgent.toLowerCase();
     if (agent.indexOf('electron') > -1) {

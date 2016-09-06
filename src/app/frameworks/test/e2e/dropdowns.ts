@@ -1,4 +1,4 @@
-declare var browser: any, element: any, by: any;
+declare let browser: any, element: any, by: any;
 
 /**
  * Usage: selectDropdownByNumber ( selector, index)
@@ -15,13 +15,14 @@ export function selectDropdownByNumber(selector: string, index: number, millisec
   }
 }
 
+
 /**
  * Usage: selectDropdownByValue (selector, item)
  * selector : select element
  * item : option(s) in the dropdown.
  */
 export function selectDropdownByValue(selector: string, item: string, milliseconds: number) {
-  // var desiredOption: any;
+  // let desiredOption: any;
   element(by.css(selector)).sendKeys(item);
   if (typeof milliseconds !== 'undefined') {
     browser.sleep(milliseconds);
@@ -35,7 +36,7 @@ export function selectDropdownByValue(selector: string, item: string, millisecon
  */
 export function selectRandomDropdownReturnText(selector: string, milliseconds: number) {
   element(by.css(selector)).all(by.tagName('option')).then(function(options: any) {
-    var randomNumber = Math.floor((Math.random() * options.length
+    let randomNumber = Math.floor((Math.random() * options.length
     ));
     options[randomNumber].click();
     return options[randomNumber].getText().then(function(text: string) {

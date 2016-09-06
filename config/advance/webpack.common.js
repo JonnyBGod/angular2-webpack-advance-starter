@@ -33,9 +33,9 @@ var webpackConfig = {
 
   resolve: {
     alias: {
-      components: 'app/components',
-      frameworks: 'app/frameworks',
-      assets: 'app/assets'
+      components: helpers.root('src/app/components'),
+      frameworks: helpers.root('src/app/frameworks'),
+      assets: helpers.root('src/assets')
     }
   },
 

@@ -13,7 +13,7 @@ let template: any;
 let menu: any;
 
 // app
-import { AppConfigService } from 'frameworks/app/services/app-config.service';
+import { AppConfig } from 'frameworks/sample/services/app-config';
 
 /*crashReporter.start({
   productName: 'Angular2WebpackAdvanceStarter',
@@ -62,13 +62,13 @@ app.on('ready', () => {
     console.log(`Page navigated: ${url}`);
   });
 
-  let appTitle: string = `Angular 2 Seed Advanced`;
+  let appTitle: string = `Angular 2 Webpack Advance Starter`;
 
   let langMenu: any = {
     label: 'Language',
     submenu: []
   };
-  for (let lang of AppConfigService.SUPPORTED_LANGUAGES) {
+  for (let lang of AppConfig.SUPPORTED_LANGUAGES) {
     let code = lang.code;
     let langOption = {
       label: lang.title,

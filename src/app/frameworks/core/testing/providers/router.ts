@@ -1,56 +1,12 @@
 // angular
-import { ComponentResolver, Injector } from '@angular/core';
-// import { ROUTER_FAKE_PROVIDERS } from '@angular/router/testing';
-import { Location } from '@angular/common';
-import { SpyLocation } from '@angular/common/testing';
-import {
-  UrlSerializer,
-  DefaultUrlSerializer,
-  RouterOutletMap,
-  Router,
-  ActivatedRoute
-} from '@angular/router';
+import { Location, LocationStrategy, APP_BASE_HREF } from '@angular/common';
+import { SpyLocation, MockLocationStrategy } from '@angular/common/testing';
 
-export function TEST_ROUTER_PROVIDERS(options?: any): any[] {
-  // config: RouterConfig
-  // component: the test component to use
+export function TEST_LOCATION_PROVIDERS(): any[] {
 
   return [
-    RouterOutletMap,
-    { provide: UrlSerializer, useClass: DefaultUrlSerializer },
-    { provide: Location, useClass: SpyLocation },
-    {
-      provide: Router,
-      useFactory: (
-        resolver: ComponentResolver,
-        urlSerializer: UrlSerializer,
-        outletMap: RouterOutletMap,
-        location: Location,
-        injector: Injector) => {
-        const r = new Router(
-          options.component,
-          resolver,
-          urlSerializer,
-          outletMap,
-          location,
-          injector,
-          options.config
-        );
-        r.initialNavigation();
-        return r;
-      },
-      deps: [
-        ComponentResolver,
-        UrlSerializer,
-        RouterOutletMap,
-        Location,
-        Injector
-      ]
-    },
-    {
-      provide: ActivatedRoute,
-      useFactory: (r: Router) => r.routerState.root,
-      deps: [Router]
-    }
+    {provide: Location, useClass: SpyLocation},
+    {provide: LocationStrategy, useClass: MockLocationStrategy},
+    { provide: APP_BASE_HREF, useValue: '/' }
   ];
 }
