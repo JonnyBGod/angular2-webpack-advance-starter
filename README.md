@@ -294,6 +294,7 @@ Please see the [CONTRIBUTING](https://github.com/JonnyBGod/angular2-webpack-adva
 - [ ] unit tests
 - [ ] npm run docs
 - [ ] DESKTOP: lang-switcher should not display
+
 ___
 
 # License
