@@ -3,18 +3,16 @@ TODO
 
 ## Before internal use
 
-- [ ] Fix unit tests
-- [ ] Fix E2E tests (https://github.com/TypeStrong/ts-node/issues/138)
-- [ ] Electron Builder
+- [x] Fix unit tests
+- [x] Fix E2E tests (https://github.com/TypeStrong/ts-node/issues/138)
+- [x] Electron Builder
 - [ ] Nativescript
 
 
 ## Before Open Sourcing
 
-- [x] Change references to @JonnyBGod
-- [ ] ?Docs (docType everything)
 - [x] Generate all icons and fix references in index.html
-- [ ] Redo readme.md
+- [x] Redo readme.md
 - [ ] Make sure all commands work on windows
 
 
@@ -35,19 +33,22 @@ TODO
 ## Bugs
 
 - [ ] (electron) css absolute paths
+- [ ] unit tests
+- [ ] npm run docs
+- [ ] DESKTOP: lang-switcher should not display
 
 ### Before commit manual checks
 
 - [x] npm run lint
-- [ ] npm test
-- [ ] npm start
-- [ ] npm run e2e
+- [x] npm test
+- [x] npm start
+- [x] npm run e2e
 - [ ] npm run docs
 
-- [ ] npm run start:desktop
-- [ ] npm run build:desktop:mac
-- [ ] npm run dist:build:desktop
+- [x] npm run start:desktop
+- [x] npm run build:desktop
 
+./nativescript
 - [ ] npm run start:ios
 - [ ] npm run start:android
 

@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 // libs
 import { provideStore, Store } from '@ngrx/store';
-import { t } from 'frameworks/test/index';
+import { t } from 'frameworks/test';
 import { CoreModule } from 'frameworks/core/core.module';
-import { ILang, WindowService, ConsoleService } from 'frameworks/core/index';
+import { ILang, WindowService, ConsoleService } from 'frameworks/core';
 import {
   TEST_CORE_PROVIDERS,
   TEST_HTTP_PROVIDERS,
   WindowMockFrench
-} from 'frameworks/core/testing/index';
-import { TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET } from '../testing/index';
+} from 'frameworks/core/testing';
+import { TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET } from '../testing';
 import { MultilingualService, MultilingualStateI, multilingualReducer } from '../index';
 
 // test module configuration for each test
@@ -44,7 +44,7 @@ t.describe('i18n:', () => {
     });
 
     t.it('changeLang - should not switch unless supported',
-      t.inject([MultilingualService, Store],
+      inject([MultilingualService, Store],
         (multilang: MultilingualService, store: Store<any>) => {
         multilang.changeLang('fr');
         // only 'en' supported by default so changing to 'fr' should not change state
@@ -71,7 +71,7 @@ t.describe('i18n:', () => {
     t.ae(() => TEST_MULTILINGUAL_RESET());
 
     t.it('should now support french by default',
-      t.inject([MultilingualService, Store, WindowService],
+      inject([MultilingualService, Store, WindowService],
         (multilang: MultilingualService, store: Store<any>, win: WindowService) => {
         t.e(MultilingualService.SUPPORTED_LANGUAGES.length).toBe(2);
         t.e(MultilingualService.SUPPORTED_LANGUAGES[0].code).toBe('en');

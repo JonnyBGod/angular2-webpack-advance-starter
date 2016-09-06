@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
 import { RouterTestingModule } from '@angular/router/testing';
@@ -28,7 +28,7 @@ t.describe('@Component: HomeComponent', () => {
   t.be(testModuleConfig);
 
   t.it('should work',
-    t.async(() => {
+    async(() => {
       TestBed.compileComponents()
         .then(() => {
           let fixture = TestBed.createComponent(TestComponent);

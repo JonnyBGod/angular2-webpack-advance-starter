@@ -1,11 +1,11 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 // libs
 import { Angulartics2 } from 'angulartics2';
 import { Angulartics2Segment } from 'angulartics2/src/providers/angulartics2-segment';
 
-import { t } from 'frameworks/test/index';
+import { t } from 'frameworks/test';
 import { AnalyticsService, Analytics } from '../index';
 
 const testModuleConfig = () => {
@@ -25,7 +25,7 @@ t.describe('analytics:', () => {
   t.describe('AnalyticsService', () => {
 
     t.describe('api works', () => {
-      t.it('track', t.inject([AnalyticsService, Angulartics2Segment],
+      t.it('track', inject([AnalyticsService, Angulartics2Segment],
         (analyticsService: any, segment: any) => {
         analyticsService.devMode(false);
         t.spyOn(segment, 'eventTrack');
@@ -33,7 +33,7 @@ t.describe('analytics:', () => {
         t.e(segment.eventTrack)
           .toHaveBeenCalledWith('click', { category: 'TEST', label: 'Testing' });
       }));
-      t.it('track devMode: ON', t.inject([AnalyticsService, Angulartics2Segment],
+      t.it('track devMode: ON', inject([AnalyticsService, Angulartics2Segment],
         (analyticsService: any, segment: any) => {
         t.spyOn(segment, 'eventTrack');
 
@@ -42,13 +42,13 @@ t.describe('analytics:', () => {
         analyticsService.track('click', { category: 'TEST', label: 'Testing' });
         t.e(segment.eventTrack).not.toHaveBeenCalled();
       }));
-      t.it('pageTrack', t.inject([AnalyticsService, Angulartics2Segment],
+      t.it('pageTrack', inject([AnalyticsService, Angulartics2Segment],
         (analyticsService: any, segment: any) => {
         t.spyOn(segment, 'pageTrack');
         analyticsService.pageTrack('/testing', { });
         t.e(segment.pageTrack).toHaveBeenCalledWith('/testing', {});
       }));
-      t.it('pageTrack devMode: ON', t.inject([AnalyticsService, Angulartics2Segment],
+      t.it('pageTrack devMode: ON', inject([AnalyticsService, Angulartics2Segment],
         (analyticsService: any, segment: any) => {
         t.spyOn(segment, 'pageTrack');
 
@@ -57,14 +57,14 @@ t.describe('analytics:', () => {
         analyticsService.pageTrack('/testing', { });
         t.e(segment.pageTrack).not.toHaveBeenCalled();
       }));
-      t.it('identify', t.inject([AnalyticsService, Angulartics2Segment],
+      t.it('identify', inject([AnalyticsService, Angulartics2Segment],
         (analyticsService: any, segment: any) => {
         t.spyOn(segment, 'setUserProperties');
         analyticsService.identify({ userId: 1, name: 'Test', email: 'name@domain.com' });
         t.e(segment.setUserProperties)
           .toHaveBeenCalledWith({ userId: 1, name: 'Test', email: 'name@domain.com' });
       }));
-      t.it('identify devMode: ON', t.inject([AnalyticsService, Angulartics2Segment],
+      t.it('identify devMode: ON', inject([AnalyticsService, Angulartics2Segment],
         (analyticsService: any, segment: any) => {
         t.spyOn(segment, 'setUserProperties');
 
@@ -79,7 +79,7 @@ t.describe('analytics:', () => {
   t.describe('Analytics (Base Class)', () => {
 
     t.describe('should allow descendants to track actions', () => {
-      t.it('track', t.inject([AnalyticsService, Angulartics2Segment],
+      t.it('track', inject([AnalyticsService, Angulartics2Segment],
         (analyticsService: any, segment: any) => {
         t.spyOn(analyticsService, 'track');
         let analytics = new TestAnalytics(analyticsService);

@@ -35,8 +35,6 @@ exports.config = {
   },
 
   onPrepare: function() {
-    require("zone.js/dist/zone-node");
-
     browser.ignoreSynchronization = true;
   },
 

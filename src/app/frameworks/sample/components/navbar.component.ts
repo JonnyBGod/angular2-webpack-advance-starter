@@ -1,5 +1,5 @@
 // app
-import { BaseComponent } from 'frameworks/core/index';
+import { BaseComponent } from 'frameworks/core';
 
 @BaseComponent({
   selector: 'sd-navbar',

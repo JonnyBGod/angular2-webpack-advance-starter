@@ -33,6 +33,7 @@ export class LangSwitcherComponent {
       });
     }
   }
+  
   changeLang(e: any) {
     let lang = this.supportedLanguages[0].code; // fallback to default 'en'
 

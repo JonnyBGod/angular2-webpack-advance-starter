@@ -50,6 +50,7 @@ I would like to thank both for their great work and collaboration. Please refer 
 - [Configuration](#configuration)
 - [More Documentation](#more-Documentation)
 - [Contributing](#contributing)
+- [Known Bugs](#known-bugs)
 - [License](#license)
 
 ### Enhanced development workflow
@@ -177,7 +178,7 @@ Mac:      npm run start:desktop
 Windows:  npm run start:desktop:windows
 ```
 
-#### Build: Electron App for Mac, Windows or Linux
+#### Build: Electron App for Mac, Windows or Linux for distribution
 
 ```
 Mac:      npm run build:desktop:mac
@@ -185,16 +186,6 @@ Windows:  npm run build:desktop:windows
 Linux:    npm run build:desktop:linux
 
 All:      npm run build:desktop
-```
-
-#### Release: Package Electron App for Mac, Windows or Linux for distribution
-
-```
-Mac:      npm run dist:build:desktop:mac
-Windows:  npm run dist:build:desktop:windows
-Linux:    npm run dist:build:desktop:linux
-
-All:      npm run dist:build:desktop
 ```
 
 ## Framework How-Tos
@@ -298,6 +289,12 @@ Use `config/custom/` configuration files when possible to add your custom config
 
 Please see the [CONTRIBUTING](https://github.com/JonnyBGod/angular2-webpack-advance-starter/blob/master/.github/CONTRIBUTING.md) file for guidelines.
 
+## Known Bugs
+
+- [ ] (electron) css absolute paths
+- [ ] unit tests
+- [ ] npm run docs
+- [ ] DESKTOP: lang-switcher should not display
 ___
 
 # License

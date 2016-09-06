@@ -17,7 +17,7 @@ export class ViewBroker {
       return paths.map((path) => {
         let parts = path.split('.');
         parts.splice(-1);
-        return `${parts.join('.')}.tns.css`;
+        return `${parts.join('.')}.tns.scss`;
       });
     } else {
       return paths;

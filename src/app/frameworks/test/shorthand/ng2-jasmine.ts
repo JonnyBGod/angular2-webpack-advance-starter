@@ -1,9 +1,3 @@
-import {
-  async,
-  fakeAsync,
-  inject
-} from '@angular/core/testing';
-
 // intellisense via shorthand
 export interface TestApi {
   ae: Function;
@@ -11,14 +5,11 @@ export interface TestApi {
   describe: Function;
   fdescribe: Function;
   xdescribe: Function;
-  async(fn: Function): Function;
-  fakeAsync(fn: Function): Function;
   be(fn: Function): void;
   beforeEach(fn: Function): void;
   e(actual: any): jasmine.Matchers;
   expect(actual: any): jasmine.Matchers;
   fail(e?: any): void;
-  inject(tokens: any[], fn: Function): Function;
   it(name: string, fn: Function, timeOut?: number): void;
   fit(name: string, fn: Function, timeOut?: number): void;
   xit(name: string, fn: Function, timeOut?: number): void;
@@ -33,14 +24,11 @@ export const ng2Jasmine: TestApi = {
   describe: describe,
   fdescribe: fdescribe,
   xdescribe: xdescribe,
-  async: async,
-  fakeAsync: fakeAsync,
   be: beforeEach,  // shorthand beforeEach
   beforeEach: beforeEach,
   e: expect, // shorthand expect
   expect: expect,
   fail: fail,
-  inject: inject,
   it: it,
   fit: fit,
   xit: xit,

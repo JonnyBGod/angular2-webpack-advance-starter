@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, inject } from '@angular/core/testing';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 // import { HttpModule, Response, ResponseOptions } from '@angular/http';
@@ -56,7 +56,7 @@ t.describe('app: NameListService', () => {
   //     ));
   // });
 
-  t.it('names should be Observable', t.inject([NameListService], (nameList: any) => {
+  t.it('names should be Observable', inject([NameListService], (nameList: any) => {
     let names = nameList.names;
     t.e(names).toEqual(jasmine.any(Observable));
     names.subscribe((value: Array<string>) => {
@@ -64,7 +64,7 @@ t.describe('app: NameListService', () => {
     });
   }));
 
-  t.it('add should work', t.inject([NameListService], (nameList: any) => {
+  t.it('add should work', inject([NameListService], (nameList: any) => {
     nameList.add('test');
     nameList.names.subscribe((value: Array<string>) => {
       t.e(value).toEqual(['test']);

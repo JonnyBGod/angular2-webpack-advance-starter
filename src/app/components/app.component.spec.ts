@@ -1,4 +1,4 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed, async } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Routes } from '@angular/router';
@@ -40,7 +40,7 @@ t.describe('@Component: AppComponent', () => {
   t.be(testModuleConfig);
 
   t.it('should build without a problem',
-    t.async(() => {
+    async(() => {
       TestBed.compileComponents()
         .then(() => {
           let fixture = TestBed.createComponent(TestComponent);

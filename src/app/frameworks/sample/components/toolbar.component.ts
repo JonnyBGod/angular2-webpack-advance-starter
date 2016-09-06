@@ -1,5 +1,5 @@
 // app
-import { BaseComponent, LogService } from 'frameworks/core/index';
+import { BaseComponent, LogService } from 'frameworks/core';
 
 @BaseComponent({
   selector: 'sd-toolbar',
