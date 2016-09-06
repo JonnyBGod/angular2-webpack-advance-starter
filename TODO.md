@@ -32,7 +32,7 @@ TODO
 
 ## Bugs
 
-- [ ] (electron) css absolute paths
+- [ ] ELECTRON: css absolute paths
 - [ ] unit tests
 - [ ] npm run docs
 - [ ] DESKTOP: lang-switcher should not display

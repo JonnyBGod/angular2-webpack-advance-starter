@@ -1,11 +1,10 @@
-![Angular 2 Webpack Starter](https://cloud.githubusercontent.com/assets/1016365/17200649/085798c6-543c-11e6-8ad0-2484f0641624.png)![Angular 2 Webpack Advance Starter Integrations](https://d2wp4shknjcfjl.cloudfront.net/api/file/SPLl77rSTuGZ7APrXizi)
+![Angular 2 Webpack Starter](https://cloud.githubusercontent.com/assets/1016365/9863762/a84fed4a-5af7-11e5-9dde-d5da01e797e7.png)![Angular 2 Webpack Advance Starter Integrations](https://d2wp4shknjcfjl.cloudfront.net/api/file/SPLl77rSTuGZ7APrXizi)
 
 [![devDependency Status](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter/dev-status.svg)](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter#info=devDependencies)
 [![Build Status](https://img.shields.io/travis/JonnyBGod/angular2-webpack-advance-starter/master.svg?style=flat)](https://travis-ci.org/JonnyBGod/angular2-webpack-advance-starter)
 [![GitHub version](https://badge.fury.io/gh/JonnyBGod/angular2-webpack-advance-starter.svg)](https://badge.fury.io/gh/JonnyBGod/angular2-webpack-advance-starter)
 [![Dependency Status](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter.svg)](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter)
 
-[![MIT license][license-image]][/LICENSE]
 [![Gitter Chat](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/JonnyBGod/angular2-webpack-advance-starter)
 
 This is an advance starter project for Angular 2 apps based on [AngularClass's](https://github.com/AngularClass) [angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter) and [Nathan Walker's](https://github.com/NathanWalker) [angular2-seed-advanced](https://github.com/NathanWalker/angular2-seed-advanced).
@@ -291,11 +290,11 @@ Please see the [CONTRIBUTING](https://github.com/JonnyBGod/angular2-webpack-adva
 
 ## Known Bugs
 
-- [ ] (electron) css absolute paths
+- [ ] ELECTRON: css absolute paths
 - [ ] unit tests
 - [ ] npm run docs
 - [ ] DESKTOP: lang-switcher should not display
 ___
 
 # License
- [![MIT license][license-image]][/LICENSE]
+ [MIT](/LICENSE)
