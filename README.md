@@ -80,7 +80,7 @@ I would like to thank both for their great work and collaboration. Please refer 
     - avoids `unused` variable warnings altogether in tests since you are always using a valid key from the shorthand `Object`
   - see [example here](https://github.com/JonnyBGod/angular2-webpack-advance-starter/blob/master/src/app/frameworks/test/shorthand/ng2-jasmine.ts)
   
-**Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-seed](https://github.com/mgechev/angular2-seed) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
+**Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
 
 # Getting Started
 ### Dependencies
@@ -292,7 +292,7 @@ Please see the [CONTRIBUTING](https://github.com/JonnyBGod/angular2-webpack-adva
 
 - [ ] ELECTRON: css absolute paths
 - [ ] unit tests
-- [ ] npm run docs
+- [ ] npm run docs (https://github.com/TypeStrong/typedoc/issues/234)
 - [ ] DESKTOP: lang-switcher should not display
 
 ___

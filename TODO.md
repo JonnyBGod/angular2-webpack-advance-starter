@@ -34,7 +34,7 @@ TODO
 
 - [ ] ELECTRON: css absolute paths
 - [ ] unit tests
-- [ ] npm run docs
+- [ ] npm run docs (https://github.com/TypeStrong/typedoc/issues/234)
 - [ ] DESKTOP: lang-switcher should not display
 
 ### Before commit manual checks
