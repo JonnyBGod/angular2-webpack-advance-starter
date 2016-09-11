@@ -10,10 +10,17 @@ const simpleWebProdConfig = require('../webpack.prod.js');
 const customConfig = require('../custom/webpack.web.prod.js');
 
 /**
+ * Webpack Constants
+ */
+const ENV = process.env.ENV = process.env.NODE_ENV = 'production';
+
+/**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = webpackMerge.smart(simpleWebProdConfig, commonAdvanceConfig, {
+module.exports = function(options) {
+  return webpackMerge.smart(simpleWebProdConfig({env: ENV}), commonAdvanceConfig({env: ENV}), {
 
-}, customConfig);
+	}, customConfig({env: ENV}));
+}

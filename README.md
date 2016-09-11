@@ -292,7 +292,7 @@ Please see the [CONTRIBUTING](https://github.com/JonnyBGod/angular2-webpack-adva
 
 - [ ] ELECTRON: css absolute paths
 - [ ] unit tests
-- [ ] npm run docs (https://github.com/TypeStrong/typedoc/issues/234)
+- [ ] npm run docs (upstream) (https://github.com/TypeStrong/typedoc/issues/234)
 - [ ] DESKTOP: lang-switcher should not display
 
 ___

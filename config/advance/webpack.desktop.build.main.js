@@ -24,147 +24,149 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'production';
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = webpackMerge.smart({
-  entry: {
-    'main.desktop': './electron/main.desktop.ts'
-  },
-
-  resolve: {
-
-    /*
-     * An array of extensions that should be used to resolve modules.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
-     */
-    extensions: ['', '.ts', '.js', '.json'],
-
-    // Make sure root is src
-    root: helpers.root('src'),
-
-    // remove other default values
-    modulesDirectories: ['node_modules'],
-
-    alias: {
-      components: helpers.root('src/app/components'),
-      frameworks: helpers.root('src/app/frameworks'),
-      assets: helpers.root('src/assets')
+module.exports = function(options) {
+  return webpackMerge.smart({
+    entry: {
+      'main.desktop': './electron/main.desktop.ts'
     },
 
-  },
+    resolve: {
 
-  module: {
-    /*
-     * An array of applied pre and post loaders.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
-     */
-    preLoaders: [
-      {
-        test: /\.ts$/,
-        loader: 'string-replace-loader',
-        query: {
-          search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
-          replace: '$1.import($3).then(mod => mod.__esModule ? mod.default : mod)',
-          flags: 'g'
-        },
-        include: [helpers.root('src')]
+      /*
+       * An array of extensions that should be used to resolve modules.
+       *
+       * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
+       */
+      extensions: ['', '.ts', '.js', '.json'],
+
+      // Make sure root is src
+      root: helpers.root('src'),
+
+      // remove other default values
+      modulesDirectories: ['node_modules'],
+
+      alias: {
+        components: helpers.root('src/app/components'),
+        frameworks: helpers.root('src/app/frameworks'),
+        assets: helpers.root('src/assets')
       },
 
-    ],
-    
-    loaders: [
-      {
-        test: /\.ts$/,
-        loaders: [
-          'awesome-typescript-loader',
-          'angular2-template-loader',
-          '@angularclass/hmr-loader'
-        ],
-        exclude: [/\.(spec|e2e)\.ts$/]
-      }
-    ]
-  },
-  /**
-     * Switch loaders to debug mode.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#debug
-     */
-  debug: false,
+    },
 
-  /**
-   * Developer tool to enhance debugging
-   *
-   * See: http://webpack.github.io/docs/configuration.html#devtool
-   * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
-   */
-  devtool: 'source-map',
+    module: {
+      /*
+       * An array of applied pre and post loaders.
+       *
+       * See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
+       */
+      preLoaders: [
+        {
+          test: /\.ts$/,
+          loader: 'string-replace-loader',
+          query: {
+            search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
+            replace: '$1.import($3).then(mod => mod.__esModule ? mod.default : mod)',
+            flags: 'g'
+          },
+          include: [helpers.root('src')]
+        },
 
-  /**
-   * Options affecting the output of the compilation.
-   *
-   * See: http://webpack.github.io/docs/configuration.html#output
-   */
-  output: {
-
-    /**
-     * The output directory as absolute path (required).
-     *
-     * See: http://webpack.github.io/docs/configuration.html#output-path
-     */
-    path: helpers.root('dist'),
-
-    /**
-     * Specifies the name of each output file on disk.
-     * IMPORTANT: You must not specify an absolute path here!
-     *
-     * See: http://webpack.github.io/docs/configuration.html#output-filename
-     */
-    filename: '[name].bundle.js',
-
-    /**
-     * The filename of the SourceMaps for the JavaScript files.
-     * They are inside the output.path directory.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
-     */
-    sourceMapFilename: '[name].bundle.map',
-
-    /**
-     * The filename of non-entry chunks as relative path
-     * inside the output.path directory.
-     *
-     * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
-     */
-    chunkFilename: '[id].chunk.js'
-
-  },
-
-  plugins: [
-
-    new CopyWebpackPlugin([{
-      from: 'electron/package.json',
-      to: 'package.json'
-    }])
-  ],
-
-  externals: [
-    (function() {
-      var IGNORES = [
-        'electron'
-      ];
-      return function(context, request, callback) {
-        if (IGNORES.indexOf(request) >= 0) {
-          return callback(null, 'require(\'' + request + '\')');
+      ],
+      
+      loaders: [
+        {
+          test: /\.ts$/,
+          loaders: [
+            'awesome-typescript-loader',
+            'angular2-template-loader',
+            '@angularclass/hmr-loader'
+          ],
+          exclude: [/\.(spec|e2e)\.ts$/]
         }
-        return callback();
-      };
-    })()
-  ],
+      ]
+    },
+    /**
+       * Switch loaders to debug mode.
+       *
+       * See: http://webpack.github.io/docs/configuration.html#debug
+       */
+    debug: false,
 
-  target: 'electron-main',
+    /**
+     * Developer tool to enhance debugging
+     *
+     * See: http://webpack.github.io/docs/configuration.html#devtool
+     * See: https://github.com/webpack/docs/wiki/build-performance#sourcemaps
+     */
+    devtool: 'source-map',
 
-  node: {
-    __dirname: false,
-    __filename: false,
-  }
-}, customConfig);
+    /**
+     * Options affecting the output of the compilation.
+     *
+     * See: http://webpack.github.io/docs/configuration.html#output
+     */
+    output: {
+
+      /**
+       * The output directory as absolute path (required).
+       *
+       * See: http://webpack.github.io/docs/configuration.html#output-path
+       */
+      path: helpers.root('dist'),
+
+      /**
+       * Specifies the name of each output file on disk.
+       * IMPORTANT: You must not specify an absolute path here!
+       *
+       * See: http://webpack.github.io/docs/configuration.html#output-filename
+       */
+      filename: '[name].bundle.js',
+
+      /**
+       * The filename of the SourceMaps for the JavaScript files.
+       * They are inside the output.path directory.
+       *
+       * See: http://webpack.github.io/docs/configuration.html#output-sourcemapfilename
+       */
+      sourceMapFilename: '[name].bundle.map',
+
+      /**
+       * The filename of non-entry chunks as relative path
+       * inside the output.path directory.
+       *
+       * See: http://webpack.github.io/docs/configuration.html#output-chunkfilename
+       */
+      chunkFilename: '[id].chunk.js'
+
+    },
+
+    plugins: [
+
+      new CopyWebpackPlugin([{
+        from: 'electron/package.json',
+        to: 'package.json'
+      }])
+    ],
+
+    externals: [
+      (function() {
+        var IGNORES = [
+          'electron'
+        ];
+        return function(context, request, callback) {
+          if (IGNORES.indexOf(request) >= 0) {
+            return callback(null, 'require(\'' + request + '\')');
+          }
+          return callback();
+        };
+      })()
+    ],
+
+    target: 'electron-main',
+
+    node: {
+      __dirname: false,
+      __filename: false,
+    }
+  }, customConfig({env: ENV}));
+}

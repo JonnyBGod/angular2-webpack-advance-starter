@@ -13,6 +13,8 @@ const customConfig = require('../custom/webpack.common.web.js');
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = webpackMerge.smart(commonAdvanceConfig, {
+module.exports = function(options) {
+	return webpackMerge.smart(commonAdvanceConfig(), {
 
-}, customConfig);
+	}, customConfig());
+}

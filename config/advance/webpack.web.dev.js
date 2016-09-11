@@ -10,10 +10,17 @@ const simpleWebDevConfig = require('../webpack.dev.js');
 const customConfig = require('../custom/webpack.web.dev.js');
 
 /**
+ * Webpack Constants
+ */
+const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
+
+/**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
-module.exports = webpackMerge.smart(simpleWebDevConfig, commonAdvanceConfig, {
+module.exports = function(options) {
+	return webpackMerge.smart(simpleWebDevConfig({env: ENV}), commonAdvanceConfig({env: ENV}), {
 
-}, customConfig);
+	}, customConfig({env: ENV}));
+}
