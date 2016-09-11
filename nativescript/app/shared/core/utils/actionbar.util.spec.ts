@@ -1,4 +1,4 @@
-import {t} from '../../../app/frameworks/test/index';
+import {t} from 'frameworks/test/index';
 import {ActionBarUtil} from './actionbar.util';
 
 export function main() {

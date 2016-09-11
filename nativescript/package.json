@@ -5,48 +5,55 @@
   "nativescript": {
     "id": "com.yourdomain.appname",
     "tns-ios": {
-      "version": "2.1.1"
+      "version": "2.2.1"
     },
     "tns-android": {
-      "version": "2.0.0"
+      "version": "2.2.0"
     }
   },
   "scripts": {
-    "clean": "rimraf platforms node_modules",
+    "clean": "rimraf platforms node_modules \"app/**/*.{js,js.map}\"",
     "preclean:install": "npm run clean",
     "clean:install": "npm set progress=false && npm i",
     "start:ios": "WEBPACK_OPTS='--display-error-details --display-modules --display-reasons --display-chunks' tns run ios --bundle",
     "start:android": "WEBPACK_OPTS='--display-error-details --display-modules --display-reasons --display-chunks' tns run android --bundle",
+    "start:ios": "tns livesync ios --emulator --watch",
+    "start:android": "tns livesync android --emulator --watch",
+    "start:ios:device": "tns livesync ios --watch",
+    "start:android:device": "tns livesync android --watch",
     "build:ios": "tns build ios --for-device --bundle",
     "build:android": "tns build android --for-device --bundle"
   },
   "dependencies": {
-    "@angular/common": "2.0.0-rc.4",
-    "@angular/compiler": "2.0.0-rc.4",
-    "@angular/core": "2.0.0-rc.4",
-    "@angular/forms": "^0.2.0",
-    "@angular/http": "2.0.0-rc.4",
-    "@angular/platform-browser": "2.0.0-rc.4",
-    "@angular/platform-browser-dynamic": "2.0.0-rc.4",
-    "@angular/platform-server": "2.0.0-rc.4",
-    "@angular/router": "3.0.0-beta.2",
+    "@angular/common": "2.0.0-rc.6",
+    "@angular/compiler": "2.0.0-rc.6",
+    "@angular/core": "2.0.0-rc.6",
+    "@angular/forms": "^2.0.0-rc.6",
+    "@angular/http": "2.0.0-rc.6",
+    "@angular/platform-browser": "2.0.0-rc.6",
+    "@angular/platform-browser-dynamic": "2.0.0-rc.6",
+    "@angular/platform-server": "2.0.0-rc.6",
+    "@angular/router": "3.0.0-rc.2",
+    "@angularclass/conventions-loader": "^1.0.2",
+    "@angularclass/hmr": "~1.2.0",
+    "@angularclass/hmr-loader": "~3.0.2",
     "@angularclass/request-idle-callback": "^1.0.7",
     "@angularclass/webpack-toolkit": "^1.3.3",
-    "@ngrx/core": "^1.0.1",
-    "@ngrx/store": "^2.0.1",
-    "angulartics2": "^1.1.2",
-    "core-js": "^2.4.0",
-    "lodash-es": "^4.13.1",
+    "@ngrx/core": "^1.1.0",
+    "@ngrx/store": "^2.1.2",
+    "angulartics2": "^1.1.6",
+    "core-js": "^2.4.1",
+    "lodash-es": "^4.15.0",
     "nativescript-angular": "next",
-    "nativescript-ng2-translate": "^1.1.0",
-    "ng2-translate": "2.2.2",
+    "nativescript-ng2-translate": "^1.2.0",
+    "ng2-translate": "2.4.3",
     "parse5": "1.4.2",
     "punycode": "1.3.2",
     "querystring": "0.2.0",
-    "rxjs": "5.0.0-beta.6",
-    "tns-core-modules": "^2.0.1",
+    "rxjs": "5.0.0-beta.11",
+    "tns-core-modules": "^2.2.1",
     "url": "0.10.3",
-    "zone.js": "^0.6.12"
+    "zone.js": "~0.6.17"
   },
   "devDependencies": {
     "babel-traverse": "6.9.0",
@@ -54,8 +61,9 @@
     "babylon": "6.8.1",
     "filewalker": "0.1.2",
     "lazy": "1.0.11",
-    "nativescript-dev-webpack": "0.0.19",
+    "nativescript-dev-webpack": "0.0.20",
+    "rimraf": "^2.5.2",
     "shelljs": "^0.5.3",
-    "typescript": "^2.0.0-beta"
+    "typescript": "2.0.2"
   }
 }

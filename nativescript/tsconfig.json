@@ -1,26 +1,26 @@
 {
-  "compilerOptions": {
-    "module": "commonjs",
-    "target": "es5",
-    "sourceMap": true,
-    "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
-    "noEmitHelpers": true,
-    "baseUrl": "./src",
-    "paths": {
-      "frameworks/*": [
-        "../src/app/frameworks/*"
-      ],
-      "components/*": [
-        "../src/app/components/*"
-      ],
-      "assets/*": [
-        "../src/app/assets/*"
-      ]
-    }
-  },
-  "exclude": [
-    "node_modules",
-    "platforms"
-  ]
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es5",
+        "sourceMap": true,
+        "emitDecoratorMetadata": true,
+        "experimentalDecorators": true,
+        "noEmitHelpers": true,
+        "baseUrl": "./src",
+        "paths": {
+            "frameworks/*": [
+                "../src/app/frameworks/*"
+            ],
+            "components/*": [
+                "../src/app/components/*"
+            ],
+            "assets/*": [
+                "../src/app/assets/*"
+            ]
+        }
+    },
+    "exclude": [
+        "node_modules",
+        "platforms"
+    ]
 }

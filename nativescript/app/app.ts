@@ -1,41 +1,31 @@
-// import 'reflect-metadata';
-// import 'rxjs/add/operator/map';
-
 // nativescript
-import {nativeScriptBootstrap} from 'nativescript-angular/application';
-import {NS_ROUTER_DIRECTIVES, nsProvideRouter} from 'nativescript-angular/router';
+import {
+	NativeScriptModule,
+	platformNativeScriptDynamic,
+	onAfterLivesync,
+	onBeforeLivesync
+} from 'nativescript-angular/platform';
 
-// angular 
-import {provide, enableProdMode} from '@angular/core';
+/**
+ * Config
+ * Seed provided configuration options
+ */
+import { Config } from 'frameworks/core/index';
 
-// libs
-import {TranslateLoader} from 'ng2-translate/ng2-translate';
-import {TNSTranslateLoader} from 'nativescript-ng2-translate/nativescript-ng2-translate';
+// (required) platform target (allows component decorators to use the right view template)
+Config.PLATFORM_TARGET = Config.PLATFORMS.MOBILE_NATIVE;
 
-// config
-import {CoreConfigService, WindowService, HttpService} from 'frameworks/core/index';
-CoreConfigService.PLATFORM_TARGET = CoreConfigService.PLATFORMS.MOBILE_NATIVE;
-CoreConfigService.DEBUG.LEVEL_4 = true;
-CoreConfigService.ROUTER_DIRECTIVES = NS_ROUTER_DIRECTIVES;
+// (optional) log level - defaults to no logging if not set
+Config.DEBUG.LEVEL_4 = true;
+
+// (optional) custom i18n language support
+// example of how you can configure your own language sets
+// you can use the AppConfig class or build something similar into your own framework
+import { AppConfig } from 'frameworks/sample/services/app-config';
+import { MultilingualService } from 'frameworks/i18n/services/multilingual.service';
+MultilingualService.SUPPORTED_LANGUAGES = AppConfig.SUPPORTED_LANGUAGES;
 
 // app
-import {NS_APP_PROVIDERS} from './shared/nativescript/index';
-import {routes} from 'components/app/app.routes';
-import {NSAppComponent} from './pages/app/app.component';
-import {WindowNative, ModalNative, NSHttpService} from './shared/core/index';
-  
-// Uncomment when ready to publish to App Stores:
-// enableProdMode();
+import { NativeModule } from './native.module';
 
-nativeScriptBootstrap(NSAppComponent, [
-  provide(WindowService, { useClass: WindowNative }),
-  ModalNative,
-  provide(HttpService, { useClass: NSHttpService }),
-  provide(TranslateLoader, {
-    useFactory: () => {
-      return new TNSTranslateLoader('assets/i18n');
-    }
-  }),
-  NS_APP_PROVIDERS,
-  nsProvideRouter(routes, { enableTracing: false })
-]);
+platformNativeScriptDynamic().bootstrapModule(NativeModule);

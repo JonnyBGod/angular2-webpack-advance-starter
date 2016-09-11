@@ -1,0 +1,86 @@
+// nativescript
+import { NativeScriptModule, platformNativeScriptDynamic, onAfterLivesync, onBeforeLivesync } from 'nativescript-angular/platform';
+import { NativeScriptFormsModule } from 'nativescript-angular/forms';
+import { NativeScriptHttpModule } from "nativescript-angular/http";
+import { NativeScriptRouterModule } from 'nativescript-angular/router';
+import { RouterExtensions as TNSRouterExtensions } from 'nativescript-angular/router/router-extensions';
+import { NativescriptPlatformLocation } from 'nativescript-angular/router/ns-platform-location';
+import { NSLocationStrategy } from 'nativescript-angular/router/ns-location-strategy';
+
+// angular
+import { NgModule } from '@angular/core';
+import { LocationStrategy, PlatformLocation } from '@angular/common';
+
+// libs
+import { TranslateModule, TranslateLoader } from 'ng2-translate/ng2-translate';
+import { TNSTranslateLoader } from 'nativescript-ng2-translate/nativescript-ng2-translate';
+
+// app
+import { WindowService, ConsoleService, RouterExtensions } from 'frameworks/core/index';
+import { NSAppComponent } from './pages/app/app.component';
+import { AboutComponent } from 'components/about/about.component';
+import { HomeComponent } from 'components/home/home.component';
+import { routes } from 'components/app.routes';
+
+// feature modules
+import { CoreModule } from 'frameworks/core/core.module';
+import { AnalyticsModule } from 'frameworks/analytics/analytics.module';
+import { MultilingualModule } from 'frameworks/i18n/multilingual.module';
+import { SampleModule } from 'frameworks/sample/sample.module';
+
+// {N} custom app specific
+import { WindowNative } from './shared/core/index';
+import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
+
+// intermediate component module
+// helps encapsulate custom native modules in with the components
+// note: couple ways this could be done, just one option presented here...
+@NgModule({
+  imports: [
+    NativeScriptModule,
+    NativeScriptFormsModule,
+    NativeScriptHttpModule,
+    NativeScriptRouterModule,
+    MultilingualModule,
+    TranslateModule
+  ],
+  declarations: [
+    HomeComponent,
+    AboutComponent
+  ],
+  exports: [
+    NativeScriptModule,
+    NativeScriptFormsModule,
+    NativeScriptHttpModule,
+    NativeScriptRouterModule,
+    MultilingualModule
+  ]
+})
+class ComponentModule { }
+
+@NgModule({
+  imports: [
+    CoreModule.forRoot([
+      { provide: WindowService, useClass: WindowNative },
+      { provide: ConsoleService, useValue: console }
+    ]),
+    AnalyticsModule,
+    TranslateModule.forRoot({
+      provide: TranslateLoader,
+      useFactory: () => new TNSTranslateLoader('assets/i18n')
+    }),
+    SampleModule,
+    ComponentModule,
+    NativeScriptRouterModule.forRoot(routes)
+  ],
+  declarations: [
+    NSAppComponent
+  ],
+  providers: [
+    NS_ANALYTICS_PROVIDERS,
+    { provide: RouterExtensions, useClass: TNSRouterExtensions }
+  ],
+  bootstrap: [NSAppComponent]
+})
+
+export class NativeModule { }

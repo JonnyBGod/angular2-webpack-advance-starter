@@ -1,8 +1,12 @@
 // angular
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
 
 // libs
-// import {Angulartics2} from 'angulartics2';
+// import { Angulartics2 } from 'angulartics2';
+
+// TODO: This is a wip at the moment
+// Will implement native segment sdk soon
+// https://github.com/NathanWalker/nativescript-segment/issues/1
 
 @Injectable()
 export class NSAngulartics2Segment {
@@ -24,5 +28,5 @@ export class NSAngulartics2Segment {
 
   public setUserProperties(properties: any) {
     // TODO
-  }    
+  }
 }

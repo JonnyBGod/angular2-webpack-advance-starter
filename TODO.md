@@ -6,7 +6,7 @@ TODO
 - [x] Fix unit tests
 - [x] Fix E2E tests (https://github.com/TypeStrong/ts-node/issues/138)
 - [x] Electron Builder
-- [ ] Nativescript
+- [ ] Nativescript (https://github.com/NativeScript/nativescript-angular/issues/385)
 
 
 ## Before Open Sourcing
