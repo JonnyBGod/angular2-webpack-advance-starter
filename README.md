@@ -1,4 +1,14 @@
-![Angular 2 Webpack Starter](https://cloud.githubusercontent.com/assets/1016365/9863762/a84fed4a-5af7-11e5-9dde-d5da01e797e7.png)![Angular 2 Webpack Advance Starter Integrations](https://d2wp4shknjcfjl.cloudfront.net/api/file/SPLl77rSTuGZ7APrXizi)
+<p align="center">
+  <a href="https://angularclass.com" target="_blank">
+    <img src="https://cloud.githubusercontent.com/assets/1016365/9863762/a84fed4a-5af7-11e5-9dde-d5da01e797e7.png" alt="Webpack and Angular 2" width="500" height="320"/>
+  </a>
+</p>
+<p align="center">+</p>
+<p align="center">
+  <a href="https://angularclass.com" target="_blank">
+    <img src="https://d2wp4shknjcfjl.cloudfront.net/api/file/SPLl77rSTuGZ7APrXizi" alt="Angular 2 Webpack Advance Starter Integrations" width="500" height="320"/>
+  </a>
+</p>
 
 [![devDependency Status](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter/dev-status.svg)](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter#info=devDependencies)
 [![Build Status](https://img.shields.io/travis/JonnyBGod/angular2-webpack-advance-starter/master.svg?style=flat)](https://travis-ci.org/JonnyBGod/angular2-webpack-advance-starter)
