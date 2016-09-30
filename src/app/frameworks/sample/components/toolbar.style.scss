@@ -38,3 +38,10 @@
     opacity: 1;
   }
 }
+
+/* platform specific */
+.desktop :host {
+  lang-switcher {
+    display: none;
+  }
+}

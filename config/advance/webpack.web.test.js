@@ -22,12 +22,12 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 module.exports = function(options) {
   return webpackMerge.smart(simpleWebTestConfig({env: ENV}), commonAdvanceConfig({env: ENV}), {
 		module: {
-	    loaders: [
-	      {
-	        test: /\.ts$/,
-	        loaders: ['awesome-typescript-loader', 'angular2-template-loader'],
-	        exclude: [/\.e2e\.ts$/]
-	      }
+	    preLoaders: [
+        {
+          test: /\.ts$/,
+          loaders: ['angular2-template-loader', 'tslint-loader'],
+          exclude: [helpers.root('node_modules')]
+        }
 	    ]
 	  }
 	}, customConfig({env: ENV}));

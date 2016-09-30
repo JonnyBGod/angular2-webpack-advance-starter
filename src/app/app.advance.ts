@@ -11,7 +11,10 @@ import { routes } from 'components/app.routes';
 // config
 import { Config, WindowService, ConsoleService } from 'frameworks/core/index';
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
-Config.DEBUG.LEVEL_4 = true;
+if (String(ENV) === 'dev') {
+  // only output console logging in dev mode
+  Config.DEBUG.LEVEL_4 = true;
+}
 
 // sample config (extra)
 import { AppConfig } from 'frameworks/sample/services/app-config';

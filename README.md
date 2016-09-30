@@ -23,6 +23,7 @@ I would like to thank both for their great work and collaboration. Please refer 
 
 #### Integration with:
 - [ngrx/store](https://github.com/ngrx/store) RxJS powered state management, inspired by **Redux**
+- [ngrx/effects](https://github.com/ngrx/effects) Side effect model for @ngrx/store
 - [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n 
   - Usage is optional but on by default
   - Up to you and your team how you want to utilize it. It can be easily removed if not needed. 
@@ -71,7 +72,8 @@ I would like to thank both for their great work and collaboration. Please refer 
     - Only reports data in **production** build
   - `i18n`: internationalization features
   - `electron`: [Electron](http://electron.atom.io/) specific code
-  - `test`: test specific code providing conveniences to make testing your code easier and faster 
+  - `sample`: Just a sample module providing some components and services
+  - `test`: test specific code providing conveniences to make testing your code easier and faster
 
 ### Enhanced testing support options
 - mocks for various services
@@ -91,6 +93,8 @@ I would like to thank both for their great work and collaboration. Please refer 
   - see [example here](https://github.com/JonnyBGod/angular2-webpack-advance-starter/blob/master/src/app/frameworks/test/shorthand/ng2-jasmine.ts)
   
 **Advice**: If your project is intended to target a single platform (i.e, web only), then [angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter) is likely more than suitable for your needs. However if your project goals are to target multiple platforms (web, native mobile and native desktop), with powerful out of the box library support and highly configurable/flexible testing options, then you might want to keep reading.
+
+Additionally, this seed is intended to push a couple boundaries so if you see dependencies that are *bleeding edge*, this is intentional.
 
 # Getting Started
 ### Dependencies
@@ -301,9 +305,7 @@ Please see the [CONTRIBUTING](https://github.com/JonnyBGod/angular2-webpack-adva
 ## Known Bugs
 
 - [ ] ELECTRON: css absolute paths
-- [ ] unit tests
 - [ ] npm run docs (upstream) (https://github.com/TypeStrong/typedoc/issues/234)
-- [ ] DESKTOP: lang-switcher should not display
 
 ___
 

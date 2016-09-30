@@ -1,23 +1,22 @@
 // libs
 import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
 // app
 import { BaseComponent, RouterExtensions } from 'frameworks/core';
-import { NameListService } from 'frameworks/sample';
+import { NAME_LIST_ACTIONS } from 'frameworks/sample';
 
 @BaseComponent({
   selector: 'sd-home',
   templateUrl: 'home.template.html',
-  styleUrls: ['home.style.scss']
+  styleUrls: [ 'home.style.scss' ]
 })
 export class HomeComponent {
+  public names$: Observable<any>;
   public newName: string = '';
-  constructor(
-    private store: Store<any>,
-    public nameListService: NameListService,
-    public routerext: RouterExtensions
-  ) {
 
+  constructor(private store: Store<any>, public routerext: RouterExtensions) {
+    this.names$ = store.select('names');
   }
 
   /*
@@ -25,7 +24,7 @@ export class HomeComponent {
    * @returns return false to prevent default form submit behavior to refresh the page.
    */
   addName(): boolean {
-    this.nameListService.add(this.newName);
+    this.store.dispatch({ type: NAME_LIST_ACTIONS.ADD, payload: this.newName });
     this.newName = '';
     return false;
   }

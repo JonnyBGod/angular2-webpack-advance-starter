@@ -1,73 +1,94 @@
-import { TestBed, inject } from '@angular/core/testing';
+import { TestBed, getTestBed } from '@angular/core/testing';
+import { Injector } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
-// import { HttpModule, Response, ResponseOptions } from '@angular/http';
-import { HttpModule } from '@angular/http';
-// import { MockBackend } from '@angular/http/testing';
+import { ResponseOptions, Response, XHRBackend, HttpModule } from '@angular/http';
+import { MockBackend, MockConnection } from '@angular/http/testing';
 
 // libs
-import { StoreModule } from '@ngrx/store';
-import { Observable } from 'rxjs/Rx';
+import { Store, StoreModule } from '@ngrx/store';
+import { EffectsTestingModule, EffectsRunner } from '@ngrx/effects/testing';
 
 // app
-import { t } from 'frameworks/test/index';
-/*import {
-TEST_CORE_PROVIDERS,
-GET_HTTP_PROVIDERS_INJECTOR,
-TEST_LOCATION_PROVIDERS
-} from 'frameworks/core/testing/index';*/
+import { t } from 'frameworks/test';
+// import {
+//   TEST_CORE_PROVIDERS,
+//   GET_HTTP_PROVIDERS_INJECTOR,
+//   TEST_LOCATION_PROVIDERS
+// } from 'frameworks/core/testing';
 import { AnalyticsModule } from 'frameworks/analytics/analytics.module';
-import { NameListService, nameListReducer } from './name-list.service';
+import {
+  NameListService,
+  nameListReducer,
+  NameListEffects,
+  NAME_LIST_ACTIONS
+} from './name-list.service';
 
 // test module configuration for each test
 const testModuleConfig = () => {
   TestBed.configureTestingModule({
     imports: [
-      FormsModule,
-      AnalyticsModule,
+      FormsModule, AnalyticsModule,
       StoreModule.provideStore({ names: nameListReducer }),
-      HttpModule,
-      RouterTestingModule
+      EffectsTestingModule,
+      HttpModule, RouterTestingModule
     ],
-    providers: [NameListService]
+    providers: [
+      NameListService,
+      NameListEffects,
+      {provide: XHRBackend, useClass: MockBackend}
+    ]
   });
 };
 
-t.describe('app: NameListService', () => {
-  // let nameList: NameListService;
+const mockBackendResponse = (connection: MockConnection, response: string) => {
+  connection.mockRespond(new Response(new ResponseOptions({body: response})));
+};
 
-  t.be(testModuleConfig);
-  // t.be(() => {
-  //   testModuleConfig();
+export function main() {
+  t.describe('app: NameListService', () => {
+    let injector: Injector;
+    let backend: MockBackend;
+    let nameList: NameListService;
+    let store: Store<any>;
+    let runner: EffectsRunner; // ngrx/effects tester
+    let nameListEffects: NameListEffects;
 
-  //   let injector = GET_HTTP_PROVIDERS_INJECTOR([
-  //     TEST_CORE_PROVIDERS(),
-  //     TEST_LOCATION_PROVIDERS(),
-  //     NameListService
-  //   ]);
+    // this will be set when a new connection is emitted from the backend.
+    let connection: MockConnection;
 
-  //   let backend = injector.get(MockBackend);
-  //   let connection: any;
-  //   backend.connections.subscribe((c: any) => connection = c);
-  //   nameList = injector.get(NameListService);
-  //   connection.mockRespond(
-  //     new Response(
-  //       new ResponseOptions({ body: '["Dijkstra", "Hopper"]' })
-  //     ));
-  // });
-
-  t.it('names should be Observable', inject([NameListService], (nameList: any) => {
-    let names = nameList.names;
-    t.e(names).toEqual(jasmine.any(Observable));
-    names.subscribe((value: Array<string>) => {
-      t.e(value).toEqual([]);
+    t.be(() => {
+      testModuleConfig();
+      injector = getTestBed();
+      backend = injector.get(XHRBackend);
+      store = injector.get(Store);
+      runner = injector.get(EffectsRunner);
+      nameListEffects = injector.get(NameListEffects);
+      // sets the connection when someone tries to access the backend with an xhr request
+      backend.connections.subscribe((c: MockConnection) => connection = c);
+      // construct after setting up connections above
+      nameList = injector.get(NameListService);
     });
-  }));
 
-  t.it('add should work', inject([NameListService], (nameList: any) => {
-    nameList.add('test');
-    nameList.names.subscribe((value: Array<string>) => {
-      t.e(value).toEqual(['test']);
+    t.it('should initialize', () => {
+      runner.queue({ type: NAME_LIST_ACTIONS.INIT });
+
+      nameListEffects.init$.subscribe(result => {
+        t.e(result)
+          .toEqual({ type: NAME_LIST_ACTIONS.INITIALIZED, payload: [ 'Dijkstra', 'Hopper' ] });
+      });
+
+      // mock response after the xhr request (which happens in constructor),
+      // otherwise it will be undefined
+      mockBackendResponse(connection, '["Dijkstra", "Hopper"]');
     });
-  }));
-});
+
+    t.it('add action', () => {
+      runner.queue({ type: NAME_LIST_ACTIONS.ADD, payload: 'Minko' });
+
+      nameListEffects.add$.subscribe(result => {
+        t.e(result).toEqual({ type: NAME_LIST_ACTIONS.NAME_ADDED, payload: 'Minko' });
+      });
+    });
+  });
+}

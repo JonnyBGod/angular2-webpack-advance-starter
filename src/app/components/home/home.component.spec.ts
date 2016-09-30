@@ -1,13 +1,20 @@
-import { TestBed, async } from '@angular/core/testing';
+// angular
 import { Component } from '@angular/core';
-import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
+import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import {
+  BaseRequestOptions,
+  ConnectionBackend,
+  Http
+} from '@angular/http';
+import { MockBackend } from '@angular/http/testing';
 
 // libs
 import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
 
 import { t } from 'frameworks/test';
-import { NameListService, nameListReducer } from 'frameworks/sample';
+import { NameListService, nameListReducer, NameListEffects } from 'frameworks/sample';
 import { CoreModule } from 'frameworks/core/core.module';
 import { AnalyticsModule } from 'frameworks/analytics/analytics.module';
 import { MultilingualModule } from 'frameworks/i18n/multilingual.module';
@@ -16,40 +23,58 @@ import { HomeComponent } from './home.component';
 // test module configuration for each test
 const testModuleConfig = () => {
   TestBed.configureTestingModule({
-    imports: [CoreModule, RouterTestingModule, AnalyticsModule,
-      MultilingualModule, StoreModule.provideStore({ names: nameListReducer })],
+    imports: [
+      CoreModule, RouterTestingModule, AnalyticsModule,
+      MultilingualModule,
+      StoreModule.provideStore({ names: nameListReducer }),
+      EffectsModule.run(NameListEffects)
+    ],
     declarations: [HomeComponent, TestComponent],
-    providers: [NameListService]
+    providers: [
+      NameListService,
+      BaseRequestOptions,
+      MockBackend,
+      {
+        provide: Http, useFactory: function (
+          backend: ConnectionBackend,
+          defaultOptions: BaseRequestOptions
+        ) {
+          return new Http(backend, defaultOptions);
+        },
+        deps: [MockBackend, BaseRequestOptions]
+      }
+    ]
   });
 };
 
-t.describe('@Component: HomeComponent', () => {
+export function main() {
+  t.describe('@Component: HomeComponent', () => {
 
-  t.be(testModuleConfig);
+    t.be(testModuleConfig);
 
-  t.it('should work',
-    async(() => {
-      TestBed.compileComponents()
-        .then(() => {
-          let fixture = TestBed.createComponent(TestComponent);
-          fixture.detectChanges();
+    t.it('should work',
+      async(() => {
+        TestBed.compileComponents()
+          .then(() => {
+            let fixture = TestBed.createComponent(TestComponent);
+            fixture.detectChanges();
 
-          let homeInstance = fixture.debugElement.children[0].componentInstance;
-          let homeDOMEl = fixture.debugElement.children[0].nativeElement;
+            let homeInstance = fixture.debugElement.children[0].componentInstance;
+            let homeDOMEl = fixture.debugElement.children[0].nativeElement;
 
-          t.expect(homeInstance.nameListService).toEqual(jasmine.any(NameListService));
-          t.expect(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(0);
+            t.e(homeDOMEl.querySelectorAll('li').length).toEqual(0);
 
-          homeInstance.newName = 'Minko';
-          homeInstance.addName();
+            homeInstance.newName = 'Minko';
+            homeInstance.addName();
 
-          fixture.detectChanges();
+            fixture.detectChanges();
 
-          t.expect(getDOM().querySelectorAll(homeDOMEl, 'li').length).toEqual(1);
-          t.expect(getDOM().querySelectorAll(homeDOMEl, 'li')[0].textContent).toEqual('Minko');
-        });
-    }));
-});
+            t.e(homeDOMEl.querySelectorAll('li').length).toEqual(1);
+            t.e(homeDOMEl.querySelectorAll('li')[0].textContent).toEqual('Minko');
+          });
+      }));
+  });
+}
 
 @Component({
   selector: 'test-cmp',
