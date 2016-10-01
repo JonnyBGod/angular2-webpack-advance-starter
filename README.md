@@ -22,6 +22,8 @@ This is an advance starter project for Angular 2 apps based on [AngularClass's](
 I would like to thank both for their great work and collaboration. Please refer to both projects' pages for extra documentation.
 
 #### Integration with:
+
+[![Join the chat at https://gitter.im/angular2-webpack-advance-starter/Lobby](https://badges.gitter.im/angular2-webpack-advance-starter/Lobby.svg)](https://gitter.im/angular2-webpack-advance-starter/Lobby?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 - [ngrx/store](https://github.com/ngrx/store) RxJS powered state management, inspired by **Redux**
 - [ngrx/effects](https://github.com/ngrx/effects) Side effect model for @ngrx/store
 - [ng2-translate](https://github.com/ocombe/ng2-translate) for i18n 
