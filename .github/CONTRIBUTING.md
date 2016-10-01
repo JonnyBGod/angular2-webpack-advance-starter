@@ -12,7 +12,7 @@ Make sure you are on latest changes and that you ran this command `npm run clean
 
 ## Project Structure
 
-The configuration file are devided in config/, config/advance/ and config/custom
+The configuration files are devided in config/, config/advance/ and config/custom
 - config/ files are upstream configuration files shared with [AngularClass's angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter)
 - config/advance/ files are the files related to this project
 - config/custom/ files should be left empty for end users only
