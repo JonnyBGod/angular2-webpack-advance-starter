@@ -301,7 +301,7 @@ Use `config/custom/` configuration files when possible to add your custom config
 
 ## Contributing
 
-Please see the [CONTRIBUTING](https://github.com/JonnyBGod/angular2-webpack-advance-starter/blob/master/.github/CONTRIBUTING.md) file for guidelines.
+Please see the [CONTRIBUTING](https://github.com/JonnyBGod/angular2-webpack-advance-starter/blob/master/.github/CONTRIBUTING.md) and [CODE_OF_CONDUCT](https://github.com/JonnyBGod/angular2-webpack-advance-starter/blob/master/.github/CODE_OF_CONDUCT.md) files for guidelines.
 
 ## Known Bugs
 
