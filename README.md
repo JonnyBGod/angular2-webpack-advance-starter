@@ -296,6 +296,7 @@ Use `config/custom/` configuration files when possible to add your custom config
 ## More Documentation
 
 [angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter)
+
 [angular2-seed-advanced](https://github.com/NathanWalker/angular2-seed-advanced)
 
 ## Contributing
