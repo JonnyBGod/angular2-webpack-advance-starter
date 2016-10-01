@@ -5,9 +5,9 @@ const REPO_NAME_RE = /Push {2}URL: https:\/\/github\.com\/.*\/(.*)\.git/;
 
 function getWebpackConfigModule() {
   if (helpers.hasProcessFlag('github-dev')) {
-    return require('../webpack.dev.js');
+    return require('../advance/webpack.web.dev.js');
   } else if (helpers.hasProcessFlag('github-prod')) {
-    return require('../webpack.prod.js');
+    return require('../advance/webpack.web.prod.js');
   } else {
     throw new Error('Invalid compile option.');
   }

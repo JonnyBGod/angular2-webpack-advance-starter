@@ -4,6 +4,10 @@
 
 const helpers = require('./helpers');
 const autoprefixer = require('autoprefixer');
+const webpackMerge = require('webpack-merge'); // used to merge webpack configs
+
+const customConfig = require('../custom/webpack.common.js');
+
 /**
  * Webpack Plugins
  */
@@ -23,7 +27,7 @@ const METADATA = {
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function(options) {
-  return {
+  return webpackMerge.smart({
     /**
      * Merged metadata from webpack.common.js for index.html
      *
@@ -99,5 +103,5 @@ module.exports = function(options) {
       })()
     ]*/
 
-  };
+  }, customConfig());
 }
