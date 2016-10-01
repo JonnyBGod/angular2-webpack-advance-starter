@@ -15,7 +15,7 @@
 [![GitHub version](https://badge.fury.io/gh/JonnyBGod/angular2-webpack-advance-starter.svg)](https://badge.fury.io/gh/JonnyBGod/angular2-webpack-advance-starter)
 [![Dependency Status](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter.svg)](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter)
 
-[![Gitter Chat](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/JonnyBGod/angular2-webpack-advance-starter)
+[![Gitter Chat](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/angular2-webpack-advance-starter/Lobby)
 
 This is an advance starter project for Angular 2 apps based on [AngularClass's](https://github.com/AngularClass) [angular2-webpack-starter](https://github.com/AngularClass/angular2-webpack-starter) and [Nathan Walker's](https://github.com/NathanWalker) [angular2-seed-advanced](https://github.com/NathanWalker/angular2-seed-advanced).
 

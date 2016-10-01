@@ -1,4 +1,4 @@
-**Note: for support questions, please use one of these channels:** [Chat: AngularClass.slack](http://angularclass.com/member-join/) or [Twitter: @AngularClass](https://twitter.com/AngularClass)
+**Note: for support questions, please use one of these channels:** [Chat: Gitter](https://gitter.im/angular2-webpack-advance-starter/Lobby)
 
 * **I'm submitting a ...**
 [ ] bug report
