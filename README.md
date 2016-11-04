@@ -114,7 +114,7 @@ git clone --depth 1 https://github.com/JonnyBGod/angular2-webpack-advance-starte
 cd angular2-seed-advanced
 
 # install the project's dependencies
-npm install
+npm install or yarn
 
 # start the server
 npm start

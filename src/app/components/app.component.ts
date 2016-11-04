@@ -12,8 +12,8 @@ import { BaseComponent, Config, LogService } from 'frameworks/core';
  */
 @BaseComponent({
   selector: 'app',
-  templateUrl: 'app.template.html',
-  styleUrls: ['app.style.scss'],
+  templateUrl: 'app.component.html',
+  styleUrls: ['app.component.scss'],
   changeDetection: ChangeDetectionStrategy.Default // Everything else uses OnPush
 })
 export class AppComponent {

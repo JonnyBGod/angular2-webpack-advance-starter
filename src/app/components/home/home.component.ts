@@ -8,8 +8,8 @@ import { NAME_LIST_ACTIONS } from 'frameworks/sample';
 
 @BaseComponent({
   selector: 'sd-home',
-  templateUrl: 'home.template.html',
-  styleUrls: [ 'home.style.scss' ]
+  templateUrl: 'home.component.html',
+  styleUrls: [ 'home.component.scss' ]
 })
 export class HomeComponent {
   public names$: Observable<any>;

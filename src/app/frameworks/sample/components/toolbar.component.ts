@@ -3,8 +3,8 @@ import { BaseComponent, LogService } from 'frameworks/core';
 
 @BaseComponent({
   selector: 'sd-toolbar',
-  templateUrl: 'toolbar.template.html',
-  styleUrls: ['toolbar.style.scss']
+  templateUrl: 'toolbar.component.html',
+  styleUrls: ['toolbar.component.scss']
 })
 export class ToolbarComponent {
 

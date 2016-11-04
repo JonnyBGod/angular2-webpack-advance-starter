@@ -8,8 +8,8 @@ import { MULTILINGUAL_ACTIONS, MultilingualService } from '../index';
 
 @BaseComponent({
   selector: 'lang-switcher',
-  templateUrl: 'lang-switcher.template.html',
-  styleUrls: ['lang-switcher.style.css']
+  templateUrl: 'lang-switcher.component.html',
+  styleUrls: ['lang-switcher.component.css']
 })
 export class LangSwitcherComponent {
   public lang: string;
