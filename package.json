@@ -1,6 +1,6 @@
 {
   "name": "angular2-webpack-advance-starter",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "An Angular 2 Webpack Starter kit featuring Angular 2 (Router, Http, Forms, Services, Tests, E2E, Coverage), Karma, Protractor, Jasmine, Istanbul, TypeScript, and Webpack by AngularClass",
   "keywords": [
     "angular2",
@@ -36,7 +36,7 @@
     "prebuild:dev": "npm run clean:dist",
     "build:dev": "webpack --config config/advance/webpack.web.dev.js --progress --profile",
     "prebuild:prod": "npm run clean:dist",
-    "build:docker": "npm run build:prod && docker build -t angular2-webpack-start:latest .",
+    "build:docker": "npm run build:prod && docker build -t angular2-webpack-advance-start:latest .",
     "build:prod": "webpack --config config/advance/webpack.web.prod.js  --progress --profile --bail",
     "build:prod:desktop:renderer": "webpack --config config/advance/webpack.desktop.build.renderer.js  --progress --profile --bail",
     "build:prod:desktop:main": "webpack --config config/advance/webpack.desktop.build.main.js  --progress --profile --bail",
@@ -92,7 +92,7 @@
     "@ngrx/core": "^1.1.0",
     "@ngrx/effects": "^2.0.0",
     "@ngrx/store": "^2.1.2",
-    "angulartics2": "^1.1.9",
+    "angulartics2": "^1.2.2",
     "assets-webpack-plugin": "^3.4.0",
     "core-js": "^2.4.1",
     "http-server": "^0.9.0",
@@ -126,7 +126,7 @@
     "gh-pages": "^0.11.0",
     "html-webpack-plugin": "^2.21.0",
     "imports-loader": "^0.6.5",
-    "istanbul-instrumenter-loader": "^1.0.0",
+    "istanbul-instrumenter-loader": "^0.2.0",
     "json-loader": "^0.5.4",
     "karma": "^1.2.0",
     "karma-chrome-launcher": "^2.0.0",
@@ -138,7 +138,7 @@
     "karma-webpack": "1.8.0",
     "node-sass": "^3.8.0",
     "parse5": "^2.2.2",
-    "postcss-loader": "^0.13.0",
+    "postcss-loader": "^1.1.0",
     "protractor": "^4.0.9",
     "raw-loader": "0.5.1",
     "rimraf": "^2.5.2",
@@ -151,7 +151,7 @@
     "ts-helpers": "1.1.2",
     "tslint": "^4.0.0-dev.0",
     "tslint-loader": "^2.1.5",
-    "typedoc": "^0.5.0",
+    "typedoc": "^0.5.1",
     "typescript": "^2.0.6",
     "url-loader": "^0.5.7",
     "webpack": "2.1.0-beta.25",
@@ -159,11 +159,12 @@
     "webpack-dev-server": "2.1.0-beta.9",
     "webpack-md5-hash": "^0.0.5",
     "webpack-merge": "^0.15.0",
-    "webpack-target-electron-renderer": "^0.4.0"
+    "webpack-target-electron-renderer": "^0.4.0",
+    "loader-utils": "^0.2.16"
   },
   "build": {
-    "app-bundle-id": "org.develar.onshape",
-    "app-category-type": "public.app-category.graphics-design",
+    "appId": "org.develar.onshape",
+    "build.mac.category": "public.app-category.graphics-design",
     "asar": false
   },
   "directories": {

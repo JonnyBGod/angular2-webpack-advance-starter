@@ -37,13 +37,12 @@ module.exports = function(options) {
        *
        * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
        */
-      extensions: ['', '.ts', '.js', '.json'],
+      extensions: ['.ts', '.js', '.json'],
 
-      // Make sure root is src
-      root: helpers.root('src'),
-
-      // remove other default values
-      modulesDirectories: ['node_modules'],
+      modules: [
+        helpers.root('src'),
+        'node_modules'
+      ],
 
       alias: {
         components: helpers.root('src/app/components'),
@@ -54,26 +53,8 @@ module.exports = function(options) {
     },
 
     module: {
-      /*
-       * An array of applied pre and post loaders.
-       *
-       * See: http://webpack.github.io/docs/configuration.html#module-preloaders-module-postloaders
-       */
-      preLoaders: [
-        {
-          test: /\.ts$/,
-          loader: 'string-replace-loader',
-          query: {
-            search: '(System|SystemJS)(.*[\\n\\r]\\s*\\.|\\.)import\\((.+)\\)',
-            replace: '$1.import($3).then(mod => mod.__esModule ? mod.default : mod)',
-            flags: 'g'
-          },
-          include: [helpers.root('src')]
-        },
 
-      ],
-      
-      loaders: [
+      rules: [
         {
           test: /\.ts$/,
           loaders: [
@@ -85,12 +66,6 @@ module.exports = function(options) {
         }
       ]
     },
-    /**
-       * Switch loaders to debug mode.
-       *
-       * See: http://webpack.github.io/docs/configuration.html#debug
-       */
-    debug: false,
 
     /**
      * Developer tool to enhance debugging

@@ -18,6 +18,8 @@ import { BaseComponent, Config, LogService } from 'frameworks/core';
 })
 export class AppComponent {
   constructor(public analytics: AnalyticsService, public logger: LogService) {
+    this.analytics.devMode(`${Config.ENVIRONMENT().ENV}` === 'development' ? true : false);
+
     logger.debug(`Config env: ${Config.ENVIRONMENT().ENV}`);
   }
 }

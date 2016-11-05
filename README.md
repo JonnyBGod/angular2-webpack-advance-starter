@@ -35,7 +35,7 @@ I would like to thank both for their great work and collaboration. Please refer 
 - (WIP) [NativeScript](https://www.nativescript.org/) cross platform mobile (w/ native UI) apps. [Setup instructions here](#nativescript-app).
 - [Electron](http://electron.atom.io/) cross platform desktop apps (Mac, Windows and Linux). [Setup instructions here](#electron-app).
 
-| ![Multiple Platforms](https://d2wp4shknjcfjl.cloudfront.net/api/file/ihp3WyiqS1WdRYaBEYKn) |
+| ![Multiple Platforms](https://cdn.filestackcontent.com/zZlQKKKjQUaBr9pLkEVK) |
 | :---: |
 | *The zen of multiple platforms.* Chrome, Android and iPhone all running the same code. |
 
@@ -114,7 +114,7 @@ git clone --depth 1 https://github.com/JonnyBGod/angular2-webpack-advance-starte
 cd angular2-seed-advanced
 
 # install the project's dependencies
-npm install or yarn
+npm install or yarn install
 
 # start the server
 npm start

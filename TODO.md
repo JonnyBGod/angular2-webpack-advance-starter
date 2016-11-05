@@ -34,6 +34,7 @@ TODO
 
 - [ ] ELECTRON: css absolute paths
 - [ ] npm run docs (upstream) (https://github.com/TypeStrong/typedoc/issues/234)
+- [ ] remove loader-utils form package.json once https://github.com/s-panferov/awesome-typescript-loader/pull/242
 
 ### Before commit manual checks
 
@@ -42,6 +43,7 @@ TODO
 - [x] npm start
 - [x] npm run e2e
 - [ ] npm run docs
+- [x] npm run build:prod
 
 - [x] npm run start:desktop
 - [x] npm run build:desktop

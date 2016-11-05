@@ -13,7 +13,7 @@ import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './components/app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
-import { AppState, InteralStateType } from './app.service';
+import { AppState, InternalStateType } from './app.service';
 
 // Advance
 import { ADVANCE_MODULES } from './app.advance';
@@ -27,7 +27,7 @@ const APP_PROVIDERS = [
 ];
 
 type StoreType = {
-  state: InteralStateType,
+  state: InternalStateType,
   restoreInputValues: () => void,
   disposeOldHosts: () => void
 };

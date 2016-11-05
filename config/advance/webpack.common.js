@@ -3,7 +3,7 @@
  */
 
 const helpers = require('./helpers');
-const autoprefixer = require('autoprefixer');
+const webpack = require('webpack');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 
 const customConfig = require('../custom/webpack.common.js');
@@ -11,15 +11,16 @@ const customConfig = require('../custom/webpack.common.js');
 /**
  * Webpack Plugins
  */
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 /**
  * Webpack Constants
  */
-const METADATA = {
-  title: 'Angular2 Webpack Advance Starter',
-  baseUrl: '/'
-};
+const METADATA = Object.assign({
+  baseUrl: '/',
+  isDevServer: helpers.isWebpackDevServer()
+}, customConfig.metadata);
 
 /**
  * Webpack configuration
@@ -28,12 +29,6 @@ const METADATA = {
  */
 module.exports = function(options) {
   return webpackMerge.smart({
-    /**
-     * Merged metadata from webpack.common.js for index.html
-     *
-     * See: (custom attribute)
-     */
-    metadata: METADATA,
 
     resolve: {
       alias: {
@@ -53,7 +48,7 @@ module.exports = function(options) {
        *
        * See: http://webpack.github.io/docs/configuration.html#module-loaders
        */
-      loaders: [
+      rules: [
         {
           test: /\.css$/,
           loader: 'to-string!css-loader!postcss-loader'
@@ -69,10 +64,7 @@ module.exports = function(options) {
 
     },
 
-    postcss: [autoprefixer],
-
     plugins: [
-
       /**
        * Plugin: DefinePlugin
        * Description: Define free variables.
@@ -86,6 +78,22 @@ module.exports = function(options) {
       new DefinePlugin({
         'BASE_URL': JSON.stringify(METADATA.baseUrl),
         'RUN_DEMO': METADATA.runDemo
+      }),
+
+      new HtmlWebpackPlugin({
+        template: 'src/index.html',
+        title: METADATA.title,
+        chunksSortMode: 'dependency',
+        metadata: METADATA,
+        inject: 'head'
+      }),
+
+      new webpack.LoaderOptionsPlugin({
+        options: {
+          postcss: [
+            require('autoprefixer')({ /* ...options */ })
+          ]
+        }
       })
     ],
 
@@ -103,5 +111,5 @@ module.exports = function(options) {
       })()
     ]*/
 
-  }, customConfig());
+  }, customConfig.config());
 }
