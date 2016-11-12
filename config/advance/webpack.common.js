@@ -90,6 +90,10 @@ module.exports = function(options) {
 
       new webpack.LoaderOptionsPlugin({
         options: {
+          context: helpers.root(),
+          output: {
+              path: helpers.root('dist')
+          },
           postcss: [
             require('autoprefixer')({ /* ...options */ })
           ]
