@@ -51,12 +51,12 @@ module.exports = function(options) {
       rules: [
         {
           test: /\.css$/,
-          loader: 'to-string!css-loader!postcss-loader'
+          loader: 'to-string-loader!css-loader!postcss-loader'
         },
 
         {
           test: /\.scss$/,
-          loader: 'to-string!css-loader!postcss-loader!sass-loader'
+          loader: 'to-string-loader!css-loader!postcss-loader!sass-loader'
         },
 
         { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' }

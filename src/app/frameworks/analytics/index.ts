@@ -1,6 +1,5 @@
 // libs
-import { Angulartics2 } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/dist/providers';
+import { Angulartics2, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 // app
 import { AnalyticsService } from './services/analytics.service';

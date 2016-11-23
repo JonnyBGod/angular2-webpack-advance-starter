@@ -2,8 +2,7 @@ import { TestBed, inject } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 
 // libs
-import { Angulartics2 } from 'angulartics2';
-import { Angulartics2GoogleAnalytics } from 'angulartics2/dist/providers';
+import { Angulartics2, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 import { t } from 'frameworks/test';
 import { AnalyticsService, Analytics } from '../index';

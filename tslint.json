@@ -67,7 +67,6 @@
       true,
       "allow-null-check"
     ],
-
     "eofline": true,
     "indent": [
       true,
