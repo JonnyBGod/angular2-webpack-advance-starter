@@ -44,6 +44,7 @@ TODO
 - [x] npm run e2e
 - [ ] npm run docs
 - [x] npm run build:prod
+- [x] npm run github-deploy:prod
 
 - [x] npm run start:desktop
 - [x] npm run build:desktop
