@@ -17,31 +17,130 @@
   <!-- base url -->
   <base href="<%= htmlWebpackPlugin.options.metadata.baseUrl %>">
 
+  <style type="text/css">
+    body {
+      margin: 0;
+    }
+    .splash {
+      height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #106cc8;
+    }
 
-</head>
+    .splash > div {
+      color: white;
+      text-align: center;
+    }
 
-<body>
+    .splash h1 {
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-weight: 500;
+      line-height: 1.1;
+      color: inherit;
+      font-size: 2.5rem;
+    }
 
-  <app>
-    Loading...
-  </app>
+    .splash h1 img {
+      max-width: 90%;
+    }
 
-  <!-- Google Analytics: change UA-71073175-1 to be your site's ID -->
+    .spinner {
+      margin: 80px auto;
+      width: 50px;
+      height: 40px;
+      text-align: center;
+      font-size: 10px;
+    }
+
+    .spinner > div {
+      background-color: white;
+      height: 100%;
+      width: 6px;
+      display: inline-block;
+      
+      -webkit-animation: sk-stretchdelay 1.2s infinite ease-in-out;
+      animation: sk-stretchdelay 1.2s infinite ease-in-out;
+    }
+
+    .spinner .rect2 {
+      -webkit-animation-delay: -1.1s;
+      animation-delay: -1.1s;
+    }
+
+    .spinner .rect3 {
+      -webkit-animation-delay: -1.0s;
+      animation-delay: -1.0s;
+    }
+
+    .spinner .rect4 {
+      -webkit-animation-delay: -0.9s;
+      animation-delay: -0.9s;
+    }
+
+    .spinner .rect5 {
+      -webkit-animation-delay: -0.8s;
+      animation-delay: -0.8s;
+    }
+
+    @-webkit-keyframes sk-stretchdelay {
+      0%, 40%, 100% { -webkit-transform: scaleY(0.4) }  
+      20% { -webkit-transform: scaleY(1.0) }
+    }
+
+    @keyframes sk-stretchdelay {
+      0%, 40%, 100% { 
+        transform: scaleY(0.4);
+        -webkit-transform: scaleY(0.4);
+      }  20% { 
+        transform: scaleY(1.0);
+        -webkit-transform: scaleY(1.0);
+      }
+    }
+  </style>
+  
+  <% if (htmlWebpackPlugin.options.TARGET_DESKTOP) { %>
+  <!-- shims:js -->
+  <!-- endinject -->
+  <% } %>
+  
+  <% if (!htmlWebpackPlugin.options.metadata.isDevServer) { %>
   <script>
     (function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=r;A[l]=A[l]||function(){
     (A[l].q=A[l].q||[]).push(arguments)},A[l].l=1*new Date();a=n.createElement(g),
     r=n.getElementsByTagName(g)[0];a.async=1;a.src=u;r.parentNode.insertBefore(a,r)
     })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
-
-    ga('create', 'UA-71073175-1', 'auto');
-    ga('send', 'pageview');
+    ga('create', '<%= htmlWebpackPlugin.options.metadata.GOOGLE_ANALYTICS %>', 'auto');
+    // ga('send', 'pageview');
   </script>
+  <% } %>
+  
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQcEfxOuvru9hEYISgnK-d_vxsx6MfllI&libraries=places"></script>
+</head>
+<body>
+
+  <app>
+    <div class="splash">
+      <div>
+        <h1><%= htmlWebpackPlugin.options.title %></h1>
+        <div class="spinner">
+          <div class="rect1"></div>
+          <div class="rect2"></div>
+          <div class="rect3"></div>
+          <div class="rect4"></div>
+          <div class="rect5"></div>
+        </div>
+      </div>
+    </div>
+  </app>
 
   <% if (htmlWebpackPlugin.options.metadata.isDevServer && htmlWebpackPlugin.options.metadata.HMR !== true) { %>
   <!-- Webpack Dev Server reload -->
   <script src="/webpack-dev-server.js"></script>
   <% } %>
-
 
 </body>
 </html>
