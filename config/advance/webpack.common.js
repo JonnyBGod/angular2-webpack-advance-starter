@@ -59,7 +59,7 @@ module.exports = function(options) {
           loader: 'to-string-loader!css-loader!postcss-loader!sass-loader'
         },
 
-        { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url?limit=10000' }
+        { test: /\.(woff2?|ttf|eot|svg)$/, loader: 'url-loader?limit=10000' }
       ]
 
     },

@@ -1,5 +1,5 @@
 // angular
-import { ChangeDetectionStrategy } from '@angular/core';
+import { ViewEncapsulation, ChangeDetectionStrategy } from '@angular/core';
 // any operators needed throughout your application
 import './operators';
 
@@ -14,6 +14,7 @@ import { BaseComponent, Config, LogService } from 'frameworks/core';
   selector: 'app',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
+  encapsulation: ViewEncapsulation.None,
   changeDetection: ChangeDetectionStrategy.Default // Everything else uses OnPush
 })
 export class AppComponent {

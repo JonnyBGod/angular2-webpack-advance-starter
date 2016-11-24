@@ -3,16 +3,11 @@ TODO
 
 ## Before internal use
 
-- [x] Fix unit tests
-- [x] Fix E2E tests (https://github.com/TypeStrong/ts-node/issues/138)
-- [x] Electron Builder
 - [ ] Nativescript (https://github.com/NativeScript/nativescript-angular/issues/385)
 
 
 ## Before Open Sourcing
 
-- [x] Generate all icons and fix references in index.html
-- [x] Redo readme.md
 - [ ] Make sure all commands work on windows
 
 
