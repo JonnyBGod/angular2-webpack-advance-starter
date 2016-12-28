@@ -1,97 +1,120 @@
-import { TestBed, inject } from '@angular/core/testing';
+// angular
+import { TestBed, async } from '@angular/core/testing';
+import { Component } from '@angular/core';
 import { RouterTestingModule } from '@angular/router/testing';
+import { BaseRequestOptions, Http, Response, ResponseOptions } from '@angular/http';
+import { MockBackend, MockConnection } from '@angular/http/testing';
+
 // libs
-import { Store, StoreModule } from '@ngrx/store';
+import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { t } from 'frameworks/test';
-import { CoreModule } from 'frameworks/core/core.module';
-import { ILang, WindowService, ConsoleService } from 'frameworks/core';
-import { TEST_CORE_PROVIDERS, WindowMockFrench } from 'frameworks/core/testing';
-import { TEST_MULTILINGUAL_PROVIDERS, TEST_MULTILINGUAL_RESET } from '../testing';
-import {
-  MultilingualService,
-  IMultilingualState,
-  multilingualReducer,
-  MULTILINGUAL_ACTIONS,
-  MultilingualEffects
-} from '../index';
+import { ConfigService } from 'ng2-config';
+import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
+
+// app
+import { t } from '../../test/index';
+import { ILang, WindowService, ConsoleService } from '../../core/index';
+import { CoreModule } from '../../core/core.module';
+import { AnalyticsModule } from '../../analytics/analytics.module';
+import { TEST_CORE_PROVIDERS } from '../../core/testing/index';
+
+// module
+import { MultilingualModule } from '../multilingual.module';
+import { MultilingualService, MultilingualEffects, reducer } from '../index';
+import { TEST_MULTILINGUAL_PROVIDERS } from '../testing/index';
+
+// mocks
+import { ConfigMock } from '../../core/testing/mocks/ng2-config.mock';
+import { ConfigMockMultilang } from '../testing/mocks/ng2-config-multilang.mock';
+
+const SUPPORTED_LANGUAGES: Array<ILang> = [
+  { code: 'en', title: 'English' },
+  { code: 'es', title: 'Spanish' },
+  { code: 'fr', title: 'French' },
+  { code: 'ru', title: 'Russian' },
+  { code: 'bg', title: 'Bulgarian' }
+];
 
 // test module configuration for each test
-const testModuleConfig = (options?: any) => {
+const testModuleConfig = (multilang: boolean = false) => {
   TestBed.configureTestingModule({
     imports: [
+      Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
       CoreModule.forRoot([
         { provide: WindowService, useValue: window },
-        { provide: ConsoleService, useValue: console }
+        { provide: ConsoleService, useValue: console },
+        { provide: ConfigService, useClass: multilang ? ConfigMockMultilang : ConfigMock },
       ]),
-      StoreModule.provideStore({ i18n: multilingualReducer }),
-      EffectsModule.run(MultilingualEffects),
-      RouterTestingModule
+      RouterTestingModule,
+      AnalyticsModule,
+      MultilingualModule,
+      StoreModule.provideStore({ i18n: reducer }),
+      EffectsModule.run(MultilingualEffects)
     ],
+    declarations: [TestComponent],
     providers: [
-      TEST_CORE_PROVIDERS(options),
-      TEST_MULTILINGUAL_PROVIDERS()
+      {
+        provide: Http,
+        useFactory: (mockBackend: MockBackend, options: BaseRequestOptions) => {
+          return new Http(mockBackend, options);
+        },
+        deps: [MockBackend, BaseRequestOptions]
+      },
+      MockBackend,
+      BaseRequestOptions
     ]
   });
 };
 
-export function main() {
-  t.describe('i18n:', () => {
-    t.describe('MultilingualService', () => {
-
-      t.be(() => {
-        testModuleConfig();
-      });
-
-      t.it('should at a minimum support english', () => {
-        t.e(MultilingualService.SUPPORTED_LANGUAGES.length).toBe(1);
-        t.e(MultilingualService.SUPPORTED_LANGUAGES[0].code).toBe('en');
-      });
-
-      t.it('changeLang - should not switch unless supported',
-        inject([
-          MultilingualService,
-          Store
-        ], (multilang: MultilingualService, store: Store<any>) => {
-          store.dispatch({ type: MULTILINGUAL_ACTIONS.CHANGE, payload: 'fr' });
-          // only 'en' supported by default so changing to 'fr' should not change state
-          store.select('i18n').subscribe((i18n: IMultilingualState) => {
-            t.e(i18n.lang).toBe('en');
-          });
-        }));
-
+t.describe('i18n:', () => {
+  t.describe('@Component: LangSwitcherComponent', () => {
+    t.be(() => {
+      testModuleConfig();
     });
 
-    t.describe('MultilingualService for French browser/platform', () => {
-      const SUPPORTED_LANGUAGES: Array<ILang> = [
-        { code: 'en', title: 'English' },
-        { code: 'fr', title: 'French' }
-      ];
-
-      t.be(() => {
-        MultilingualService.SUPPORTED_LANGUAGES = SUPPORTED_LANGUAGES;
-        testModuleConfig({ window: WindowMockFrench });
-      });
-
-      // ensure statics are reset when the test had modified statics
-      // in a beforeEach (be) or beforeEachProvider (bep)
-      t.ae(() => TEST_MULTILINGUAL_RESET());
-
-      t.it('should now support french by default',
-        inject([
-          MultilingualService,
-          Store,
-          WindowService
-        ], (multilang: MultilingualService, store: Store<any>, win: WindowService) => {
-          t.e(MultilingualService.SUPPORTED_LANGUAGES.length).toBe(2);
-          t.e(MultilingualService.SUPPORTED_LANGUAGES[0].code).toBe('en');
-          t.e(MultilingualService.SUPPORTED_LANGUAGES[1].code).toBe('fr');
-          t.e(win.navigator.language).toBe('fr-US');
-
-          store.select('i18n').subscribe((i18n: IMultilingualState) => {
-            t.e(i18n.lang).toBe('fr');
+    t.it('should work',
+      async(() => {
+        TestBed.compileComponents()
+          .then(() => {
+            let fixture = TestBed.createComponent(TestComponent);
+            fixture.detectChanges();
+            let appDOMEl = fixture.debugElement.children[0].nativeElement;
+            t.e(appDOMEl.querySelectorAll('form > select option').length).toBe(1);
+            t.e(appDOMEl.querySelectorAll('form > select option')[0].value).toBe('en');
           });
-        }));
-    });
+      }));
   });
+
+  t.describe('@Component: LangSwitcherComponent with multiple languages', () => {
+    t.be(() => {
+      testModuleConfig(true);
+    });
+
+    t.it('should work',
+      async(() => {
+        TestBed.compileComponents()
+          .then(() => {
+            let fixture = TestBed.createComponent(TestComponent);
+            fixture.detectChanges();
+            let appDOMEl = fixture.debugElement.children[0].nativeElement;
+            t.e(appDOMEl.querySelectorAll('form > select option').length).toBe(5);
+            t.e(appDOMEl.querySelectorAll('form > select option')[0].value).toBe('en');
+            t.e(appDOMEl.querySelectorAll('form > select option')[1].value).toBe('es');
+            t.e(appDOMEl.querySelectorAll('form > select option')[2].value).toBe('fr');
+            t.e(appDOMEl.querySelectorAll('form > select option')[3].value).toBe('ru');
+            t.e(appDOMEl.querySelectorAll('form > select option')[4].value).toBe('bg');
+          });
+      }));
+  });
+});
+
+@Component({
+  selector: 'test-cmp',
+  template: '<lang-switcher></lang-switcher>'
+})
+class TestComponent  {
+  constructor(private multilang: MultilingualService,
+              private config: ConfigService) {
+    this.multilang.init(this.config.getSettings().i18n);
+  }
 }

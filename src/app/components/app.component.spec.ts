@@ -1,19 +1,27 @@
+// angular
 import { TestBed, async } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
-import { Routes } from '@angular/router';
+import { Route } from '@angular/router';
 import { RouterTestingModule } from '@angular/router/testing';
-import { StoreModule } from '@ngrx/store';
 
-import { t } from 'frameworks/test';
-import { TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS } from 'frameworks/core/testing';
-import { NameListService, NavbarComponent, ToolbarComponent } from 'frameworks/sample';
-import { MultilingualModule } from 'frameworks/i18n/multilingual.module';
+// libs
+import { StoreModule } from '@ngrx/store';
+import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
+
+// app
+import { t } from '../frameworks/test/index';
+import { TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS } from '../frameworks/core/testing/index';
+import { NameListService, NavbarComponent, ToolbarComponent } from '../frameworks/sample/index';
+import { MultilingualModule } from '../frameworks/i18n/multilingual.module';
+import { reducer } from '../frameworks/i18n/index';
+
+// module
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 
-const config: Routes = [
+const config: Route[] = [
   {path: '', component: HomeComponent},
   {path: 'about', component: AboutComponent}
 ];
@@ -23,8 +31,9 @@ const testModuleConfig = () => {
   TestBed.configureTestingModule({
     imports: [
       FormsModule,
+      Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
       MultilingualModule,
-      StoreModule.provideStore({}),
+      StoreModule.provideStore({ i18n: reducer }),
       RouterTestingModule.withRoutes(config)
     ],
     declarations: [
@@ -39,7 +48,6 @@ const testModuleConfig = () => {
     ]
   });
 };
-
 
 t.describe('@Component: AppComponent', () => {
 

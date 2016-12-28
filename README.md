@@ -10,10 +10,11 @@
   </a>
 </p>
 
-[![devDependency Status](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter/dev-status.svg)](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter#info=devDependencies)
+[![Angular 2 Style Guide](https://mgechev.github.io/angular2-style-guide/images/badge.svg)](https://angular.io/styleguide)
 [![Build Status](https://img.shields.io/travis/JonnyBGod/angular2-webpack-advance-starter/master.svg?style=flat)](https://travis-ci.org/JonnyBGod/angular2-webpack-advance-starter)
-[![GitHub version](https://badge.fury.io/gh/JonnyBGod/angular2-webpack-advance-starter.svg)](https://badge.fury.io/gh/JonnyBGod/angular2-webpack-advance-starter)
+[![MIT license](http://img.shields.io/badge/license-MIT-brightgreen.svg)](http://opensource.org/licenses/MIT)
 [![Dependency Status](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter.svg)](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter)
+[![devDependency Status](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter/dev-status.svg)](https://david-dm.org/JonnyBGod/angular2-webpack-advance-starter#info=devDependencies)
 
 [![Gitter Chat](https://img.shields.io/gitter/room/nwjs/nw.js.svg)](https://gitter.im/angular2-webpack-advance-starter/Lobby)
 
@@ -129,8 +130,10 @@ npm run start:hmr
 ```bash
 # development
 npm run build:dev
-# production
+# production (jit)
 npm run build:prod
+# AoT
+npm run build:aot
 ```
 
 #### hot module replacement
@@ -143,7 +146,7 @@ npm run server:dev:hmr
 npm run watch
 ```
 
-#### run tests
+#### run unit tests
 ```bash
 npm run test
 ```
@@ -155,8 +158,14 @@ npm run watch:test
 
 #### run end-to-end tests
 ```bash
-# make sure you have your server running in another terminal
+# this will start a test server and launch Protractor
 npm run e2e
+```
+
+### continuous integration (run unit tests and e2e tests together)
+```bash
+# this will test both your JIT and AoT builds
+npm run ci
 ```
 
 #### run webdriver (for end-to-end)
@@ -208,10 +217,8 @@ All:      npm run build:desktop
 * how to add a language?
   - `src/assets/i18n/`
     - add `[language code].json` (copy existing one and adapt the translation strings)
-  - `src/app/frameworks/sample/services/app-config.spec.ts`
-    - fix test
-  - `src/app/frameworks/sample/services/app-config.ts`
-    - add language to `SUPPORTED_LANGUAGES`
+  - `src/client/app.config.json`
+    - add language to `availableLanguages`
   - `src/app/frameworks/i18n/components/lang-switcher.component.spec.ts`
     - fix test
 
@@ -292,6 +299,16 @@ If you have any suggestions to this workflow, please post [here](https://github.
 Configuration files live in `config/` we are currently using webpack, karma, and protractor for different stages of your application.
 
 Use `config/custom/` configuration files when possible to add your custom configurations or override our configurations. This will help you when updating upstream.
+
+# AoT  Don'ts
+The following are some things that will make AoT compile fail.
+
+- Don’t use require statements for your templates or styles, use styleUrls and templateUrls, the angular2-template-loader plugin will change it to require at build time.
+- Don’t use default exports.
+- Don’t use form.controls.controlName, use form.get(‘controlName’)
+- Don’t use control.errors?.someError, use control.hasError(‘someError’)
+- Don’t use functions in your providers, routes or declarations, export a function and then reference that function name
+- Inputs, Outputs, View or Content Child(ren), Hostbindings, and any field you use from the template or annotate for Angular should be public
 
 ## More Documentation
 

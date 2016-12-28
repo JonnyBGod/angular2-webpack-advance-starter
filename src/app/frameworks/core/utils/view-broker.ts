@@ -1,3 +1,4 @@
+// module
 import { Config } from './config';
 
 export class ViewBroker {
@@ -17,7 +18,7 @@ export class ViewBroker {
       return paths.map((path) => {
         let parts = path.split('.');
         parts.splice(-1);
-        return `${parts.join('.')}.tns.scss`;
+        return `${parts.join('.')}.tns.css`;
       });
     } else {
       return paths;

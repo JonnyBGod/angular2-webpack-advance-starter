@@ -2,7 +2,7 @@
 import { Injectable } from '@angular/core';
 
 // libs
-// import { Angulartics2 } from 'angulartics2';
+// import {Angulartics2} from 'angulartics2';
 
 // TODO: This is a wip at the moment
 // Will implement native segment sdk soon

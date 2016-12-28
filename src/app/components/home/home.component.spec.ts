@@ -12,9 +12,10 @@ import { MockBackend } from '@angular/http/testing';
 // libs
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
+import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 import { t } from 'frameworks/test';
-import { NameListService, nameListReducer, NameListEffects } from 'frameworks/sample';
+import { NameListService, NameListEffects, reducer } from 'frameworks/sample';
 import { CoreModule } from 'frameworks/core/core.module';
 import { AnalyticsModule } from 'frameworks/analytics/analytics.module';
 import { MultilingualModule } from 'frameworks/i18n/multilingual.module';
@@ -24,9 +25,12 @@ import { HomeComponent } from './home.component';
 const testModuleConfig = () => {
   TestBed.configureTestingModule({
     imports: [
-      CoreModule, RouterTestingModule, AnalyticsModule,
+      CoreModule,
+      RouterTestingModule,
+      Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
+      AnalyticsModule,
       MultilingualModule,
-      StoreModule.provideStore({ names: nameListReducer }),
+      StoreModule.provideStore({ sample: reducer }),
       EffectsModule.run(NameListEffects)
     ],
     declarations: [HomeComponent, TestComponent],
@@ -47,34 +51,32 @@ const testModuleConfig = () => {
   });
 };
 
-export function main() {
-  t.describe('@Component: HomeComponent', () => {
+t.describe('@Component: HomeComponent', () => {
 
-    t.be(testModuleConfig);
+  t.be(testModuleConfig);
 
-    t.it('should work',
-      async(() => {
-        TestBed.compileComponents()
-          .then(() => {
-            let fixture = TestBed.createComponent(TestComponent);
-            fixture.detectChanges();
+  t.it('should work',
+    async(() => {
+      TestBed.compileComponents()
+        .then(() => {
+          let fixture = TestBed.createComponent(TestComponent);
+          fixture.detectChanges();
 
-            let homeInstance = fixture.debugElement.children[0].componentInstance;
-            let homeDOMEl = fixture.debugElement.children[0].nativeElement;
+          let homeInstance = fixture.debugElement.children[0].componentInstance;
+          let homeDOMEl = fixture.debugElement.children[0].nativeElement;
 
-            t.e(homeDOMEl.querySelectorAll('li').length).toEqual(0);
+          t.e(homeDOMEl.querySelectorAll('li').length).toEqual(0);
 
-            homeInstance.newName = 'Minko';
-            homeInstance.addName();
+          homeInstance.newName = 'Minko';
+          homeInstance.addName();
 
-            fixture.detectChanges();
+          fixture.detectChanges();
 
-            t.e(homeDOMEl.querySelectorAll('li').length).toEqual(1);
-            t.e(homeDOMEl.querySelectorAll('li')[0].textContent).toEqual('Minko');
-          });
-      }));
-  });
-}
+          t.e(homeDOMEl.querySelectorAll('li').length).toEqual(1);
+          t.e(homeDOMEl.querySelectorAll('li')[0].textContent).toEqual('Minko');
+        });
+    }));
+});
 
 @Component({
   selector: 'test-cmp',

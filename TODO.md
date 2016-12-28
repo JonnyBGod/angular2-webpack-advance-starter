@@ -1,14 +1,11 @@
 TODO
 ====
 
-## Before internal use
-
 - [ ] Nativescript (https://github.com/NativeScript/nativescript-angular/issues/385)
-
-
-## Before Open Sourcing
-
 - [ ] Make sure all commands work on windows
+- [ ] npm scripts for desktop AOT
+- [ ] extend "npm run ci" to include desktop
+- [ ] AOT (https://github.com/NathanWalker/angular-seed-advanced/issues/224)
 
 
 ## Improvements
@@ -28,17 +25,17 @@ TODO
 ## Bugs
 
 - [ ] ELECTRON: css absolute paths
-- [ ] npm run docs (upstream) (https://github.com/TypeStrong/typedoc/issues/234)
-- [ ] remove loader-utils form package.json once https://github.com/s-panferov/awesome-typescript-loader/pull/242
 
 ### Before commit manual checks
 
 - [x] npm run lint
 - [x] npm test
+- [ ] npm run e2e (https://github.com/AngularClass/angular2-webpack-starter/issues/1306)
+
+- [ ] npm run ci (https://github.com/AngularClass/angular2-webpack-starter/issues/1306)
+
 - [x] npm start
-- [x] npm run e2e
-- [ ] npm run docs
-- [x] npm run build:prod
+- [x] npm run docs
 - [x] npm run github-deploy:prod
 
 - [x] npm run start:desktop

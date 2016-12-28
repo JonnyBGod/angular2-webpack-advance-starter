@@ -13,7 +13,7 @@ let template: any;
 let menu: any;
 
 // app
-import { AppConfig } from 'frameworks/sample/services/app-config';
+import { DesktopConfig } from 'frameworks/electron/index';
 
 /*crashReporter.start({
   productName: 'Angular2WebpackAdvanceStarter',
@@ -68,7 +68,7 @@ app.on('ready', () => {
     label: 'Language',
     submenu: []
   };
-  for (let lang of AppConfig.SUPPORTED_LANGUAGES) {
+  for (let lang of DesktopConfig.SUPPORTED_LANGUAGES) {
     let code = lang.code;
     let langOption = {
       label: lang.title,

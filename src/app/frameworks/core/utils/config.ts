@@ -14,12 +14,7 @@ interface IPlatforms {
 
 export class Config {
 
-  public static DEBUG: any = {
-    LEVEL_1: false, // .info only
-    LEVEL_2: false, // .warn only
-    LEVEL_3: false, // .error only
-    LEVEL_4: false  // .log + all the above
-  };
+  public static pageClass: any;
 
   // supported platforms
   public static PLATFORMS: IPlatforms = {
@@ -61,25 +56,6 @@ export class Config {
         API: 'your api endpoint',
         ENV: ENV
       };
-    }
-  }
-
-  public static IS_DEBUG_MODE(): boolean {
-    for (let key in Config.DEBUG) {
-      if (Config.DEBUG[key]) {
-        // if any level is on, debug mode is on
-        return true;
-      }
-    }
-    return false;
-  }
-
-  // reset debug defaults
-  public static RESET() {
-    for (let key in Config.DEBUG) {
-      if (Config.DEBUG.hasOwnProperty(key)) {
-        Config.DEBUG[key] = false;
-      }
     }
   }
 }

@@ -1,26 +1,30 @@
 // angular
 import { RouterModule, PreloadAllModules } from '@angular/router';
+import { Http } from '@angular/http';
 
-import { CoreModule } from 'frameworks/core/core.module';
-import { AnalyticsModule } from 'frameworks/analytics/analytics.module';
-import { MultilingualModule } from 'frameworks/i18n/multilingual.module';
-import { SampleModule } from 'frameworks/sample/sample.module';
+// libs
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ConfigLoader, ConfigService } from 'ng2-config';
+import { TranslateLoader } from 'ng2-translate';
+import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 import { routes } from 'components/app.routes';
 
-// config
-import { Config, WindowService, ConsoleService } from 'frameworks/core/index';
-Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
-if (String(ENV) === 'dev') {
-  // only output console logging in dev mode
-  Config.DEBUG.LEVEL_4 = true;
-}
+// feature modules
+import { CoreModule, configFactory } from 'frameworks/core/core.module';
+import { AppReducer } from 'frameworks/ngrx/index';
+import { AnalyticsModule } from 'frameworks/analytics/analytics.module';
+import { MultilingualModule, translateFactory } from 'frameworks/i18n/multilingual.module';
+import { MultilingualEffects } from 'frameworks/i18n/index';
+import { SampleModule } from 'frameworks/sample/sample.module';
+import { NameListEffects } from 'frameworks/sample/index';
 
-// sample config (extra)
-import { AppConfig } from 'frameworks/sample/services/app-config';
-import { MultilingualService } from 'frameworks/i18n/services/multilingual.service';
-// custom i18n language support
-MultilingualService.SUPPORTED_LANGUAGES = AppConfig.SUPPORTED_LANGUAGES;
+// config
+import { Config } from 'frameworks/core/index';
+import { WindowService, ConsoleService } from 'frameworks/core/services/index';
+Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 
 let routerModule;
 
@@ -37,13 +41,33 @@ if (typeof TARGET_DESKTOP !== 'undefined' && TARGET_DESKTOP === true) {
   });
 }
 
+declare var window, console;
+
+// For AoT compilation to work:
+export function win() {
+  return window;
+}
+export function cons() {
+  return console;
+}
+
 export const ADVANCE_MODULES = [
+  Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
   CoreModule.forRoot([
-    { provide: WindowService, useValue: window },
-    { provide: ConsoleService, useValue: console }
+    { provide: WindowService, useFactory: (win) },
+    { provide: ConsoleService, useFactory: (cons) },
+    { provide: ConfigLoader, useFactory: (configFactory) }
   ]),
   routerModule,
   AnalyticsModule,
-  MultilingualModule,
-  SampleModule
+  MultilingualModule.forRoot([{
+    provide: TranslateLoader,
+    deps: [Http],
+    useFactory: (translateFactory)
+  }]),
+  SampleModule,
+  StoreModule.provideStore(AppReducer),
+  StoreDevtoolsModule.instrumentOnlyWithExtension(),
+  EffectsModule.run(MultilingualEffects),
+  EffectsModule.run(NameListEffects)
 ];

@@ -4,7 +4,10 @@ import { RouterTestingModule } from '@angular/router/testing';
 // libs
 import { Angulartics2, Angulartics2GoogleAnalytics } from 'angulartics2';
 
+// app
 import { t } from 'frameworks/test';
+
+// module
 import { AnalyticsService, Analytics } from '../index';
 
 const testModuleConfig = () => {

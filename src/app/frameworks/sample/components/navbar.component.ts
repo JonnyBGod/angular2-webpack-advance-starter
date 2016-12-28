@@ -1,10 +1,10 @@
 // app
-import { BaseComponent } from 'frameworks/core';
+import { BaseComponent } from '../../core/index';
 
 @BaseComponent({
   selector: 'sd-navbar',
   templateUrl: 'navbar.component.html',
-  styleUrls: ['navbar.component.scss']
+  styleUrls: ['navbar.component.css']
 })
 export class NavbarComponent {
 }

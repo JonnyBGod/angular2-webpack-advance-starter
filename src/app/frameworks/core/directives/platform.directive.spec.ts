@@ -1,11 +1,14 @@
+// angular
 import { TestBed, async } from '@angular/core/testing';
 import { Component } from '@angular/core';
-import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
 
+// app
+import { t } from '../../test/index';
+
+// module
 import { PlatformDirective } from './platform.directive';
-import { t } from 'frameworks/test/index';
-import { WindowService } from 'frameworks/core/index';
-import { WindowMock } from 'frameworks/core/testing/index';
+import { WindowService } from '../../core/index';
+import { WindowMock } from '../../core/testing/index';
 
 const testModuleConfig = () => {
   TestBed.configureTestingModule({
@@ -33,7 +36,7 @@ t.describe('core: PlatformDirective', () => {
           let fixture = TestBed.createComponent(TestComponent);
           fixture.detectChanges();
           let compDOMEl = fixture.debugElement.children[0].nativeElement;
-          t.e(getDOM().classList(compDOMEl)).toEqual(['web']);
+          t.e(compDOMEl.getAttribute('class')).toBe('web');
         });
     }));
 });

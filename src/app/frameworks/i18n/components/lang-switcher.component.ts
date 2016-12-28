@@ -1,25 +1,31 @@
+// angular
+import { OnInit, OnDestroy } from '@angular/core';
+
 // libs
 import { Store } from '@ngrx/store';
+import { Subscription } from 'rxjs/Subscription';
 
 // app
-import { BaseComponent, Config, LogService, ILang } from 'frameworks/core';
-import { ElectronEventService } from 'frameworks/electron';
-import { MULTILINGUAL_ACTIONS, MultilingualService } from '../index';
+import { BaseComponent, Config } from 'frameworks/core/index';
+import { LogService } from 'frameworks/core/services/index';
+import { ILang } from 'frameworks/core/interfaces/index';
+import { IAppState } from 'frameworks/ngrx/index';
+import { ElectronEventService } from 'frameworks/electron/index';
+import * as multilingual from '../index';
 
 @BaseComponent({
   selector: 'lang-switcher',
   templateUrl: 'lang-switcher.component.html',
-  styleUrls: ['lang-switcher.component.scss']
+  styleUrls: ['lang-switcher.component.css']
 })
-export class LangSwitcherComponent {
+export class LangSwitcherComponent implements OnInit, OnDestroy {
   public lang: string;
-  public supportedLanguages: Array<ILang> = MultilingualService.SUPPORTED_LANGUAGES;
+  public supportedLanguages: Array<ILang>;
+  private _sub: Subscription;
 
-  constructor(private log: LogService, private store: Store<any>) {
-    store.take(1).subscribe((s: any) => {
-      // s && s.18n - ensures testing works in all cases (since some tests dont use i18n state)
-      this.lang = s && s.i18n ? s.i18n.lang : '';
-    });
+  constructor(public multilang: multilingual.MultilingualService,
+              private log: LogService,
+              private store: Store<IAppState>) {
 
     if (Config.IS_DESKTOP()) {
       // allow electron menu to talk to component
@@ -30,16 +36,30 @@ export class LangSwitcherComponent {
   }
 
   changeLang(e: any) {
-    let lang = this.supportedLanguages[0].code; // fallback to default 'en'
+    let lang = this.multilang.defaultLanguage.code; // fallback to default
 
     if (Config.IS_MOBILE_NATIVE()) {
       if (e) {
-        lang = this.supportedLanguages[e.newIndex].code;
+        lang = this.multilang.availableLanguages[e.newIndex].code;
       }
     } else if (e && e.target) {
       lang = e.target.value;
     }
+
     this.log.debug(`Language change: ${lang}`);
-    this.store.dispatch({ type: MULTILINGUAL_ACTIONS.CHANGE, payload: lang });
+    this.multilang.changeLang(lang);
+  }
+
+  ngOnInit() {
+    this._sub = this.store.select('i18n').subscribe((s: multilingual.IMultilingualState) => {
+      if (s.lang) {
+        this.lang = s.lang;
+        this.supportedLanguages = this.multilang.availableLanguages;
+      }
+    });
+  }
+
+  ngOnDestroy() {
+    if (this._sub) this._sub.unsubscribe();
   }
 }

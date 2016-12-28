@@ -1,19 +1,22 @@
 // nativescript
-import { NativeScriptModule, platformNativeScriptDynamic, onAfterLivesync, onBeforeLivesync } from 'nativescript-angular/platform';
-import { NativeScriptFormsModule } from 'nativescript-angular/forms';
-import { NativeScriptHttpModule } from "nativescript-angular/http";
-import { NativeScriptRouterModule } from 'nativescript-angular/router';
-import { RouterExtensions as TNSRouterExtensions } from 'nativescript-angular/router/router-extensions';
-import { NativescriptPlatformLocation } from 'nativescript-angular/router/ns-platform-location';
-import { NSLocationStrategy } from 'nativescript-angular/router/ns-location-strategy';
+import {
+  NativeScriptModule,
+  NativeScriptFormsModule,
+  NativeScriptHttpModule,
+  NativeScriptRouterModule,
+  RouterExtensions as TNSRouterExtensions
+} from 'nativescript-angular';
+// import { RouterExtensions as TNSRouterExtensions } from 'nativescript-angular/router';
+import { Http } from '@angular/http';
 
 // angular
 import { NgModule } from '@angular/core';
-import { LocationStrategy, PlatformLocation } from '@angular/common';
 
 // libs
-import { TranslateModule, TranslateLoader } from 'ng2-translate/ng2-translate';
-import { TNSTranslateLoader } from 'nativescript-ng2-translate/nativescript-ng2-translate';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
+import { ConfigLoader, ConfigService } from 'ng2-config';
 
 // app
 import { WindowService, ConsoleService, RouterExtensions } from 'frameworks/core/index';
@@ -23,10 +26,13 @@ import { HomeComponent } from 'components/home/home.component';
 import { routes } from 'components/app.routes';
 
 // feature modules
-import { CoreModule } from 'frameworks/core/core.module';
+import { CoreModule, configFactory } from 'frameworks/core/core.module';
+import { AppReducer } from 'frameworks/ngrx/index';
 import { AnalyticsModule } from 'frameworks/analytics/analytics.module';
-import { MultilingualModule } from 'frameworks/i18n/multilingual.module';
+import { MultilingualModule, translateFactory } from 'frameworks/i18n/multilingual.module';
+import { MultilingualEffects } from 'frameworks/i18n/index';
 import { SampleModule } from 'frameworks/sample/sample.module';
+import { NameListEffects } from 'frameworks/sample/index';
 
 // {N} custom app specific
 import { WindowNative } from './shared/core/index';
@@ -41,8 +47,12 @@ import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
     NativeScriptFormsModule,
     NativeScriptHttpModule,
     NativeScriptRouterModule,
-    MultilingualModule,
-    TranslateModule
+    MultilingualModule.forRoot([{
+      provide: TranslateLoader,
+      deps: [Http],
+      useFactory: (translateFactory)
+    }]),
+    SampleModule
   ],
   declarations: [
     HomeComponent,
@@ -53,25 +63,30 @@ import { NS_ANALYTICS_PROVIDERS } from './shared/nativescript/index';
     NativeScriptFormsModule,
     NativeScriptHttpModule,
     NativeScriptRouterModule,
-    MultilingualModule
+    MultilingualModule,
+    SampleModule
   ]
 })
-class ComponentModule { }
+class ComponentsModule { }
+
+// For AoT compilation to work:
+export function cons() {
+  return console;
+}
 
 @NgModule({
   imports: [
     CoreModule.forRoot([
       { provide: WindowService, useClass: WindowNative },
-      { provide: ConsoleService, useValue: console }
+      { provide: ConsoleService, useFactory: (cons) },
+      { provide: ConfigLoader, useFactory: (configFactory) }
     ]),
     AnalyticsModule,
-    TranslateModule.forRoot({
-      provide: TranslateLoader,
-      useFactory: () => new TNSTranslateLoader('assets/i18n')
-    }),
-    SampleModule,
-    ComponentModule,
-    NativeScriptRouterModule.forRoot(routes)
+    ComponentsModule,
+    NativeScriptRouterModule.forRoot(<any>routes),
+    StoreModule.provideStore(AppReducer),
+    EffectsModule.run(MultilingualEffects),
+    EffectsModule.run(NameListEffects)
   ],
   declarations: [
     NSAppComponent

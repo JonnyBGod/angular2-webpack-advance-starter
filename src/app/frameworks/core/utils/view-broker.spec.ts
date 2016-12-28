@@ -1,9 +1,11 @@
-import { t } from 'frameworks/test/index';
+// app
+import { t } from '../../test/index';
+
+// module
 import { Config } from './config';
 import { ViewBroker } from './view-broker';
 
 t.describe('utilities: ViewBroker', () => {
-  t.be(() => Config.RESET());
 
   t.it('TEMPLATE_URL: web', () => {
     Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;

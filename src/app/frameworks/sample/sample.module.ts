@@ -2,28 +2,13 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { HttpModule } from '@angular/http';
 import { RouterModule } from '@angular/router';
 
-// libs
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
-
 // app
-import { ToolbarComponent } from './components/toolbar.component';
-import { NavbarComponent } from './components/navbar.component';
-import { nameListReducer, NameListService, NameListEffects } from './services/name-list.service';
+import { SAMPLE_COMPONENTS } from './components/index';
+import { SAMPLE_PROVIDERS } from './services/index';
 import { MultilingualModule } from '../i18n/multilingual.module';
-import {
-  multilingualReducer,
-  IMultilingualState,
-  MultilingualEffects
-} from '../i18n/services/multilingual.service';
-
-// state
-export interface AppStoreI {
-  i18n: IMultilingualState;
-  names: Array<string>;
-};
 
 /**
  * Do not specify providers for modules that might be imported by a lazy loaded module.
@@ -33,25 +18,19 @@ export interface AppStoreI {
   imports: [
     CommonModule,
     FormsModule,
+    HttpModule,
     RouterModule,
     MultilingualModule,
-    StoreModule.provideStore({
-      i18n: multilingualReducer,
-      names: nameListReducer
-    }),
-    EffectsModule.run(MultilingualEffects),
-    EffectsModule.run(NameListEffects)
   ],
   declarations: [
-    ToolbarComponent,
-    NavbarComponent
+    SAMPLE_COMPONENTS
   ],
   providers: [
-    NameListService
+    SAMPLE_PROVIDERS
   ],
   exports: [
-    ToolbarComponent,
-    NavbarComponent
+    SAMPLE_COMPONENTS,
+    MultilingualModule
   ]
 })
 export class SampleModule {

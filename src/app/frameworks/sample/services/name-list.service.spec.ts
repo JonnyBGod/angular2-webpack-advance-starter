@@ -8,28 +8,33 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 // libs
 import { Store, StoreModule } from '@ngrx/store';
 import { EffectsTestingModule, EffectsRunner } from '@ngrx/effects/testing';
+import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 // app
-import { t } from 'frameworks/test';
+import { t } from '../../test/index';
 // import {
 //   TEST_CORE_PROVIDERS,
 //   GET_HTTP_PROVIDERS_INJECTOR,
 //   TEST_LOCATION_PROVIDERS
-// } from 'frameworks/core/testing';
-import { AnalyticsModule } from 'frameworks/analytics/analytics.module';
+// } from '../../core/testing/index';
+import { AnalyticsModule } from '../../analytics/analytics.module';
 import {
   NameListService,
-  nameListReducer,
   NameListEffects,
-  NAME_LIST_ACTIONS
-} from './name-list.service';
+  reducer,
+  InitAction,
+  InitializedAction,
+  AddAction,
+  NameAddedAction
+} from '../index';
 
 // test module configuration for each test
 const testModuleConfig = () => {
   TestBed.configureTestingModule({
     imports: [
+      Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
       FormsModule, AnalyticsModule,
-      StoreModule.provideStore({ names: nameListReducer }),
+      StoreModule.provideStore({ sample: reducer }),
       EffectsTestingModule,
       HttpModule, RouterTestingModule
     ],
@@ -45,50 +50,46 @@ const mockBackendResponse = (connection: MockConnection, response: string) => {
   connection.mockRespond(new Response(new ResponseOptions({body: response})));
 };
 
-export function main() {
-  t.describe('app: NameListService', () => {
-    let injector: Injector;
-    let backend: MockBackend;
-    let nameList: NameListService;
-    let store: Store<any>;
-    let runner: EffectsRunner; // ngrx/effects tester
-    let nameListEffects: NameListEffects;
+t.describe('app: NameListService', () => {
+  let injector: Injector;
+  let backend: MockBackend;
+  let nameList: NameListService;
+  let store: Store<any>;
+  let runner: EffectsRunner; // ngrx/effects tester
+  let nameListEffects: NameListEffects;
+  // this will be set when a new connection is emitted from the backend.
+  let connection: MockConnection;
 
-    // this will be set when a new connection is emitted from the backend.
-    let connection: MockConnection;
+  t.be(() => {
+    testModuleConfig();
+    injector = getTestBed();
+    backend = injector.get(XHRBackend);
+    store = injector.get(Store);
+    runner = injector.get(EffectsRunner);
+    nameListEffects = injector.get(NameListEffects);
+    // sets the connection when someone tries to access the backend with an xhr request
+    backend.connections.subscribe((c: MockConnection) => connection = c);
+    // construct after setting up connections above
+    nameList = injector.get(NameListService);
+  });
 
-    t.be(() => {
-      testModuleConfig();
-      injector = getTestBed();
-      backend = injector.get(XHRBackend);
-      store = injector.get(Store);
-      runner = injector.get(EffectsRunner);
-      nameListEffects = injector.get(NameListEffects);
-      // sets the connection when someone tries to access the backend with an xhr request
-      backend.connections.subscribe((c: MockConnection) => connection = c);
-      // construct after setting up connections above
-      nameList = injector.get(NameListService);
+  t.it('should initialize', () => {
+    runner.queue(new InitAction());
+
+    nameListEffects.init$.subscribe(result => {
+      t.e(result).toEqual(new InitializedAction([ 'Dijkstra', 'Hopper' ]));
     });
 
-    t.it('should initialize', () => {
-      runner.queue({ type: NAME_LIST_ACTIONS.INIT });
+    // mock response after the xhr request
+    // (which happens in constructor), otherwise it will be undefined
+    mockBackendResponse(connection, '["Dijkstra", "Hopper"]');
+  });
 
-      nameListEffects.init$.subscribe(result => {
-        t.e(result)
-          .toEqual({ type: NAME_LIST_ACTIONS.INITIALIZED, payload: [ 'Dijkstra', 'Hopper' ] });
-      });
+  t.it('add action', () => {
+    runner.queue(new AddAction('Minko'));
 
-      // mock response after the xhr request (which happens in constructor),
-      // otherwise it will be undefined
-      mockBackendResponse(connection, '["Dijkstra", "Hopper"]');
-    });
-
-    t.it('add action', () => {
-      runner.queue({ type: NAME_LIST_ACTIONS.ADD, payload: 'Minko' });
-
-      nameListEffects.add$.subscribe(result => {
-        t.e(result).toEqual({ type: NAME_LIST_ACTIONS.NAME_ADDED, payload: 'Minko' });
-      });
+    nameListEffects.add$.subscribe(result => {
+      t.e(result).toEqual(new NameAddedAction('Minko'));
     });
   });
-}
+});

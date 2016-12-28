@@ -1,13 +1,10 @@
 /**
  * Mock location strategy (until provided by @angular)
- * Copied from:
- * 
- * https://github.com/angular/angular/blob/master/modules
- * /@angular/common/testing/mock_location_strategy.ts
+ * Copied from https://github.com/angular/angular/blob/master/
+ * modules/%40angular/common/testing/mock_location_strategy.ts
  */
 import { LocationStrategy } from '@angular/common';
-import { Injectable } from '@angular/core';
-import { EventEmitter } from '@angular/core/src/facade/async';
+import { Injectable, EventEmitter } from '@angular/core';
 
 /**
  * A mock implementation of {@link LocationStrategy} that allows tests to fire simulated

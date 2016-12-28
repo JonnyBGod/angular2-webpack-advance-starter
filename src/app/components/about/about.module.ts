@@ -11,4 +11,4 @@ import { routing } from './about.routing';
     AboutComponent
   ]
 })
-export default class AboutModule { }
+export class AboutModule { }
