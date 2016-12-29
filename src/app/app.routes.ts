@@ -1,10 +1,10 @@
 // angular
 import { Routes } from '@angular/router';
 
-export const routes: Routes = [
+export const ROUTES: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full'},
   {
     path: 'about',
-    loadChildren: './about/about.module#AboutModule'
+    loadChildren: './components/about/about.module#AboutModule'
   }
 ];

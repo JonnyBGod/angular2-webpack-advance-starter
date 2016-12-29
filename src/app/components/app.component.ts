@@ -1,5 +1,5 @@
 // angular
-import { ViewEncapsulation, ChangeDetectionStrategy, OnInit } from '@angular/core';
+import { ViewEncapsulation, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
 // any operators needed throughout your application
 import './operators';
 
@@ -9,13 +9,13 @@ import { ConfigService } from 'ng2-config';
 // app
 import { AnalyticsService } from 'frameworks/analytics/index';
 import { MultilingualService } from 'frameworks/i18n/index';
-import { BaseComponent, Config } from 'frameworks/core/index';
+import { Config } from 'frameworks/core/index';
 import { LogService } from 'frameworks/core/services/index';
 
 /**
  * This class represents the main application component.
  */
-@BaseComponent({
+@Component({
   selector: 'app',
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],

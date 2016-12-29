@@ -29,7 +29,7 @@ I would like to thank both for their great work and collaboration. Please refer 
   - Usage is optional but on by default
   - Up to you and your team how you want to utilize it. It can be easily removed if not needed. 
 - [angulartics2](https://github.com/angulartics/angulartics2) Vendor-agnostic analytics for Angular2 applications.
-  - Out of box support for [Segment](https://segment.com/)
+  - Out of box support for [Google Analytics](https://analytics.google.com/)
     - When using the seed, be sure to change your `write_key` [here](https://github.com/JonnyBGod/angular2-webpack-advance-starter/blob/master/src/index.html#L24)
   - Can be changed to any vendor, [learn more here](https://github.com/angulartics/angulartics2#supported-providers)
 - [lodash](https://lodash.com/) Helps reduce blocks of code down to single lines and enhances readability
@@ -69,7 +69,7 @@ I would like to thank both for their great work and collaboration. Please refer 
 - Shared code can be found in `frameworks`:
   - `app`: your shared application architecture code
   - `core`: foundation layer (decorators and low-level services)
-  - `analytics`: analytics provided by [Segment](https://segment.com/)
+  - `analytics`: analytics provided by [Google Analytics](https://analytics.google.com/)
     - Only reports data in **production** build
   - `i18n`: internationalization features
   - `electron`: [Electron](http://electron.atom.io/) specific code

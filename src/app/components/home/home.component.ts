@@ -1,17 +1,20 @@
+// angular
+import { Component, ChangeDetectionStrategy } from '@angular/core';
+
 // libs
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs/Observable';
 
 // app
-import { BaseComponent } from 'frameworks/core/index';
 import { RouterExtensions } from 'frameworks/core/services/index';
 import { IAppState, getNames } from 'frameworks/ngrx/index';
 import * as nameList from 'frameworks/sample/index';
 
-@BaseComponent({
+@Component({
   selector: 'sd-home',
   templateUrl: 'home.component.html',
-  styleUrls: ['home.component.scss']
+  styleUrls: ['home.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent {
   public names$: Observable<any>;

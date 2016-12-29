@@ -17,6 +17,7 @@ import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
 import { ConfigLoader, ConfigService } from 'ng2-config';
+import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 // app
 import { WindowService, ConsoleService, RouterExtensions } from 'frameworks/core/index';
@@ -76,6 +77,7 @@ export function cons() {
 
 @NgModule({
   imports: [
+    Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
     CoreModule.forRoot([
       { provide: WindowService, useClass: WindowNative },
       { provide: ConsoleService, useFactory: (cons) },
@@ -98,4 +100,4 @@ export function cons() {
   bootstrap: [NSAppComponent]
 })
 
-export class NativeModule { }
+export class AppModule { }

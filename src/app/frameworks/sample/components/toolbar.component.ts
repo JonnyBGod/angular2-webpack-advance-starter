@@ -1,11 +1,14 @@
+// angular
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
+
 // app
-import { BaseComponent } from '../../core/index';
 import { LogService } from '../../core/services/index';
 
-@BaseComponent({
+@Component({
   selector: 'sd-toolbar',
   templateUrl: 'toolbar.component.html',
-  styleUrls: ['toolbar.component.css']
+  styleUrls: ['toolbar.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class ToolbarComponent {
 

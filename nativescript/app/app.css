@@ -2,26 +2,30 @@
 
 .action-bar {
   background-color: #3280CF;
-  color:white;
+  color: white;
 }
+
 .btn-primary {
   background-color: #106CC8;
 }
+
 TextField {
   margin: 15 15 0 15;
 }
+
 .link {
   border-width: 0;
   background-color: transparent;
 }
+
 .pink {
   color: #FF45F9;
 }
 
 .odd {
-    background-color: #efefef;
+  background-color: #efefef;
 }
 
 .even {
-    background-color: #fff;
+  background-color: #fff;
 }

@@ -17,7 +17,14 @@ export class NSAppComponent extends AppComponent {
 
   // @Inject decorator is used on injectables here since this component merely extends AppComponent
   // Since @Component decorator is not used here, this ensures metadata will be generated
-  constructor( @Inject(AnalyticsService) public analytics: AnalyticsService, @Inject(LogService) public log: LogService, @Inject(ConfigService) public config: ConfigService, @Inject(MultilingualService) public multilang: MultilingualService, @Inject(Store) private store: Store<any>, @Inject(Router) private router: Router) {
+  constructor(
+    @Inject(AnalyticsService) public analytics: AnalyticsService,
+    @Inject(LogService) public log: LogService,
+    @Inject(ConfigService) public config: ConfigService,
+    @Inject(MultilingualService) public multilang: MultilingualService,
+    @Inject(Store) private store: Store<any>,
+    @Inject(Router) private router: Router
+  ) {
     super(analytics, log, config, multilang);
     log.debug('NSAppComponent constructor');
 

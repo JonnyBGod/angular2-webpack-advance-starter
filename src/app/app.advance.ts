@@ -10,7 +10,7 @@ import { ConfigLoader, ConfigService } from 'ng2-config';
 import { TranslateLoader } from 'ng2-translate';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
-import { routes } from 'components/app.routes';
+import { ROUTES } from './app.routes';
 
 // feature modules
 import { CoreModule, configFactory } from 'frameworks/core/core.module';
@@ -26,17 +26,15 @@ import { Config } from 'frameworks/core/index';
 import { WindowService, ConsoleService } from 'frameworks/core/services/index';
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 
-let routerModule;
+export let routerModule = RouterModule.forRoot(ROUTES, {
+  preloadingStrategy: PreloadAllModules
+});
 
 if (typeof TARGET_DESKTOP !== 'undefined' && TARGET_DESKTOP === true) {
   Config.PLATFORM_TARGET = Config.PLATFORMS.DESKTOP;
   // desktop (electron) must use hash
-  routerModule = RouterModule.forRoot(routes, {
+  routerModule = RouterModule.forRoot(ROUTES, {
     useHash: true,
-    preloadingStrategy: PreloadAllModules
-  });
-} else {
-  routerModule = RouterModule.forRoot(routes, {
     preloadingStrategy: PreloadAllModules
   });
 }

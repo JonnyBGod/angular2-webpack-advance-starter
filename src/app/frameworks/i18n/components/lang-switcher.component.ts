@@ -1,22 +1,23 @@
 // angular
-import { OnInit, OnDestroy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit, OnDestroy } from '@angular/core';
 
 // libs
 import { Store } from '@ngrx/store';
 import { Subscription } from 'rxjs/Subscription';
 
 // app
-import { BaseComponent, Config } from 'frameworks/core/index';
+import { Config } from 'frameworks/core/index';
 import { LogService } from 'frameworks/core/services/index';
 import { ILang } from 'frameworks/core/interfaces/index';
 import { IAppState } from 'frameworks/ngrx/index';
 import { ElectronEventService } from 'frameworks/electron/index';
 import * as multilingual from '../index';
 
-@BaseComponent({
+@Component({
   selector: 'lang-switcher',
   templateUrl: 'lang-switcher.component.html',
-  styleUrls: ['lang-switcher.component.css']
+  styleUrls: ['lang-switcher.component.css'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class LangSwitcherComponent implements OnInit, OnDestroy {
   public lang: string;

@@ -3,10 +3,6 @@ TODO
 
 - [ ] Nativescript (https://github.com/NativeScript/nativescript-angular/issues/385)
 - [ ] Make sure all commands work on windows
-- [ ] npm scripts for desktop AOT
-- [ ] extend "npm run ci" to include desktop
-- [ ] AOT (https://github.com/NathanWalker/angular-seed-advanced/issues/224)
-
 
 ## Improvements
 
@@ -25,6 +21,7 @@ TODO
 ## Bugs
 
 - [ ] ELECTRON: css absolute paths
+- [ ] AOT desktop app not working properly
 
 ### Before commit manual checks
 

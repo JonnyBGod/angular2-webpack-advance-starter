@@ -1,9 +1,11 @@
-import { BaseComponent } from 'frameworks/core/index';
+// angular
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 
-@BaseComponent({
+@Component({
   selector: 'sd-about',
   templateUrl: 'about.component.html',
-  styleUrls: ['about.component.scss']
+  styleUrls: ['about.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AboutComponent  {
 
