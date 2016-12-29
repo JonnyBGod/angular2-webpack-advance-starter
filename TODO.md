@@ -33,10 +33,11 @@ TODO
 
 - [x] npm start
 - [x] npm run docs
-- [x] npm run github-deploy:prod
+- [ ] npm run github-deploy:aot
 
 - [x] npm run start:desktop
 - [x] npm run build:desktop
+- [x] npm run build:aot:desktop
 
 ./nativescript
 - [ ] npm run start:ios

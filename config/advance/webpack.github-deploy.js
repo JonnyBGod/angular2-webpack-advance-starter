@@ -60,35 +60,35 @@ module.exports = function (options) {
 
       function() {
        this.plugin('done', function(stats) {
-         console.log('Starting deployment to GitHub.');
+          console.log('Starting deployment to GitHub.');
 
-         const logger = function (msg) {
-           console.log(msg);
-         };
+          const logger = function (msg) {
+            console.log(msg);
+          };
 
-         const options = {
-           logger: logger,
-           remote: GIT_REMOTE_NAME,
-           message: COMMIT_MESSAGE,
-             dotfiles: true // for .nojekyll
-           };
+          const options = {
+            logger: logger,
+            remote: GIT_REMOTE_NAME,
+            message: COMMIT_MESSAGE,
+            dotfiles: true // for .nojekyll
+          };
 
-           // Since GitHub moved to Jekyll 3.3, their server ignores the "node_modules" and "vendors" folder by default.
-           // but, as of now, it also ignores "vendors*" files.
-           // This means vendor.bundle.js or vendor.[chunk].bundle.js will return 404.
-           // this is the fix for now.
-           fs.writeFileSync(path.join(webpackConfig.output.path, '.nojekyll'), '');
+          // Since GitHub moved to Jekyll 3.3, their server ignores the "node_modules" and "vendors" folder by default.
+          // but, as of now, it also ignores "vendors*" files.
+          // This means vendor.bundle.js or vendor.[chunk].bundle.js will return 404.
+          // this is the fix for now.
+          fs.writeFileSync(path.join(webpackConfig.output.path, '.nojekyll'), '');
 
-           ghpages.publish(webpackConfig.output.path, options, function(err) {
-             if (err) {
-               console.log('GitHub deployment done. STATUS: ERROR.');
-               throw err;
-             } else {
-               console.log('GitHub deployment done. STATUS: SUCCESS.');
-             }
-           });
-         });
-     }
-   ]
- });
+          ghpages.publish(webpackConfig.output.path, options, function(err) {
+            if (err) {
+              console.log('GitHub deployment done. STATUS: ERROR.');
+              throw err;
+            } else {
+              console.log('GitHub deployment done. STATUS: SUCCESS.');
+            }
+          });
+        });
+      }
+    ]
+  });
 };
