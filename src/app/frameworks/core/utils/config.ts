@@ -12,6 +12,8 @@ interface IPlatforms {
   DESKTOP: string;
 }
 
+declare var ENV;
+
 export class Config {
 
   public static pageClass: any;
@@ -54,7 +56,7 @@ export class Config {
       // return JSON.parse('<%= ENV_CONFIG %>');
       return {
         API: 'your api endpoint',
-        ENV: ENV
+        ENV
       };
     }
   }

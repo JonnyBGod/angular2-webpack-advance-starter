@@ -21,7 +21,7 @@ import * as multilingual from '../index';
 })
 export class LangSwitcherComponent implements OnInit, OnDestroy {
   public lang: string;
-  public supportedLanguages: Array<ILang>;
+  public supportedLanguages: ILang[];
   private _sub: Subscription;
 
   constructor(public multilang: multilingual.MultilingualService,
@@ -36,7 +36,7 @@ export class LangSwitcherComponent implements OnInit, OnDestroy {
     }
   }
 
-  changeLang(e: any) {
+  public changeLang(e: any) {
     let lang = this.multilang.defaultLanguage.code; // fallback to default
 
     if (Config.IS_MOBILE_NATIVE()) {
@@ -51,7 +51,7 @@ export class LangSwitcherComponent implements OnInit, OnDestroy {
     this.multilang.changeLang(lang);
   }
 
-  ngOnInit() {
+  public ngOnInit() {
     this._sub = this.store.select('i18n').subscribe((s: multilingual.IMultilingualState) => {
       if (s.lang) {
         this.lang = s.lang;
@@ -60,7 +60,9 @@ export class LangSwitcherComponent implements OnInit, OnDestroy {
     });
   }
 
-  ngOnDestroy() {
-    if (this._sub) this._sub.unsubscribe();
+  public ngOnDestroy() {
+    if (this._sub) {
+      this._sub.unsubscribe();
+    }
   }
 }

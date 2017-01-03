@@ -1,4 +1,6 @@
-declare let browser: any, element: any, by: any;
+declare let browser: any;
+declare let element: any;
+declare let by: any;
 
 /**
  * Usage: selectDropdownByNumber ( selector, index)
@@ -7,14 +9,13 @@ declare let browser: any, element: any, by: any;
  */
 export function selectDropdownByNumber(selector: string, index: number, milliseconds: number) {
   element(by.css(selector)).all(by.tagName('option'))
-    .then(function(options: any) {
+    .then((options: any) => {
       options[index].click();
     });
   if (typeof milliseconds !== 'undefined') {
     browser.sleep(milliseconds);
   }
 }
-
 
 /**
  * Usage: selectDropdownByValue (selector, item)
@@ -35,11 +36,11 @@ export function selectDropdownByValue(selector: string, item: string, millisecon
  * index : wait time to select value for drop down.
  */
 export function selectRandomDropdownReturnText(selector: string, milliseconds: number) {
-  element(by.css(selector)).all(by.tagName('option')).then(function(options: any) {
+  element(by.css(selector)).all(by.tagName('option')).then((options: any) => {
     let randomNumber = Math.floor((Math.random() * options.length
     ));
     options[randomNumber].click();
-    return options[randomNumber].getText().then(function(text: string) {
+    return options[randomNumber].getText().then((text: string) => {
       return text;
     });
   });

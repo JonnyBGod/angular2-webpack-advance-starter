@@ -35,29 +35,29 @@ export const actionTypes: INameListActions = {
  * https://www.typescriptlang.org/docs/handbook/advanced-types.html#discriminated-unions
  */
 export class InitAction implements Action {
-  type = actionTypes.INIT;
-  payload: string = null;
+  public type = actionTypes.INIT;
+  public payload: string = null;
 }
 
 export class InitializedAction implements Action {
-  type = actionTypes.INITIALIZED;
+  public type = actionTypes.INITIALIZED;
 
-  constructor(public payload: Array<string>) { }
+  constructor(public payload: string[]) { }
 }
 
 export class InitFailedAction implements Action {
-  type = actionTypes.INIT_FAILED;
-  payload: string = null;
+  public type = actionTypes.INIT_FAILED;
+  public payload: string = null;
 }
 
 export class AddAction implements Action {
-  type = actionTypes.ADD;
+  public type = actionTypes.ADD;
 
   constructor(public payload: string) { }
 }
 
 export class NameAddedAction implements Action {
-  type = actionTypes.NAME_ADDED;
+  public type = actionTypes.NAME_ADDED;
 
   constructor(public payload: string) { }
 }

@@ -14,13 +14,17 @@ const customConfig = require('../custom/webpack.web.dev.js');
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
+let webpackConfig = simpleWebDevConfig({env: ENV});
+// remove the instance of HtmlWebpackPlugin.
+helpers.removeHtmlWebpackPlugin(webpackConfig.plugins);
+
 /**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function(options) {
-	return webpackMerge.smart(simpleWebDevConfig({env: ENV}), commonAdvanceConfig({env: ENV}), {
+	return webpackMerge.smart(webpackConfig, commonAdvanceConfig({env: ENV}), {
 
 	}, customConfig({env: ENV}));
 }

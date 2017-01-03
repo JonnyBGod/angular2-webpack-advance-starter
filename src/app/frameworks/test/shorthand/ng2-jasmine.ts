@@ -20,18 +20,18 @@ export interface TestApi {
 // shorthand - reduces boilerplate in every test
 export const ng2Jasmine: TestApi = {
   ae: afterEach, // shorthand
-  afterEach: afterEach,
-  describe: describe,
-  fdescribe: fdescribe,
-  xdescribe: xdescribe,
+  afterEach,
+  describe,
+  fdescribe,
+  xdescribe,
   be: beforeEach,  // shorthand beforeEach
-  beforeEach: beforeEach,
+  beforeEach,
   e: expect, // shorthand expect
-  expect: expect,
-  fail: fail,
-  it: it,
-  fit: fit,
-  xit: xit,
-  pending: pending,
-  spyOn: spyOn
+  expect,
+  fail,
+  it,
+  fit,
+  xit,
+  pending,
+  spyOn
 };

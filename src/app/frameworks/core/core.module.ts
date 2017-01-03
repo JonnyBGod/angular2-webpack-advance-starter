@@ -50,7 +50,7 @@ export function configFactory(): ConfigLoader {
 })
 export class CoreModule {
   // configuredProviders: *required to configure WindowService and ConsoleService per platform
-  static forRoot(configuredProviders: Array<any>): ModuleWithProviders {
+  public static forRoot(configuredProviders: any[]): ModuleWithProviders {
     return {
       ngModule: CoreModule,
       providers: configuredProviders

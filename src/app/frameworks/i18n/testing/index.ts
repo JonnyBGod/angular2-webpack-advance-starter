@@ -8,9 +8,9 @@ import { MultilingualService } from '../index';
 import { TranslateMock } from './mocks/ng2-translate.mock';
 import { TranslateLoaderMock } from './mocks/ng2-translate-loader.mock';
 
-export function TEST_MULTILINGUAL_PROVIDERS(): Array<any> {
+export function TEST_MULTILINGUAL_PROVIDERS(): any[] {
 
-  let providers: Array<any> = [
+  let providers: any[] = [
     { provide: TranslateLoader, useClass: TranslateLoaderMock },
     { provide: TranslateService, useClass: TranslateMock },
     MultilingualService

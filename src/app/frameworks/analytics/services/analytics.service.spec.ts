@@ -19,7 +19,6 @@ const testModuleConfig = () => {
   });
 };
 
-
 t.describe('analytics:', () => {
 
   t.be(testModuleConfig);

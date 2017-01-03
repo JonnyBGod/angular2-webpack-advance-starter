@@ -76,7 +76,7 @@ t.describe('app: NameListService', () => {
   t.it('should initialize', () => {
     runner.queue(new InitAction());
 
-    nameListEffects.init$.subscribe(result => {
+    nameListEffects.init$.subscribe((result) => {
       t.e(result).toEqual(new InitializedAction([ 'Dijkstra', 'Hopper' ]));
     });
 
@@ -88,7 +88,7 @@ t.describe('app: NameListService', () => {
   t.it('add action', () => {
     runner.queue(new AddAction('Minko'));
 
-    nameListEffects.add$.subscribe(result => {
+    nameListEffects.add$.subscribe((result) => {
       t.e(result).toEqual(new NameAddedAction('Minko'));
     });
   });

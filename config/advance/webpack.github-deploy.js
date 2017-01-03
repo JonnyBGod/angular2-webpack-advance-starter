@@ -28,8 +28,8 @@ module.exports = function (options) {
     isDevServer: helpers.isWebpackDevServer()
   }, require('../custom/webpack.common.js').metadata);
 
-  // replace the instance of HtmlWebpackPlugin with an updated one.
-  ghDeploy.replaceHtmlWebpackPlugin(webpackConfig.plugins, GH_REPO_NAME);
+  // remove the instance of HtmlWebpackPlugin.
+  helpers.removeHtmlWebpackPlugin(webpackConfig.plugins);
 
   return webpackMerge(webpackConfig, {
    output: {
@@ -59,7 +59,9 @@ module.exports = function (options) {
       }),
 
       function() {
-       this.plugin('done', function(stats) {
+        this.plugin('done', function(stats) {
+          if (stats.compilation.errors.length > 0) return;
+
           console.log('Starting deployment to GitHub.');
 
           const logger = function (msg) {

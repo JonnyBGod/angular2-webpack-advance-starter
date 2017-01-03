@@ -39,10 +39,10 @@ const testModuleConfig = () => {
       BaseRequestOptions,
       MockBackend,
       {
-        provide: Http, useFactory: function (
+        provide: Http, useFactory: (
           backend: ConnectionBackend,
           defaultOptions: BaseRequestOptions
-        ) {
+        ) => {
           return new Http(backend, defaultOptions);
         },
         deps: [MockBackend, BaseRequestOptions]

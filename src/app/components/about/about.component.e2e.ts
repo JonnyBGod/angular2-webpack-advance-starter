@@ -1,14 +1,16 @@
 import { t } from 'frameworks/test/index';
 
-declare var browser: any, element: any, by: any;
+declare var browser: any;
+declare var element: any;
+declare var by: any;
 
-t.describe('About', function() {
+t.describe('About', () => {
 
-  t.be(function () {
+  t.be(() => {
     browser.get('/about');
   });
 
-  t.it('should have correct feature heading', function() {
+  t.it('should have correct feature heading', () => {
     let el = element(by.css('sd-about h2'));
     t.e(el.getText()).toEqual('Features');
   });

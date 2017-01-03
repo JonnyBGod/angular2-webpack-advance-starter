@@ -36,19 +36,19 @@ export const actionTypes: IMultilingualActions = {
  * https://www.typescriptlang.org/docs/handbook/advanced-types.html#discriminated-unions
  */
 export class ChangeAction implements Action {
-  type = actionTypes.CHANGE;
+  public type = actionTypes.CHANGE;
 
   constructor(public payload: string) { }
 }
 
 export class LangChangedAction implements Action {
-  type = actionTypes.LANG_CHANGED;
+  public type = actionTypes.LANG_CHANGED;
 
   constructor(public payload: string) { }
 }
 
 export class LangUnsupportedAction implements Action {
-  type = actionTypes.LANG_UNSUPPORTED;
+  public type = actionTypes.LANG_UNSUPPORTED;
 
   constructor(public payload: string) { }
 }

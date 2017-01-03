@@ -1,5 +1,4 @@
 // angular
-import { RouterModule, PreloadAllModules } from '@angular/router';
 import { Http } from '@angular/http';
 
 // libs
@@ -9,8 +8,6 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { ConfigLoader, ConfigService } from 'ng2-config';
 import { TranslateLoader } from 'ng2-translate';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
-
-import { ROUTES } from './app.routes';
 
 // feature modules
 import { CoreModule, configFactory } from 'frameworks/core/core.module';
@@ -26,20 +23,14 @@ import { Config } from 'frameworks/core/index';
 import { WindowService, ConsoleService } from 'frameworks/core/services/index';
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 
-export let routerModule = RouterModule.forRoot(ROUTES, {
-  preloadingStrategy: PreloadAllModules
-});
+import { routerModule } from 'routerModule';
 
 if (typeof TARGET_DESKTOP !== 'undefined' && TARGET_DESKTOP === true) {
   Config.PLATFORM_TARGET = Config.PLATFORMS.DESKTOP;
-  // desktop (electron) must use hash
-  routerModule = RouterModule.forRoot(ROUTES, {
-    useHash: true,
-    preloadingStrategy: PreloadAllModules
-  });
 }
 
-declare var window, console;
+declare var window;
+declare var console;
 
 // For AoT compilation to work:
 export function win() {

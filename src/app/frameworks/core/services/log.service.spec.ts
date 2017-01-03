@@ -17,7 +17,7 @@ import { configFactory } from '../../core/core.module';
 // module
 import { ConsoleService, LogService } from '../index';
 
-const providers: Array<any> = [
+const providers: any[] = [
   { provide: ConsoleService, useValue: console },
   LogService,
   {
@@ -52,7 +52,7 @@ t.describe('core: LogService', () => {
         imports: [
           ConfigModule.forRoot({ provide: ConfigLoader, useFactory: (configFactory) })
         ],
-        providers: providers
+        providers
       });
   });
 

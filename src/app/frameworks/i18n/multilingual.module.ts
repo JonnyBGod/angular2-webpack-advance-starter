@@ -45,17 +45,15 @@ export function translateFactory(http: Http) {
   ]
 })
 export class MultilingualModule {
-
   // optional usage
   // ideally we could use this to override TranslateModule,
   // but it requires the static above at moment
-  static forRoot(configuredProviders: Array<any>): ModuleWithProviders {
+  public static forRoot(configuredProviders: any[]): ModuleWithProviders {
     return {
       ngModule: MultilingualModule,
       providers: configuredProviders
     };
   }
-
   constructor(@Optional() @SkipSelf() parentModule: MultilingualModule) {
     if (parentModule) {
       throw new Error('MultilingualModule already loaded; Import in root module only.');

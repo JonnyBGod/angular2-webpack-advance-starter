@@ -14,29 +14,29 @@ import { Injectable, EventEmitter } from '@angular/core';
  */
 @Injectable()
 export class MockLocationStrategy extends LocationStrategy {
-  internalBaseHref: string = '/';
-  internalPath: string = '/';
-  internalTitle: string = '';
-  urlChanges: string[] = [];
+  public internalBaseHref: string = '/';
+  public internalPath: string = '/';
+  public internalTitle: string = '';
+  public urlChanges: string[] = [];
   /** @internal */
-  _subject: EventEmitter<any> = new EventEmitter();
+   private _subject: EventEmitter<any> = new EventEmitter();
   constructor() { super(); }
 
-  simulatePopState(url: string): void {
+  public simulatePopState(url: string): void {
     this.internalPath = url;
     this._subject.emit(new MockPopStateEvent(this.path()));
   }
 
-  path(includeHash: boolean = false): string { return this.internalPath; }
+  public path(includeHash: boolean = false): string { return this.internalPath; }
 
-  prepareExternalUrl(internal: string): string {
-    if ((<any>internal).startsWith('/') && (<any>this.internalBaseHref).endsWith('/')) {
+  public prepareExternalUrl(internal: string): string {
+    if ((<any> internal).startsWith('/') && (<any> this.internalBaseHref).endsWith('/')) {
       return this.internalBaseHref + internal.substring(1);
     }
     return this.internalBaseHref + internal;
   }
 
-  pushState(ctx: any, title: string, path: string, query: string): void {
+  public pushState(ctx: any, title: string, path: string, query: string): void {
     this.internalTitle = title;
 
     let url = path + (query.length > 0 ? ('?' + query) : '');
@@ -46,7 +46,7 @@ export class MockLocationStrategy extends LocationStrategy {
     this.urlChanges.push(externalUrl);
   }
 
-  replaceState(ctx: any, title: string, path: string, query: string): void {
+  public replaceState(ctx: any, title: string, path: string, query: string): void {
     this.internalTitle = title;
 
     let url = path + (query.length > 0 ? ('?' + query) : '');
@@ -56,11 +56,11 @@ export class MockLocationStrategy extends LocationStrategy {
     this.urlChanges.push('replace: ' + externalUrl);
   }
 
-  onPopState(fn: (value: any) => void): void { this._subject.subscribe({next: fn}); }
+  public onPopState(fn: (value: any) => void): void { this._subject.subscribe({next: fn}); }
 
-  getBaseHref(): string { return this.internalBaseHref; }
+  public getBaseHref(): string { return this.internalBaseHref; }
 
-  back(): void {
+  public back(): void {
     if (this.urlChanges.length > 0) {
       this.urlChanges.pop();
       let nextUrl = this.urlChanges.length > 0 ? this.urlChanges[this.urlChanges.length - 1] : '';
@@ -68,11 +68,11 @@ export class MockLocationStrategy extends LocationStrategy {
     }
   }
 
-  forward(): void { throw 'not implemented'; }
+  public forward(): void { throw 'not implemented'; }
 }
 
 class MockPopStateEvent {
-  pop: boolean = true;
-  type: string = 'popstate';
+  public pop: boolean = true;
+  public type: string = 'popstate';
   constructor(public newUrl: string) {}
 }

@@ -17,20 +17,20 @@ export class NameListEffects {
    * This effect makes use of the `startWith` operator to trigger
    * the effect immediately on startup.
    */
-  @Effect() init$: Observable<Action> = this.actions$
+  @Effect() public init$: Observable<Action> = this.actions$
     .ofType(nameList.actionTypes.INIT)
-    .startWith(new nameList.InitAction)
+    .startWith(new nameList.InitAction())
     .switchMap(() => this.nameListService.getNames())
-    .map(payload => {
+    .map((payload) => {
       let names = payload;
       return new nameList.InitializedAction(names);
     })
     // nothing reacting to failure at moment but you could if you want (here for example)
     .catch(() => Observable.of(new nameList.InitFailedAction()));
 
-  @Effect() add$: Observable<Action> = this.actions$
+  @Effect() public add$: Observable<Action> = this.actions$
     .ofType(nameList.actionTypes.ADD)
-    .map(action => {
+    .map((action) => {
       let name = action.payload;
       // analytics
       this.nameListService.track(nameList.actionTypes.NAME_ADDED, { label: name });

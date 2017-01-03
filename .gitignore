@@ -31,9 +31,10 @@ Icon?
 Thumbs.db
 
 # Node Files #
-/node_modules
-/bower_components
+/node_modules/
+/bower_components/
 npm-debug.log
+/npm-debug.log.*
 
 # Coverage #
 /coverage/
@@ -54,7 +55,7 @@ npm-debug.log
 /dist_desktop/**
 /.awcache
 .webpack.json
-compiled/
+/compiled/
 
 # Doc #
 /doc/
@@ -62,6 +63,12 @@ compiled/
 # IDE #
 .idea/
 *.swp
+
+# Angular #
+*.ngfactory.ts
+*.css.shim.ts
+*.ngsummary.json
+*.shim.ngstyle.ts
 
 # Advance #
 !/src/client/app/frameworks/test

@@ -12,6 +12,7 @@ const customConfig = require('../custom/webpack.common.js');
  * Webpack Plugins
  */
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 /**
@@ -65,6 +66,10 @@ module.exports = function(options) {
     },
 
     plugins: [
+      new NormalModuleReplacementPlugin(
+        /routerModule/,
+        helpers.root('src/app/app.routerModule.ts')
+      ),
       /**
        * Plugin: DefinePlugin
        * Description: Define free variables.

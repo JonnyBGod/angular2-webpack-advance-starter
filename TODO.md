@@ -6,7 +6,7 @@ TODO
 
 ## Improvements
 
-- [ ] Angular2 Universal (upstream?)
+- [ ] Angular Universal (upstream?) (should?)
 - [ ] Make new repo for nativescript and npm run setup:nativescript
 - [ ] Make new repo for electron and npm run setup:electron
 - [ ] Make clean extension scripts (npm run clean:nativescript)
@@ -20,24 +20,15 @@ TODO
 
 ## Bugs
 
-- [ ] ELECTRON: css absolute paths
-- [ ] AOT desktop app not working properly
+- [ ] github-deploy not working properly
 
 ### Before commit manual checks
 
-- [x] npm run lint
-- [x] npm test
-- [ ] npm run e2e (https://github.com/AngularClass/angular2-webpack-starter/issues/1306)
-
-- [ ] npm run ci (https://github.com/AngularClass/angular2-webpack-starter/issues/1306)
+- [x] npm run ci
 
 - [x] npm start
 - [x] npm run docs
 - [ ] npm run github-deploy:aot
-
-- [x] npm run start:desktop
-- [x] npm run build:desktop
-- [x] npm run build:aot:desktop
 
 ./nativescript
 - [ ] npm run start:ios

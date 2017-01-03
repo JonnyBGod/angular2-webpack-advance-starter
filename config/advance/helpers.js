@@ -2,6 +2,7 @@
  * @author: @AngularClass
  */
 var path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 // Helper functions
 var ROOT = path.resolve(__dirname, '../..');
@@ -26,7 +27,17 @@ function checkNodeImport(context, request, cb) {
   cb();
 }
 
+function removeHtmlWebpackPlugin(plugins) {
+  for (var i=0; i<plugins.length; i++) {
+    if (plugins[i] instanceof HtmlWebpackPlugin) {
+      plugins.splice(i, 1);
+      return;
+    }
+  }
+}
+
 exports.hasProcessFlag = hasProcessFlag;
 exports.isWebpackDevServer = isWebpackDevServer;
 exports.root = root;
 exports.checkNodeImport = checkNodeImport;
+exports.removeHtmlWebpackPlugin = removeHtmlWebpackPlugin;

@@ -30,7 +30,7 @@ export class AppComponent implements OnInit {
     log.debug(`Config env: ${Config.ENVIRONMENT().ENV}`);
   }
 
-  ngOnInit(): void {
+  public ngOnInit(): void {
     this.multilang.init(this.config.getSettings().i18n);
   }
 }

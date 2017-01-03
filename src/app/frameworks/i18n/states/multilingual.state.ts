@@ -9,5 +9,5 @@ export const initialState: IMultilingualState = {
 };
 
 export function getLang(state$: Observable<IMultilingualState>) {
-  return state$.select(state => state.lang);
+  return state$.select((state) => state.lang);
 }

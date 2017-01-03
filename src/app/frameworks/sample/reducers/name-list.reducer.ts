@@ -7,12 +7,12 @@ export function reducer(
 ): ISampleState {
   switch (action.type) {
     case actions.actionTypes.INITIALIZED:
-      return (<any>Object).assign({}, state, {
+      return (<any> Object).assign({}, state, {
         names: action.payload
       });
 
     case actions.actionTypes.NAME_ADDED:
-      return (<any>Object).assign({}, state, {
+      return (<any> Object).assign({}, state, {
         names: [...state.names, action.payload]
       });
 

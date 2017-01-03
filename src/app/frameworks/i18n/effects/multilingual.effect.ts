@@ -19,9 +19,9 @@ export class MultilingualEffects {
    * This effect makes use of the `startWith` operator to trigger
    * the effect immediately on startup.
    */
-  @Effect() change$: Observable<Action> = this.actions$
+  @Effect() public change$: Observable<Action> = this.actions$
     .ofType(multilingual.actionTypes.CHANGE)
-    .map(action => {
+    .map((action) => {
       let lang = action.payload;
       if (includes(map(this.multilangService.availableLanguages, 'code'), lang)) {
         let langChangedAction = new multilingual.LangChangedAction(lang);

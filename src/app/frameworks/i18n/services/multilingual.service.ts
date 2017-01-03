@@ -26,8 +26,8 @@ export class MultilingualService extends Analytics {
   // ];
 
   // default & available languages at instance level
-  defaultLanguage: ILang;
-  availableLanguages: Array<ILang>;
+  public defaultLanguage: ILang;
+  public availableLanguages: ILang[];
 
   constructor(
     public analytics: AnalyticsService,
@@ -41,14 +41,15 @@ export class MultilingualService extends Analytics {
     // subscribe to changes
     store.select('i18n')
       .subscribe((state: IMultilingualState) => {
-        if (!!state && !!state.lang)
+        if (!!state && !!state.lang) {
           // update ng2-translate which will cause translations
           // to occur wherever the TranslatePipe is used in the view
           this.translate.use(state.lang);
+        }
     });
   }
 
-  init(settings: any): void {
+  public init(settings: any): void {
     this.defaultLanguage = settings.defaultLanguage;
     this.availableLanguages = settings.availableLanguages;
 
@@ -64,7 +65,7 @@ export class MultilingualService extends Analytics {
     this.store.dispatch(new ChangeAction(userLang));
   }
 
-  changeLang(lang: string): void {
+  public changeLang(lang: string): void {
     // change the lang
     this.store.dispatch(new ChangeAction(lang));
   }

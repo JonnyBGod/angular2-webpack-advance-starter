@@ -26,7 +26,7 @@ h1 {
 }
 
 .more {
-  background: url("/assets/svg/more.svg");
+  background: url("~assets/svg/more.svg");
   top: 12px;
   right: 10px;
   height: 24px;

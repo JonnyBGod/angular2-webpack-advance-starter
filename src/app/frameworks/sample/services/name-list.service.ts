@@ -27,8 +27,8 @@ export class NameListService extends Analytics {
     this.category = CATEGORY;
   }
 
-  getNames(): Observable<Array<string>> {
+  public getNames(): Observable<string[]> {
     return this.http.get(`${Config.IS_MOBILE_NATIVE() ? '/' : ''}assets/data.json`)
-      .map(res => res.json());
+      .map((res) => res.json());
   }
 }

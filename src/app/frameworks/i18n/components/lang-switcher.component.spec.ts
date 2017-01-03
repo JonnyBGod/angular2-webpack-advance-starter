@@ -27,7 +27,7 @@ import { TEST_MULTILINGUAL_PROVIDERS } from '../testing/index';
 import { ConfigMock } from '../../core/testing/mocks/ng2-config.mock';
 import { ConfigMockMultilang } from '../testing/mocks/ng2-config-multilang.mock';
 
-const SUPPORTED_LANGUAGES: Array<ILang> = [
+const SUPPORTED_LANGUAGES: ILang[] = [
   { code: 'en', title: 'English' },
   { code: 'es', title: 'Spanish' },
   { code: 'fr', title: 'French' },

@@ -1,5 +1,5 @@
 // angular
-import { Injectable, Inject, forwardRef } from '@angular/core';
+import { Injectable, Inject } from '@angular/core';
 
 // lib
 import { ConfigService } from 'ng2-config';
@@ -10,8 +10,10 @@ import { ConsoleService } from './console.service';
 @Injectable()
 export class LogService {
 
-  constructor(private config: ConfigService,
-              @Inject(forwardRef(() => ConsoleService)) public log: ConsoleService) {}
+  constructor(
+    private config: ConfigService,
+    public log: ConsoleService
+  ) {}
 
   // debug (standard output)
   public debug(msg: any) {

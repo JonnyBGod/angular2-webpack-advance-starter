@@ -12,7 +12,7 @@ import { WindowMock } from '../mocks/window.mock';
 import { RouterExtensionsMock } from '../mocks/router-extensions.mock';
 import { ConfigMock } from '../mocks/ng2-config.mock';
 
-export function TEST_CORE_PROVIDERS(options?: any): Array<any> {
+export function TEST_CORE_PROVIDERS(options?: any): any[] {
   // options:
   // window:   = custom window mock (mainly for changing out language)
 

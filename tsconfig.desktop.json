@@ -22,7 +22,7 @@
         "app/assets/*"
       ],
       "routerModule": [
-        "app/app.routerModule"
+        "app/app.routerModule.desktop"
       ]
     },
     "lib": [

@@ -17,13 +17,17 @@ const customConfig = require('../custom/webpack.web.test.js');
  */
 const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 
+let webpackConfig = simpleWebTestConfig({env: ENV});
+// remove the instance of HtmlWebpackPlugin.
+helpers.removeHtmlWebpackPlugin(webpackConfig.plugins);
+
 /**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function(options) {
-  return webpackMerge.smart(simpleWebTestConfig({env: ENV}), commonAdvanceConfig({env: ENV}), {
+  return webpackMerge.smart(webpackConfig, commonAdvanceConfig({env: ENV}), {
 		module: {
 	    rules: [
         {

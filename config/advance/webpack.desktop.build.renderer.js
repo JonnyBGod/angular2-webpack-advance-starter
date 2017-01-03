@@ -19,6 +19,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'production';
 /**
  * Webpack Plugins
  */
+const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 const DefinePlugin = require('webpack/lib/DefinePlugin');
 
 
@@ -27,16 +28,25 @@ const METADATA = Object.assign({
   isDevServer: helpers.isWebpackDevServer()
 }, customConfig.metadata);
 
+let webpackConfig = webpackMerge.smart(simpleWebProdConfig({env: ENV}), commonAdvanceConfig({env: ENV}));
+// remove the instance of HtmlWebpackPlugin.
+helpers.removeHtmlWebpackPlugin(webpackConfig.plugins);
+
 /**
  * Webpack configuration
  *
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function(options) {
-  return webpackMerge.smart(simpleWebProdConfig({env: ENV}), commonAdvanceConfig({env: ENV}), {
+  return webpackMerge.smart(webpackConfig, {
     plugins: [
+      new NormalModuleReplacementPlugin(
+        /routerModule/,
+        helpers.root('src/app/app.routerModule.desktop.ts')
+      ),
+
       new DefinePlugin({
-        'BASE_URL': JSON.stringify(METADATA.baseUrl),
+        'BASE_URL': METADATA.baseUrl,
         'TARGET_DESKTOP': true,
         'TARGET_DESKTOP_BUILD': true
       }),

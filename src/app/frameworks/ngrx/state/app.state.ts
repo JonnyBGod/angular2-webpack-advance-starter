@@ -74,10 +74,10 @@ export function AppReducer(state: any, action: any) {
 }
 
 export function getMultilingualState(state$: Observable<IAppState>) {
-  return state$.select(s => s.i18n);
+  return state$.select((s) => s.i18n);
 }
 export function getNameListState(state$: Observable<IAppState>) {
-  return state$.select(s => s.sample);
+  return state$.select((s) => s.sample);
 }
 
 export const getLang: any = compose(fromMultilingual.getLang, getMultilingualState);
