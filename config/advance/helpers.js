@@ -2,13 +2,17 @@
  * @author: @AngularClass
  */
 var path = require('path');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
+const EVENT = process.env.npm_lifecycle_event || '';
 
 // Helper functions
 var ROOT = path.resolve(__dirname, '../..');
 
 function hasProcessFlag(flag) {
   return process.argv.join('').indexOf(flag) > -1;
+}
+
+function hasNpmFlag(flag) {
+  return EVENT.includes(flag);
 }
 
 function isWebpackDevServer() {
@@ -27,17 +31,28 @@ function checkNodeImport(context, request, cb) {
   cb();
 }
 
-function removeHtmlWebpackPlugin(plugins) {
-  for (var i=0; i<plugins.length; i++) {
-    if (plugins[i] instanceof HtmlWebpackPlugin) {
+function removePlugins(plugins, test) {
+  for (var i = 0; i < plugins.length; i++) {
+    if (test.filter(function(t) { return plugins[i] instanceof t;}).length > 0) {
       plugins.splice(i, 1);
       return;
     }
   }
 }
 
+function removeRules(rules, test) {
+  for (var i = 0; i < rules.length; i++) {
+    if (test.filter(function(t) { return t.toString() === rules[i].test.toString();}).length > 0) {
+      rules.splice(i, 1);
+      return;
+    }
+  }
+}
+
 exports.hasProcessFlag = hasProcessFlag;
+exports.hasNpmFlag = hasNpmFlag;
 exports.isWebpackDevServer = isWebpackDevServer;
 exports.root = root;
 exports.checkNodeImport = checkNodeImport;
-exports.removeHtmlWebpackPlugin = removeHtmlWebpackPlugin;
+exports.removePlugins = removePlugins;
+exports.removeRules = removeRules;

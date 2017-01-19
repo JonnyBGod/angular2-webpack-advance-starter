@@ -4,6 +4,7 @@
 
 const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const commonAdvanceConfig = require('./webpack.common.web.js');
 const simpleWebDevConfig = require('../webpack.dev.js');
@@ -16,7 +17,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'development';
 
 let webpackConfig = simpleWebDevConfig({env: ENV});
 // remove the instance of HtmlWebpackPlugin.
-helpers.removeHtmlWebpackPlugin(webpackConfig.plugins);
+helpers.removePlugins(webpackConfig.plugins, [HtmlWebpackPlugin]);
 
 /**
  * Webpack configuration

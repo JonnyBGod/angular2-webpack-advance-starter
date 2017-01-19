@@ -6,6 +6,7 @@ const helpers = require('./helpers');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
 
 const HtmlElementsPlugin = require('../html-elements-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
 const ScriptExtHtmlWebpackPlugin = require('script-ext-html-webpack-plugin');
 
 const commonAdvanceConfig = require('./webpack.common.web.js');
@@ -19,7 +20,7 @@ const ENV = process.env.ENV = process.env.NODE_ENV = 'test';
 
 let webpackConfig = simpleWebTestConfig({env: ENV});
 // remove the instance of HtmlWebpackPlugin.
-helpers.removeHtmlWebpackPlugin(webpackConfig.plugins);
+helpers.removePlugins(webpackConfig.plugins, [HtmlWebpackPlugin]);
 
 /**
  * Webpack configuration
@@ -28,16 +29,16 @@ helpers.removeHtmlWebpackPlugin(webpackConfig.plugins);
  */
 module.exports = function(options) {
   return webpackMerge.smart(webpackConfig, commonAdvanceConfig({env: ENV}), {
-		module: {
-	    rules: [
+    module: {
+      rules: [
         {
           enforce: 'pre',
           test: /\.ts$/,
           loader: 'angular2-template-loader',
           exclude: [helpers.root('node_modules')]
         }
-	    ]
-	  },
+      ]
+    },
 
     plugins: [
       /*
@@ -78,5 +79,5 @@ module.exports = function(options) {
       }),
     ]
 
-	}, customConfig({env: ENV}));
+  }, customConfig({env: ENV}));
 }

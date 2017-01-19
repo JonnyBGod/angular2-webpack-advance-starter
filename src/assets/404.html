@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <script type="text/javascript">
+      var pathPrefix = '<%= htmlWebpackPlugin.options.metadata.GH_REPO_NAME %>';
+
+      window.location.replace(window.location.href.replace(
+        window.location.host + '/' + pathPrefix,
+        window.location.host + '/' + pathPrefix + (pathPrefix ? '/#' : '#/')
+      ));
+    </script>
+  </head>
+  <body>
+  </body>
+</html>

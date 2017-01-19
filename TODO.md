@@ -20,15 +20,13 @@ TODO
 
 ## Bugs
 
-- [ ] github-deploy not working properly
-
-### Before commit manual checks
+## Before commit manual checks
 
 - [x] npm run ci
 
 - [x] npm start
 - [x] npm run docs
-- [ ] npm run github-deploy:aot
+- [x] npm run github-deploy:aot
 
 ./nativescript
 - [ ] npm run start:ios

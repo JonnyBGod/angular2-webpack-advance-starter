@@ -6,12 +6,13 @@ const path = require('path');
 const helpers = require('./helpers');
 const ghDeploy = require('../github-deploy');
 const webpackMerge = require('webpack-merge'); // used to merge webpack configs
-const ghpages = require('gh-pages');
 
 /**
  * Webpack Plugins
  */
+const NormalModuleReplacementPlugin = require('webpack/lib/NormalModuleReplacementPlugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const ngcWebpack = require('ngc-webpack');
 
 /**
  * Webpack Constants
@@ -19,6 +20,7 @@ const HtmlWebpackPlugin = require('html-webpack-plugin');
 const GIT_REMOTE_NAME = 'origin';
 const COMMIT_MESSAGE = 'Updates';
 const GH_REPO_NAME = ghDeploy.getRepoName(GIT_REMOTE_NAME);
+const AOT = helpers.hasNpmFlag('aot');
 
 module.exports = function (options) {
   const webpackConfigFactory = ghDeploy.getWebpackConfigModule(options); // the settings that are common to prod and dev
@@ -28,11 +30,19 @@ module.exports = function (options) {
     isDevServer: helpers.isWebpackDevServer()
   }, require('../custom/webpack.common.js').metadata);
 
-  // remove the instance of HtmlWebpackPlugin.
-  helpers.removeHtmlWebpackPlugin(webpackConfig.plugins);
+  // remove the plugins to be overwriten.
+  helpers.removePlugins(webpackConfig.plugins, [HtmlWebpackPlugin, ngcWebpack.NgcWebpackPlugin]);
+  // remove the rules to be overwriten.
+  helpers.removeRules(webpackConfig.module.rules, [/\.ts$/, /\.html$/]);
+
+  for (var i = 0; i < webpackConfig.module.rules.length; i++) {
+    if (webpackConfig.module.rules[i].test.toString() === /\.html$/.toString()) {
+      webpackConfig.module.rules[i].exclude.push(helpers.root('src/assets/404.html'));
+    }
+  }
 
   return webpackMerge(webpackConfig, {
-   output: {
+    output: {
      /**
       * The public path is set to the REPO name.
       *
@@ -49,13 +59,63 @@ module.exports = function (options) {
       publicPath: '/' + GH_REPO_NAME + '/' + ghDeploy.safeUrl(webpackConfig.output.publicPath)
     },
 
+    module: {
+      rules: [
+        /*
+         * Typescript loader support for .ts and Angular 2 async routes via .async.ts
+         * Replace templateUrl and stylesUrl with require()
+         *
+         * See: https://github.com/s-panferov/awesome-typescript-loader
+         * See: https://github.com/TheLarkInn/angular2-template-loader
+         */
+        {
+          test: /\.ts$/,
+          use: [
+            '@angularclass/hmr-loader?pretty=' + !isProd + '&prod=' + isProd,
+            'awesome-typescript-loader?{configFileName: "tsconfig.desktop.json"}',
+            'angular2-template-loader',
+            {
+              loader: 'ng-router-loader',
+              options: {
+                loader: 'async-require',
+                genDir: 'compiled',
+                aot: AOT
+              }
+            }
+          ],
+          exclude: [/\.(spec|e2e)\.ts$/]
+        }
+      ]
+    },
+
     plugins: [
+      new NormalModuleReplacementPlugin(
+        /routerModule/,
+        helpers.root('src/app/app.routerModule.desktop.ts')
+      ),
+
       new HtmlWebpackPlugin({
         template: 'src/index.html',
         title: METADATA.title,
         chunksSortMode: 'dependency',
         metadata: METADATA,
         inject: 'head'
+      }),
+
+      new HtmlWebpackPlugin({
+        template: 'src/assets/404.html',
+        filename: '404.html',
+        title: METADATA.title,
+        metadata: {
+          GH_REPO_NAME: GH_REPO_NAME || ''
+        },
+        inject: false
+      }),
+
+      new ngcWebpack.NgcWebpackPlugin({
+        disabled: !AOT,
+        tsConfig: helpers.root('tsconfig.desktop.json'),
+        resourceOverride: helpers.root('config/resource-override.js')
       }),
 
       function() {
@@ -81,7 +141,7 @@ module.exports = function (options) {
           // this is the fix for now.
           fs.writeFileSync(path.join(webpackConfig.output.path, '.nojekyll'), '');
 
-          ghpages.publish(webpackConfig.output.path, options, function(err) {
+          require('gh-pages').publish(webpackConfig.output.path, options, function(err) {
             if (err) {
               console.log('GitHub deployment done. STATUS: ERROR.');
               throw err;
