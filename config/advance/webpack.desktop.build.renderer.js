@@ -33,7 +33,11 @@ const METADATA = Object.assign({
 let webpackConfig = webpackMerge.smart(simpleWebProdConfig({env: ENV}), commonAdvanceConfig({env: ENV}));
 
 // remove the plugins to be overwriten.
-helpers.removePlugins(webpackConfig.plugins, [HtmlWebpackPlugin, ngcWebpack.NgcWebpackPlugin]);
+helpers.removePlugins(webpackConfig.plugins, [
+  DefinePlugin,
+  HtmlWebpackPlugin,
+  ngcWebpack.NgcWebpackPlugin
+]);
 // remove the rules to be overwriten.
 helpers.removeRules(webpackConfig.module.rules, [/\.ts$/]);
 
@@ -43,6 +47,8 @@ helpers.removeRules(webpackConfig.module.rules, [/\.ts$/]);
  * See: http://webpack.github.io/docs/configuration.html#cli
  */
 module.exports = function(options) {
+  isProd = ENV === 'production';
+
   return webpackMerge.smart(webpackConfig, {
     module: {
       rules: [
@@ -57,16 +63,16 @@ module.exports = function(options) {
           test: /\.ts$/,
           use: [
             '@angularclass/hmr-loader?pretty=' + !isProd + '&prod=' + isProd,
-            'awesome-typescript-loader?{configFileName: "tsconfig.desktop.json"}',
-            'angular2-template-loader',
             {
               loader: 'ng-router-loader',
               options: {
-                loader: 'async-require',
+                loader: 'async-import',
                 genDir: 'compiled',
                 aot: AOT
               }
-            }
+            },
+            'awesome-typescript-loader?{configFileName: "tsconfig.desktop.json"}',
+            'angular2-template-loader'
           ],
           exclude: [/\.(spec|e2e)\.ts$/]
         },

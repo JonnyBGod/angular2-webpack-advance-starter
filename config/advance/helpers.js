@@ -32,21 +32,21 @@ function checkNodeImport(context, request, cb) {
 }
 
 function removePlugins(plugins, test) {
-  for (var i = 0; i < plugins.length; i++) {
+  for (var i = plugins.length - 1; i >= 0; i--) {
     if (test.filter(function(t) { return plugins[i] instanceof t;}).length > 0) {
       plugins.splice(i, 1);
-      return;
     }
   }
+  return;
 }
 
 function removeRules(rules, test) {
-  for (var i = 0; i < rules.length; i++) {
+  for (var i = rules.length - 1; i >= 0; i--) {
     if (test.filter(function(t) { return t.toString() === rules[i].test.toString();}).length > 0) {
       rules.splice(i, 1);
-      return;
     }
   }
+  return;
 }
 
 exports.hasProcessFlag = hasProcessFlag;

@@ -20,9 +20,12 @@ const ngcWebpack = require('ngc-webpack');
 const GIT_REMOTE_NAME = 'origin';
 const COMMIT_MESSAGE = 'Updates';
 const GH_REPO_NAME = ghDeploy.getRepoName(GIT_REMOTE_NAME);
+const ENV = process.env.ENV = process.env.NODE_ENV = 'production';
 const AOT = helpers.hasNpmFlag('aot');
 
 module.exports = function (options) {
+  isProd = ENV === 'production';
+
   const webpackConfigFactory = ghDeploy.getWebpackConfigModule(options); // the settings that are common to prod and dev
   const webpackConfig = webpackConfigFactory(options);
   const METADATA = Object.assign({
@@ -31,7 +34,10 @@ module.exports = function (options) {
   }, require('../custom/webpack.common.js').metadata);
 
   // remove the plugins to be overwriten.
-  helpers.removePlugins(webpackConfig.plugins, [HtmlWebpackPlugin, ngcWebpack.NgcWebpackPlugin]);
+  helpers.removePlugins(webpackConfig.plugins, [
+    HtmlWebpackPlugin,
+    ngcWebpack.NgcWebpackPlugin
+  ]);
   // remove the rules to be overwriten.
   helpers.removeRules(webpackConfig.module.rules, [/\.ts$/, /\.html$/]);
 
@@ -72,16 +78,16 @@ module.exports = function (options) {
           test: /\.ts$/,
           use: [
             '@angularclass/hmr-loader?pretty=' + !isProd + '&prod=' + isProd,
-            'awesome-typescript-loader?{configFileName: "tsconfig.desktop.json"}',
-            'angular2-template-loader',
             {
               loader: 'ng-router-loader',
               options: {
-                loader: 'async-require',
+                loader: 'async-import',
                 genDir: 'compiled',
                 aot: AOT
               }
-            }
+            },
+            'awesome-typescript-loader?{configFileName: "tsconfig.desktop.json"}',
+            'angular2-template-loader'
           ],
           exclude: [/\.(spec|e2e)\.ts$/]
         }
