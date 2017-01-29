@@ -8,8 +8,8 @@ addons:
       - google-chrome-stable
 language: node_js
 node_js:
-  - "5"
   - "6"
+  - "7"
   - "node"
 # Matrix failure enabled for https://github.com/TheLarkInn/LazyParseWebpackPlugin/issues/6
 matrix:

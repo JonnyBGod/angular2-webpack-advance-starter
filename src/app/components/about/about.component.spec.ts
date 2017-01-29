@@ -24,7 +24,7 @@ t.describe('@Component: AboutComponent', () => {
           fixture.detectChanges();
           let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
 
-          t.e(getDOM().querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
+          t.e(getDOM().querySelectorAll(aboutDOMEl, 'div h2')[0].textContent).toEqual('Features');
         });
     }));
 });
