@@ -127,9 +127,9 @@
   "devDependencies": {
     "@angular/compiler-cli": "~2.4.3",
     "@ngrx/store-devtools": "^3.2.2",
-    "@types/hammerjs": "^2.0.33",
-    "@types/jasmine": "^2.2.34",
-    "@types/lodash": "^4.14.34",
+    "@types/hammerjs": "^2.0.34",
+    "@types/jasmine": "^2.5.40",
+    "@types/lodash": "^4.14.46",
     "@types/node": "^7.0.0",
     "@types/selenium-webdriver": "2.53.39",
     "@types/source-map": "^0.5.0",
