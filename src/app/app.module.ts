@@ -30,6 +30,9 @@ import { ADVANCE_MODULES } from './app.advance';
 // App
 import { HomeModule } from 'components/home/home.module';
 
+import '../styles/styles.scss';
+import '../styles/headings.css';
+
 // Application wide providers
 const APP_PROVIDERS = [
   ...APP_RESOLVER_PROVIDERS,

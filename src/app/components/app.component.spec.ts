@@ -10,11 +10,11 @@ import { StoreModule } from '@ngrx/store';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 // app
-import { t } from '../frameworks/test/index';
-import { TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS } from '../frameworks/core/testing/index';
-import { NameListService, NavbarComponent, ToolbarComponent } from '../frameworks/sample/index';
-import { MultilingualModule } from '../frameworks/i18n/multilingual.module';
-import { reducer } from '../frameworks/i18n/index';
+import { t } from '../shared/test/index';
+import { TEST_CORE_PROVIDERS, TEST_HTTP_PROVIDERS } from '../shared/core/testing/index';
+import { NameListService, NavbarComponent, ToolbarComponent } from '../shared/sample/index';
+import { MultilingualModule } from '../shared/i18n/multilingual.module';
+import { reducer } from '../shared/i18n/index';
 
 // module
 import { AppComponent } from './app.component';

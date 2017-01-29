@@ -1,4 +1,4 @@
-import { t, selectDropdownByValue } from 'frameworks/test';
+import { t, selectDropdownByValue } from 'shared/test';
 
 declare var browser: any;
 declare var element: any;

@@ -12,8 +12,8 @@
     "strictNullChecks": false,
     "baseUrl": "./src",
     "paths": {
-      "frameworks/*": [
-        "app/frameworks/*"
+      "shared/*": [
+        "app/shared/*"
       ],
       "components/*": [
         "app/components/*"
@@ -26,12 +26,14 @@
       "dom",
       "es6"
     ],
+    "typeRoots": [
+      "node_modules/@types"
+    ],
     "types": [
       "hammerjs",
       "jasmine",
       "lodash",
       "node",
-      "selenium-webdriver",
       "source-map",
       "uglify-js",
       "webpack"
@@ -51,5 +53,7 @@
   },
   "compileOnSave": false,
   "buildOnSave": false,
-  "atom": { "rewriteTsconfig": false }
+  "atom": {
+    "rewriteTsconfig": false
+  }
 }

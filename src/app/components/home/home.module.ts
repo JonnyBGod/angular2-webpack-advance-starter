@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 // advance
-import { MultilingualModule } from 'frameworks/i18n/multilingual.module';
+import { MultilingualModule } from 'shared/i18n/multilingual.module';
 
 import { HomeComponent } from './home.component';
 import { routing } from './home.routing';

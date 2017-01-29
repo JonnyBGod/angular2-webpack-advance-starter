@@ -2,7 +2,7 @@ import { TestBed, async } from '@angular/core/testing';
 import { Component } from '@angular/core';
 import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
 
-import { t } from 'frameworks/test';
+import { t } from 'shared/test';
 import { AboutComponent } from './about.component';
 
 // test module configuration for each test

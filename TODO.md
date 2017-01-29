@@ -26,6 +26,7 @@ TODO
 
 - [x] npm start
 - [x] npm run docs
+- [x] npm run build:aot:desktop
 - [x] npm run github-deploy:aot
 
 ./nativescript

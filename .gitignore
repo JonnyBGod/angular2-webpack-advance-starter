@@ -56,6 +56,7 @@ npm-debug.log
 /.awcache
 .webpack.json
 /compiled/
+dll/
 
 # Doc #
 /doc/
@@ -71,15 +72,14 @@ npm-debug.log
 *.shim.ngstyle.ts
 
 # Advance #
-!/src/client/app/frameworks/test
-/nativescript/app/css
+!/src/client/app/shared/test
+/nativescript/app
 /nativescript/hooks
 /nativescript/node_modules
 /nativescript/platforms
 /nativescript/**/*.js
 /nativescript/**/*.js.map
 /nativescript/*.d.ts
-/nativescript/app/app
-/nativescript/app/assets
+!/nativescript/references.d.ts
 /desktop/
 /_temp/

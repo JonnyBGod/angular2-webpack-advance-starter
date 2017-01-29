@@ -12,8 +12,8 @@
     "strictNullChecks": false,
     "baseUrl": "./src",
     "paths": {
-      "frameworks/*": [
-        "app/frameworks/*"
+      "shared/*": [
+        "app/shared/*"
       ],
       "components/*": [
         "app/components/*"

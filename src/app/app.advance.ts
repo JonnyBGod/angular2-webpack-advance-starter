@@ -10,17 +10,17 @@ import { TranslateLoader } from 'ng2-translate';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 // feature modules
-import { CoreModule, configFactory } from 'frameworks/core/core.module';
-import { AppReducer } from 'frameworks/ngrx/index';
-import { AnalyticsModule } from 'frameworks/analytics/analytics.module';
-import { MultilingualModule, translateFactory } from 'frameworks/i18n/multilingual.module';
-import { MultilingualEffects } from 'frameworks/i18n/index';
-import { SampleModule } from 'frameworks/sample/sample.module';
-import { NameListEffects } from 'frameworks/sample/index';
+import { CoreModule, configFactory } from 'shared/core/core.module';
+import { AppReducer } from 'shared/ngrx/index';
+import { AnalyticsModule } from 'shared/analytics/analytics.module';
+import { MultilingualModule, translateLoaderFactory } from 'shared/i18n/multilingual.module';
+import { MultilingualEffects } from 'shared/i18n/index';
+import { SampleModule } from 'shared/sample/sample.module';
+import { NameListEffects } from 'shared/sample/index';
 
 // config
-import { Config } from 'frameworks/core/index';
-import { WindowService, ConsoleService } from 'frameworks/core/services/index';
+import { Config } from 'shared/core/index';
+import { WindowService, ConsoleService } from 'shared/core/services/index';
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 
 import { routerModule } from 'routerModule';
@@ -52,7 +52,7 @@ export const ADVANCE_MODULES = [
   MultilingualModule.forRoot([{
     provide: TranslateLoader,
     deps: [Http],
-    useFactory: (translateFactory)
+    useFactory: (translateLoaderFactory)
   }]),
   SampleModule,
   StoreModule.provideStore(AppReducer),

@@ -7,10 +7,10 @@ import './operators';
 import { ConfigService } from 'ng2-config';
 
 // app
-import { AnalyticsService } from 'frameworks/analytics/index';
-import { MultilingualService } from 'frameworks/i18n/index';
-import { Config } from 'frameworks/core/index';
-import { LogService } from 'frameworks/core/services/index';
+import { AnalyticsService } from 'shared/analytics/index';
+import { MultilingualService } from 'shared/i18n/index';
+import { Config } from 'shared/core/index';
+import { LogService, AppService } from 'shared/core/services/index';
 
 /**
  * This class represents the main application component.
@@ -26,7 +26,8 @@ export class AppComponent implements OnInit {
   constructor(public analytics: AnalyticsService,
               public log: LogService,
               public config: ConfigService,
-              public multilang: MultilingualService) {
+              public multilang: MultilingualService,
+              private appService: AppService) {
     log.debug(`Config env: ${Config.ENVIRONMENT().ENV}`);
   }
 

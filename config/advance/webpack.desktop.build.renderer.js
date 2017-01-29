@@ -34,7 +34,6 @@ let webpackConfig = webpackMerge.smart(simpleWebProdConfig({env: ENV}), commonAd
 
 // remove the plugins to be overwriten.
 helpers.removePlugins(webpackConfig.plugins, [
-  DefinePlugin,
   HtmlWebpackPlugin,
   ngcWebpack.NgcWebpackPlugin
 ]);

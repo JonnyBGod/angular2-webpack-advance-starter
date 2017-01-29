@@ -5,7 +5,7 @@ import 'rxjs/add/observable/of';
 
 @Injectable()
 export class DataResolver implements Resolve<any> {
-  resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
+  public resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
     return Observable.of({
       res:
 /* tslint:disable */
