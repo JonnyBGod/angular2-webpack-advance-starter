@@ -83,14 +83,14 @@ module.exports = function(options) {
         inject: 'head'
       }),
 
-      /*new webpack.LoaderOptionsPlugin({
+      new webpack.LoaderOptionsPlugin({
         options: {
           context: helpers.root(),
           output: {
               path: helpers.root('dist')
           }
         }
-      })*/
+      })
     ],
 
     /*externals: [
