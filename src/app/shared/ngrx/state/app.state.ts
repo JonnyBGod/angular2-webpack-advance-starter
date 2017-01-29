@@ -75,7 +75,9 @@ export function AppReducer(state: any, action: any) {
   }
 }
 
-export function getMultilingualState(state$: Observable<IAppState>): Observable<IMultilingualState> {
+export function getMultilingualState(
+  state$: Observable<IAppState>
+): Observable<IMultilingualState> {
   return state$.select((s) => s.i18n);
 }
 export function getNameListState(state$: Observable<IAppState>): Observable<ISampleState> {
