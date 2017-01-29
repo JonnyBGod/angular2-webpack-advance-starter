@@ -12,7 +12,7 @@
   "license": "MIT",
   "scripts": {
     "build": "npm run build:dev",
-    "build:aot:prod": "npm run clean:dist && webpack --config config/advance/webpack.web.prod.js  --progress --profile --bail",
+    "build:aot:prod": "npm run clean:dist && npm run clean:aot && webpack --config config/advance/webpack.web.prod.js  --progress --profile --bail",
     "build:aot:prod:desktop": "npm run clean:aot && webpack --config config/advance/webpack.desktop.build.renderer.js  --progress --profile --bail && npm run build:prod:desktop:main",
     "build:aot": "npm run build:aot:prod",
     "build:aot:desktop": "npm run clean:dist:desktop && npm run build:aot:prod:desktop && build -mwl --x64",
