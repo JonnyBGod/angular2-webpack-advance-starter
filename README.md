@@ -321,11 +321,6 @@ The following are some things that will make AoT compile fail.
 
 Please see the [CONTRIBUTING](https://github.com/JonnyBGod/angular2-webpack-advance-starter/blob/master/.github/CONTRIBUTING.md) and [CODE_OF_CONDUCT](https://github.com/JonnyBGod/angular2-webpack-advance-starter/blob/master/.github/CODE_OF_CONDUCT.md) files for guidelines.
 
-## Known Bugs
-
-- [ ] ELECTRON: css absolute paths
-- [ ] npm run docs (upstream) (https://github.com/TypeStrong/typedoc/issues/234)
-
 ___
 
 # License
