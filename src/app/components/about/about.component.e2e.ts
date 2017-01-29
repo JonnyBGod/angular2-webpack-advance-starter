@@ -11,7 +11,7 @@ t.describe('About', () => {
   });
 
   t.it('should have correct feature heading', () => {
-  	browser.wait(element(by.css('sd-about h2')).isPresent(), 20000);
+    browser.wait(element(by.css('sd-about h2')).isPresent(), 20000);
     let el = element(by.css('sd-about h2'));
     t.e(el.getText()).toEqual('Features');
   });
