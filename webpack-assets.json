@@ -1,11 +1,12 @@
 {
   "vendor": {
-    "js": "/angular2-webpack-advance-starter/vendor.851c56ea5484315fa864.bundle.js"
+    "js": "/angular2-webpack-advance-starter/vendor.a9e9db7b9e9b8aacf13e.bundle.js"
   },
   "main": {
-    "js": "/angular2-webpack-advance-starter/main.105dc855147200035cdf.bundle.js"
+    "js": "/angular2-webpack-advance-starter/main.15734b18001444b34581.bundle.js",
+    "css": "/angular2-webpack-advance-starter/main.33a6b957c947eb31bd55786a03d7ee17.css"
   },
   "polyfills": {
-    "js": "/angular2-webpack-advance-starter/polyfills.e49750724db2d39d156e.bundle.js"
+    "js": "/angular2-webpack-advance-starter/polyfills.36399a31787cc00339ea.bundle.js"
   }
 }
