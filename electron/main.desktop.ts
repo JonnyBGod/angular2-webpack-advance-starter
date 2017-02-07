@@ -13,7 +13,7 @@ let template: any;
 let menu: any;
 
 // app
-import { DesktopConfig } from 'frameworks/electron/index';
+import { DesktopConfig } from 'shared/electron/index';
 
 /*crashReporter.start({
   productName: 'Angular2WebpackAdvanceStarter',
