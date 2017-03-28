@@ -5,9 +5,6 @@ import { FormsModule } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
 
-// libs
-import { ConfigLoader, ConfigStaticLoader, ConfigModule, ConfigService } from 'ng2-config';
-
 // module
 import { CORE_DIRECTIVES } from './directives/index';
 import { CORE_PROVIDERS } from './services/index';
@@ -16,11 +13,6 @@ import { Config } from './utils/index';
 interface ICoreModuleOptions {
   window?: any;
   console?: any;
-}
-
-// for AoT compilation
-export function configFactory(): ConfigLoader {
-  return new ConfigStaticLoader(`${Config.IS_MOBILE_NATIVE() ? '/' : ''}assets/app.config.json`);
 }
 
 /**
@@ -32,7 +24,6 @@ export function configFactory(): ConfigLoader {
     CommonModule,
     RouterModule,
     HttpModule,
-    ConfigModule.forRoot(),
   ],
   declarations: [
     CORE_DIRECTIVES

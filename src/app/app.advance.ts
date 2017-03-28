@@ -5,12 +5,12 @@ import { Http } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { ConfigLoader, ConfigService } from 'ng2-config';
-import { TranslateLoader } from 'ng2-translate';
+import { ConfigModule, ConfigLoader, ConfigStaticLoader } from '@nglibs/config';
+import { TranslateLoader } from '@ngx-translate/core';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 // feature modules
-import { CoreModule, configFactory } from 'shared/core/core.module';
+import { CoreModule } from 'shared/core/core.module';
 import { AppReducer } from 'shared/ngrx/index';
 import { AnalyticsModule } from 'shared/analytics/analytics.module';
 import { MultilingualModule, translateLoaderFactory } from 'shared/i18n/multilingual.module';
@@ -24,6 +24,12 @@ import { WindowService, ConsoleService } from 'shared/core/services/index';
 Config.PLATFORM_TARGET = Config.PLATFORMS.WEB;
 
 import { routerModule } from 'routerModule';
+
+import { AppConfig } from './app.config';
+
+export function configFactory(): ConfigLoader {
+  return new ConfigStaticLoader(AppConfig);
+}
 
 if (typeof TARGET_DESKTOP !== 'undefined' && TARGET_DESKTOP === true) {
   Config.PLATFORM_TARGET = Config.PLATFORMS.DESKTOP;
@@ -42,10 +48,13 @@ export function cons() {
 
 export const ADVANCE_MODULES = [
   Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
+  ConfigModule.forRoot({
+    provide: ConfigLoader,
+    useFactory: (configFactory)
+  }),
   CoreModule.forRoot([
     { provide: WindowService, useFactory: (win) },
-    { provide: ConsoleService, useFactory: (cons) },
-    { provide: ConfigLoader, useFactory: (configFactory) }
+    { provide: ConsoleService, useFactory: (cons) }
   ]),
   routerModule,
   AnalyticsModule,

@@ -1,5 +1,5 @@
 // angular
-import { Component, ChangeDetectionStrategy } from '@angular/core';
+import { Component, ChangeDetectionStrategy, OnInit } from '@angular/core';
 
 // libs
 import { Store } from '@ngrx/store';
@@ -10,21 +10,21 @@ import { RouterExtensions } from 'shared/core/services/index';
 import { IAppState, getNames } from 'shared/ngrx/index';
 import * as nameList from 'shared/sample/index';
 
-declare var NSIndexPath;
-declare var UITableViewScrollPosition;
-
 @Component({
   selector: 'sd-home',
   templateUrl: 'home.component.html',
   styleUrls: ['home.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class HomeComponent {
+export class HomeComponent implements OnInit {
   public names$: Observable<any>;
   public newName: string = '';
 
-  constructor(private store: Store<IAppState>, public routerext: RouterExtensions) {
-    this.names$ = store.let(getNames);
+  constructor(private store: Store<IAppState>, public routerext: RouterExtensions) {}
+
+  public ngOnInit() {
+    this.names$ = this.store.let(getNames);
+    this.newName = '';
   }
 
   /*

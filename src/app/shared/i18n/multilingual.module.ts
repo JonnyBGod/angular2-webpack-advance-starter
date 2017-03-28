@@ -13,7 +13,8 @@ import { RouterModule } from '@angular/router';
 import { HttpModule, Http } from '@angular/http';
 
 // libs
-import { TranslateModule, TranslateLoader, TranslateStaticLoader } from 'ng2-translate';
+import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 
 // app
 import { Config } from '../core/index';
@@ -24,8 +25,8 @@ import { MultilingualService } from './services/index';
 
 // for AoT compilation
 export function translateLoaderFactory(http: Http) {
-  return new TranslateStaticLoader(http, `${Config.IS_MOBILE_NATIVE() ?
-     '/' : ''}assets/i18n`, '.json');
+  return new TranslateHttpLoader(http, `${Config.IS_MOBILE_NATIVE() ?
+     '/' : ''}assets/i18n/`, '.json');
 };
 
 /**

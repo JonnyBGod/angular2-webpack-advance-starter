@@ -39,7 +39,7 @@ module.exports = function (options) {
     ngcWebpack.NgcWebpackPlugin
   ]);
   // remove the rules to be overwriten.
-  helpers.removeRules(webpackConfig.module.rules, [/\.ts$/, /\.html$/]);
+  helpers.removeRules(webpackConfig.module.rules, [/\.ts$/]);
 
   for (var i = 0; i < webpackConfig.module.rules.length; i++) {
     if (webpackConfig.module.rules[i].test.toString() === /\.html$/.toString()) {

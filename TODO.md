@@ -11,6 +11,7 @@ TODO
 - [ ] Make new repo for electron and npm run setup:electron
 - [ ] Make clean extension scripts (npm run clean:nativescript)
 - [ ] CI release all platforms for demo app
+- [ ] Gitlab CI
 
 ## Extras (branches?)
 

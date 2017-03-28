@@ -1,10 +1,10 @@
 // angular
-import { ViewEncapsulation, ChangeDetectionStrategy, Component, OnInit } from '@angular/core';
+import { ViewEncapsulation, Component, OnInit } from '@angular/core';
 // any operators needed throughout your application
 import './operators';
 
 // libs
-import { ConfigService } from 'ng2-config';
+import { ConfigService } from '@nglibs/config';
 
 // app
 import { AnalyticsService } from 'shared/analytics/index';
@@ -20,7 +20,6 @@ import { LogService, AppService } from 'shared/core/services/index';
   templateUrl: 'app.component.html',
   styleUrls: ['app.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  changeDetection: ChangeDetectionStrategy.Default // Everything else uses OnPush
 })
 export class AppComponent implements OnInit {
   constructor(public analytics: AnalyticsService,

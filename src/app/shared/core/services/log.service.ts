@@ -2,7 +2,7 @@
 import { Injectable, Inject } from '@angular/core';
 
 // lib
-import { ConfigService } from 'ng2-config';
+import { ConfigService } from '@nglibs/config';
 
 // module
 import { ConsoleService } from './console.service';
