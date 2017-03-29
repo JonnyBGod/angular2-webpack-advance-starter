@@ -29,15 +29,6 @@ helpers.removePlugins(webpackConfig.plugins, [HtmlWebpackPlugin]);
  */
 module.exports = function(options) {
   return webpackMerge.smart(webpackConfig, commonAdvanceConfig({env: ENV}), {
-    module: {
-      rules: [
-        {
-          test: /\.scss$/,
-          use: ['to-string-loader', 'css-loader', 'sass-loader'],
-          exclude: [helpers.root('src', 'styles')]
-        },
-      ]
-    },
 
     plugins: [
       /*

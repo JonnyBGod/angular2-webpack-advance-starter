@@ -11,12 +11,12 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 // libs
 import { Store, StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { ConfigLoader, ConfigService } from 'ng2-config';
+import { ConfigModule, ConfigLoader, ConfigService, ConfigStaticLoader } from '@nglibs/config';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 // app
 import { t } from '../../test/index';
-import { CoreModule, configFactory } from '../../core/core.module';
+import { CoreModule } from '../../core/core.module';
 import { ILang, WindowService, ConsoleService } from '../../core/index';
 import {
   TEST_CORE_PROVIDERS,
@@ -34,24 +34,26 @@ import {
   ChangeAction
 } from '../index';
 
-const mockSettings = {
-  i18n: {
-    defaultLanguage: {
-      code: 'fr',
-      title: 'Français'
-    },
-    availableLanguages: [
-      {
-        code: 'en',
-        title: 'English'
-      },
-      {
+export function configFactory(): ConfigLoader {
+  return new ConfigStaticLoader({
+    i18n: {
+      defaultLanguage: {
         code: 'fr',
         title: 'Français'
-      }
-    ]
-  }
-};
+      },
+      availableLanguages: [
+        {
+          code: 'en',
+          title: 'English'
+        },
+        {
+          code: 'fr',
+          title: 'Français'
+        }
+      ]
+    },
+  });
+}
 
 const mockBackendResponse = (connection: MockConnection, response: any) => {
     connection.mockRespond(new Response(new ResponseOptions({ body: response })));
@@ -66,6 +68,10 @@ const testModuleConfig = (options?: any) => {
     .configureTestingModule({
       imports: [
         Angulartics2Module.forRoot([ Angulartics2GoogleAnalytics ]),
+        ConfigModule.forRoot({
+          provide: ConfigLoader,
+          useFactory: (configFactory)
+        }),
         CoreModule.forRoot([
           { provide: WindowService, useValue: window },
           { provide: ConsoleService, useValue: console },
@@ -132,10 +138,6 @@ t.describe('i18n:', () => {
       async(inject([MockBackend, ConfigService, MultilingualService, Store, WindowService],
         (backend: MockBackend, config: ConfigService,
         multilang: MultilingualService, store: Store<any>, win: WindowService) => {
-          // mock response
-          backend.connections.subscribe((c: MockConnection) =>
-            mockBackendResponse(c, mockSettings));
-
           config.init()
             .then(() => {
               multilang.init(config.getSettings().i18n);

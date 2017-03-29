@@ -1,8 +1,9 @@
-import { TestBed, async } from '@angular/core/testing';
+// angular
 import { Component } from '@angular/core';
-import { getDOM } from '@angular/platform-browser/src/dom/dom_adapter';
+import { TestBed, async } from '@angular/core/testing';
 
-import { t } from 'shared/test';
+// app
+import { t } from 'shared/test/index';
 import { AboutComponent } from './about.component';
 
 // test module configuration for each test
@@ -12,22 +13,24 @@ const testModuleConfig = () => {
   });
 };
 
-t.describe('@Component: AboutComponent', () => {
+export function main() {
+  t.describe('@Component: AboutComponent', () => {
 
-  t.be(testModuleConfig);
+    t.be(testModuleConfig);
 
-  t.it('should work',
-    async(() => {
-      TestBed.compileComponents()
-        .then(() => {
-          let fixture = TestBed.createComponent(TestComponent);
-          fixture.detectChanges();
-          let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
+    t.it('should work',
+      async(() => {
+        TestBed.compileComponents()
+          .then(() => {
+            let fixture = TestBed.createComponent(TestComponent);
+            fixture.detectChanges();
+            let aboutDOMEl = fixture.debugElement.children[0].nativeElement;
 
-          t.e(getDOM().querySelectorAll(aboutDOMEl, 'h2')[0].textContent).toEqual('Features');
-        });
-    }));
-});
+            t.e(aboutDOMEl.querySelectorAll('h2')[0].textContent).toEqual('Features');
+          });
+      }));
+  });
+}
 
 @Component({
   selector: 'test-cmp',

@@ -8,7 +8,7 @@ import { MockBackend, MockConnection } from '@angular/http/testing';
 // libs
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { ConfigService } from 'ng2-config';
+import { ConfigService } from '@nglibs/config';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 
 // app

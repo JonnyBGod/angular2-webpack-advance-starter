@@ -52,7 +52,7 @@ const mockBackendResponse = (connection: MockConnection, response: string) => {
 
 t.describe('app: NameListService', () => {
   let injector: Injector;
-  let backend: MockBackend;
+  let backend: any;
   let nameList: NameListService;
   let store: Store<any>;
   let runner: EffectsRunner; // ngrx/effects tester

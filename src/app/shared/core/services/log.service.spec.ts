@@ -8,14 +8,17 @@ import { BaseRequestOptions, Http, Response, ResponseOptions } from '@angular/ht
 import { MockBackend, MockConnection } from '@angular/http/testing';
 
 // libs
-import { ConfigModule, ConfigLoader, ConfigService } from 'ng2-config';
+import { ConfigModule, ConfigLoader, ConfigService, ConfigHttpLoader } from '@nglibs/config';
 
 // app
 import { t } from '../../test/index';
-import { configFactory } from '../../core/core.module';
 
 // module
 import { ConsoleService, LogService } from '../index';
+
+export function configFactory(http: Http): ConfigLoader {
+  return new ConfigHttpLoader(http, '/config.json'); // FILE PATH || API ENDPOINT
+}
 
 const providers: any[] = [
   { provide: ConsoleService, useValue: console },
@@ -50,7 +53,11 @@ t.describe('core: LogService', () => {
     TestBed.initTestEnvironment(BrowserDynamicTestingModule, platformBrowserDynamicTesting())
       .configureTestingModule({
         imports: [
-          ConfigModule.forRoot({ provide: ConfigLoader, useFactory: (configFactory) })
+          ConfigModule.forRoot({
+            provide: ConfigLoader,
+            useFactory: (configFactory),
+              deps: [Http]
+          }),
         ],
         providers
       });

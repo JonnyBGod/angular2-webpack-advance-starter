@@ -209,16 +209,15 @@
     },
     "linux": {
       "target": [
-        "AppImage",
-        "snap"
+        "AppImage"
       ]
     },
-    "asar": true
-  },
-  "directories": {
-    "buildResources": "src/assets",
-    "output": "desktop",
-    "app": "dist"
+    "asar": true,
+    "directories": {
+        "buildResources": "src/assets",
+        "output": "desktop",
+        "app": "dist"
+    }
   },
   "repository": {
     "type": "git",
