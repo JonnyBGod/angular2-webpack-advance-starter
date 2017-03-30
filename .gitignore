@@ -35,6 +35,7 @@ Thumbs.db
 /bower_components/
 npm-debug.log
 /npm-debug.log.*
+yarn-error.log
 
 # Coverage #
 /coverage/
@@ -82,4 +83,4 @@ dll/
 /nativescript/*.d.ts
 !/nativescript/references.d.ts
 /desktop/
-/_temp/
+yarn-error.log
