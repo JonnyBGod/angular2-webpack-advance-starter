@@ -5,7 +5,7 @@ import { Http } from '@angular/http';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { ConfigModule, ConfigLoader, ConfigStaticLoader } from '@nglibs/config';
+import { ConfigLoader, ConfigModule, ConfigStaticLoader } from 'ngx-config';
 import { TranslateLoader } from '@ngx-translate/core';
 import { Angulartics2Module, Angulartics2GoogleAnalytics } from 'angulartics2';
 

@@ -4,7 +4,7 @@ import { ViewEncapsulation, Component, OnInit } from '@angular/core';
 import './operators';
 
 // libs
-import { ConfigService } from '@nglibs/config';
+import { ConfigService } from 'ngx-config';
 
 // app
 import { AnalyticsService } from 'shared/analytics/index';

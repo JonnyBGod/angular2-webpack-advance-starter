@@ -39,11 +39,13 @@ export function translateLoaderFactory(http: Http) {
     RouterModule,
     FormsModule,
     HttpModule,
-    TranslateModule.forRoot([{
-      provide: TranslateLoader,
-      deps: [Http],
-      useFactory: (translateLoaderFactory)
-    }]),
+    TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        deps: [Http],
+        useFactory: (translateLoaderFactory)
+      }
+    }),
   ],
   declarations: [
     LangSwitcherComponent
